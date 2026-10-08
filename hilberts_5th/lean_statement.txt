@@ -1,0 +1,8 @@
+@[category research solved, AMS 22 57 58]
+theorem hilbert_smith_conjecture.variants.dimension_three {X : Type*}
+    [TopologicalSpace X] [T2Space X] [ConnectedSpace X]
+    [ChartedSpace (EuclideanSpace ℝ (Fin 3)) X]
+    [IsTopologicalGroup G] [LocallyCompactSpace G]
+    [MulAction G X] [ContinuousSMul G X] [FaithfulSMul G X] :
+    AdmitsLieGroupStructure G := by
+  sorry

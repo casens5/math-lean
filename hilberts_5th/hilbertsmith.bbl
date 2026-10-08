@@ -1,0 +1,262 @@
+\newcommand{\chsort}[1]{}
+\begin{thebibliography}{10}
+
+\bibitem{mathoverflow}
+Agol\phantom{x}(\texttt{mathoverflow.net/users/1345}).
+\newblock Incompressible surfaces in an open subset of {R}{\char`\^}3.
+\newblock MathOverflow.
+\newblock \texttt{http://mathoverflow.net/questions/74935} (version:
+  2011-09-07).
+
+\bibitem{alexander}
+J.~W. Alexander.
+\newblock On the subdivision of 3-space by a polyhedron.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 10(1):pp. 6--8, 1924.
+
+\bibitem{bing}
+R.~H. Bing.
+\newblock An alternative proof that {$3$}-manifolds can be triangulated.
+\newblock {\em Ann. of Math. (2)}, 69:37--65, 1959.
+
+\bibitem{bochnermontgomery}
+Salomon Bochner and Deane Montgomery.
+\newblock Locally compact groups of differentiable transformations.
+\newblock {\em Ann. of Math. (2)}, 47:639--653, 1946.
+
+\bibitem{chengloverjensen}
+Yu~Qing Chen, Henry~H. Glover, and Craig~A. Jensen.
+\newblock Prime order subgroups of mapping class groups.
+\newblock {\em JP J. Geom. Topol.}, 11(2):87--99, 2011.
+
+\bibitem{dress}
+Andreas Dress.
+\newblock Newman's theorems on transformation groups.
+\newblock {\em Topology}, 8:203--207, 1969.
+
+\bibitem{freedman}
+Michael Freedman, Joel Hass, and Peter Scott.
+\newblock Least area incompressible surfaces in {$3$}-manifolds.
+\newblock {\em Invent. Math.}, 71(3):609--642, 1983.
+
+\bibitem{gleason}
+A.~M. Gleason.
+\newblock The structure of locally compact groups.
+\newblock {\em Duke Math. J.}, 18:85--104, 1951.
+
+\bibitem{gleason2}
+Andrew~M. Gleason.
+\newblock Groups without small subgroups.
+\newblock {\em Ann. of Math. (2)}, 56:193--212, 1952.
+
+\bibitem{gottschalk}
+W.~H. Gottschalk.
+\newblock Minimal sets: an introduction to topological dynamics.
+\newblock {\em Bull. Amer. Math. Soc.}, 64:336--351, 1958.
+
+\bibitem{gulliver}
+Robert~D. Gulliver, II.
+\newblock Regularity of minimizing surfaces of prescribed mean curvature.
+\newblock {\em Ann. of Math. (2)}, 97:275--305, 1973.
+
+\bibitem{hamilton}
+A.~J.~S. Hamilton.
+\newblock The triangulation of {$3$}-manifolds.
+\newblock {\em Quart. J. Math. Oxford Ser. (2)}, 27(105):63--70, 1976.
+
+\bibitem{jacorubinstein}
+William Jaco and J.~Hyam Rubinstein.
+\newblock P{L} minimal surfaces in {$3$}-manifolds.
+\newblock {\em J. Differential Geom.}, 27(3):493--524, 1988.
+
+\bibitem{kakimizu}
+Osamu Kakimizu.
+\newblock Finding disjoint incompressible spanning surfaces for a link.
+\newblock {\em Hiroshima Math. J.}, 22(2):225--236, 1992.
+
+\bibitem{kerckhoff}
+Steven~P. Kerckhoff.
+\newblock The {N}ielsen realization problem.
+\newblock {\em Ann. of Math. (2)}, 117(2):235--265, 1983.
+
+\bibitem{kirsie}
+Robion~C. Kirby and Laurence~C. Siebenmann.
+\newblock {\em Foundational essays on topological manifolds, smoothings, and
+  triangulations}.
+\newblock Princeton University Press, Princeton, N.J., 1977.
+\newblock With notes by John Milnor and Michael Atiyah, Annals of Mathematics
+  Studies, No. 88.
+
+\bibitem{lee}
+Joo~Sung Lee.
+\newblock Totally disconnected groups, {$p$}-adic groups and the
+  {H}ilbert-{S}mith conjecture.
+\newblock {\em Commun. Korean Math. Soc.}, 12(3):691--699, 1997.
+
+\bibitem{hsholder}
+{\u{I}}ozhe Maleshich.
+\newblock The {H}ilbert-{S}mith conjecture for {H}\"older actions.
+\newblock {\em Uspekhi Mat. Nauk}, 52(2(314)):173--174, 1997.
+
+\bibitem{hsqc}
+Gaven~J. Martin.
+\newblock The {H}ilbert-{S}mith conjecture for quasiconformal actions.
+\newblock {\em Electron. Res. Announc. Amer. Math. Soc.}, 5:66--70
+  (electronic), 1999.
+
+\bibitem{mj}
+Mahan Mj.
+\newblock Pattern rigidity and the {H}ilbert--{S}mith conjecture.
+\newblock {\em Geom. Topol.}, 16(2):1205--1246, 2012.
+
+\bibitem{moise}
+Edwin~E. Moise.
+\newblock Affine structures in {$3$}-manifolds. {V}. {T}he triangulation
+  theorem and {H}auptvermutung.
+\newblock {\em Ann. of Math. (2)}, 56:96--114, 1952.
+
+\bibitem{montgomeryzippin}
+Deane Montgomery and Leo Zippin.
+\newblock Small subgroups of finite-dimensional groups.
+\newblock {\em Ann. of Math. (2)}, 56:213--241, 1952.
+
+\bibitem{montgomeryzippin2}
+Deane Montgomery and Leo Zippin.
+\newblock {\em Topological transformation groups}.
+\newblock Interscience Publishers, New York-London, 1955.
+
+\bibitem{newman}
+M.~H.~A. Newman.
+\newblock A theorem on periodic transformations of spaces.
+\newblock {\em Quart. J. Math.}, os-2(1):1--8, 1931.
+
+\bibitem{nielsen2}
+J.~Nielsen.
+\newblock Die struktur periodischer transformationen von fl\"achen.
+\newblock {\em Danske Vid. Selsk, Mat.-Fys. Medd.}, 15:1--77, 1937.
+
+\bibitem{nielsen}
+Jakob Nielsen.
+\newblock Abbildungsklassen endlicher {O}rdnung.
+\newblock {\em Acta Math.}, 75:23--115, 1943.
+
+\bibitem{osserman2}
+Robert Osserman.
+\newblock {\em A survey of minimal surfaces}.
+\newblock Van Nostrand Reinhold Co., New York, 1969.
+
+\bibitem{osserman1}
+Robert Osserman.
+\newblock A proof of the regularity everywhere of the classical solution to
+  {P}lateau's problem.
+\newblock {\em Ann. of Math. (2)}, 91:550--569, 1970.
+
+\bibitem{papa}
+C.~D. Papakyriakopoulos.
+\newblock On {D}ehn's lemma and the asphericity of knots.
+\newblock {\em Ann. of Math. (2)}, 66:1--26, 1957.
+
+\bibitem{przytyckischultens}
+Piotr Przytycki and Jennifer Schultens.
+\newblock Contractibility of the {K}akimizu complex and symmetric {S}eifert
+  surfaces.
+\newblock {\em Trans. Amer. Math. Soc.}, 364(3):1489--1508, 2012.
+
+\bibitem{raymondwilliams}
+Frank Raymond and R.~F. Williams.
+\newblock Examples of {$p$}-adic transformation groups.
+\newblock {\em Ann. of Math. (2)}, 78:92--106, 1963.
+
+\bibitem{hslipschitz}
+Du{\u{s}}an Repov{\u{s}} and Evgenij {\u{S}}{\u{c}}epin.
+\newblock A proof of the {H}ilbert-{S}mith conjecture for actions by
+  {L}ipschitz maps.
+\newblock {\em Math. Ann.}, 308(2):361--364, 1997.
+
+\bibitem{sacksuhlenbeck}
+J.~Sacks and K.~Uhlenbeck.
+\newblock The existence of minimal immersions of {$2$}-spheres.
+\newblock {\em Ann. of Math. (2)}, 113(1):1--24, 1981.
+
+\bibitem{sacksuhlenbeck2}
+J.~Sacks and K.~Uhlenbeck.
+\newblock Minimal immersions of closed {R}iemann surfaces.
+\newblock {\em Trans. Amer. Math. Soc.}, 271(2):639--652, 1982.
+
+\bibitem{schoenyau}
+R.~Schoen and Shing~Tung Yau.
+\newblock Existence of incompressible minimal surfaces and the topology of
+  three-dimensional manifolds with nonnegative scalar curvature.
+\newblock {\em Ann. of Math. (2)}, 110(1):127--142, 1979.
+
+\bibitem{schultens}
+Jennifer Schultens.
+\newblock The {K}akimizu complex is simply connected.
+\newblock {\em J. Topol.}, 3(4):883--900, 2010.
+\newblock With an appendix by Michael Kapovich.
+
+\bibitem{smith}
+P.~A. Smith.
+\newblock Transformations of finite period. {III}. {N}ewman's theorem.
+\newblock {\em Ann. of Math. (2)}, 42:446--458, 1941.
+
+\bibitem{spanier}
+Edwin~H. Spanier.
+\newblock Cohomology theory for general spaces.
+\newblock {\em Ann. of Math. (2)}, 49:407--427, 1948.
+
+\bibitem{steenrod}
+Norman~E. Steenrod.
+\newblock Universal {H}omology {G}roups.
+\newblock {\em Amer. J. Math.}, 58(4):661--701, 1936.
+
+\bibitem{symonds}
+Peter Symonds.
+\newblock The cohomology representation of an action of {$C_p$} on a surface.
+\newblock {\em Trans. Amer. Math. Soc.}, 306(1):389--400, 1988.
+
+\bibitem{taoblog}
+Terence Tao.
+\newblock Hilbert's fifth problem and related topics.
+\newblock Manuscript, 2012.
+\newblock
+  \\\texttt{http://terrytao.wordpress.com/books/hilberts-fifth-problem-and-rel%
+ated-topics/}.
+
+\bibitem{thurston}
+William~P. Thurston.
+\newblock On the geometry and dynamics of diffeomorphisms of surfaces.
+\newblock {\em Bull. Amer. Math. Soc. (N.S.)}, 19(2):417--431, 1988.
+
+\bibitem{waldhausen}
+Friedhelm Waldhausen.
+\newblock On irreducible {$3$}-manifolds which are sufficiently large.
+\newblock {\em Ann. of Math. (2)}, 87:56--88, 1968.
+
+\bibitem{walsh}
+John~J. Walsh.
+\newblock Light open and open mappings on manifolds. {II}.
+\newblock {\em Trans. Amer. Math. Soc.}, 217:271--284, 1976.
+
+\bibitem{wilson}
+David Wilson.
+\newblock Open mappings on manifolds and a counterexample to the {W}hyburn
+  conjecture.
+\newblock {\em Duke Math. J.}, 40:705--716, 1973.
+
+\bibitem{yamabe1}
+Hidehiko Yamabe.
+\newblock On the conjecture of {I}wasawa and {G}leason.
+\newblock {\em Ann. of Math. (2)}, 58:48--54, 1953\chsort{a}.
+
+\bibitem{yamabe2}
+Hidehiko Yamabe.
+\newblock A generalization of a theorem of {G}leason.
+\newblock {\em Ann. of Math. (2)}, 58:351--365, 1953\chsort{b}.
+
+\bibitem{ctyang}
+Chung-Tao Yang.
+\newblock {$p$}-adic transformation groups.
+\newblock {\em Michigan Math. J.}, 7:201--218, 1960.
+
+\end{thebibliography}
