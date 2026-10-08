@@ -1,0 +1,1199 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan,}
+\urlstyle{same}
+
+\title{Hilbert's 5th Problem }
+
+\author{Lou van den Dries and Isaac Goldbring}
+\date{}
+
+
+\DeclareUnicodeCharacter{21D2}{\ifmmode\Rightarrow\else{$\Rightarrow$}\fi}
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+Assuming a modest amount of background we give full proofs of the results by Gleason, Montgomery-Zippin, and Yamabe that characterize Lie groups and generalized Lie groups among topological groups. Our treatment involves nonstandard reasoning, and we expose this method in an appendix.
+\end{abstract}
+
+Mathematics Subject Classification (2010). Primary: 22D05; Secondary: 03H05.\\
+Keywords. Hilbert's fifth problem, Lie groups, no small subgroups, nonstandard analysis.
+
+\section*{1. Introduction}
+A Lie group is a topological group $G$ for which inversion $x \mapsto x^{-1}: G \rightarrow G$ and multiplication $(x, y) \mapsto x y: G \times G \rightarrow G$ are analytic maps with respect to some compatible real analytic manifold structure on its underlying topological space. It is a remarkable fact that then there is only one such real analytic manifold structure. This uniqueness falls under the slogan
+
+$$
+\text { Algebra } \times \text { Topology }=\text { Analysis. }
+$$
+
+Important Lie groups are the vector groups $\mathbb{R}^{n}$, their compact quotients $\mathbb{R}^{n} / \mathbb{Z}^{n}$, the general linear groups $\operatorname{GL}_{n}(\mathbb{R})$, and the orthogonal groups $\mathrm{O}_{n}(\mathbb{R})$. For each of these the group structure and the real analytic manifold structure is the obvious one; for example, $\operatorname{GL}_{n}(\mathbb{R})$ is open as a subset of $\mathbb{R}^{n^{2}}$, and thus an open submanifold of the analytic manifold $\mathbb{R}^{n^{2}}$. Here and throughout this paper we let $m$ and $n$ range over $\mathbb{N}=\{0,1,2, \ldots\}$.
+
+Hilbert's 5th problem asks for a characterization of Lie groups that is free of smoothness or analyticity requirements. A topological group is said to be locally euclidean if some neighborhood of its identity is homeomorphic to some $\mathbb{R}^{n}$. A Lie group is obviously locally euclidean, and the most common version of Hilbert's 5th problem (H5) can be stated as follows:
+
+\section*{Is every locally euclidean topological group a Lie group?}
+A positive solution to this problem was achieved in the early fifties by the combined efforts of Gleason [3] and Montgomery \& Zippin [15]. Yamabe improved their results in [21] and [22]. Montgomery \& Zippin exposed all of this and more in their book [16] on topological transformation groups. Kaplansky has also a nice treatment in Chapter 2 of [13]. Of course, the affirmative solution of H5 gives further substance to our crude slogan.
+
+We are oversimplifying the story: Hilbert's original formulation [8] is in terms of a (local) group of homeomorphisms on a topological manifold. This suggests a problem that is still open: if a locally compact group $G$ acts continuously and faithfully on a topological manifold, is $G$ necessarily a Lie group? See Serre [19] and Palais [18] for brief accounts that discuss this more general form of H5. Serre considers the state of H5 just before the decisive papers [3] and [15], and Palais focuses on Gleason's contribution.
+
+Locally euclidean topological groups are certainly locally compact. (We include being hausdorff as part of compactness and of local compactness.) Local compactness yields a powerful analytic tool, namely Haar measure, and we shall need it. From now on $G$ denotes a locally compact (topological) group, with identity 1 , or $1_{G}$ if we want to indicate $G$.
+
+A notion that has turned out to be central in the story is that of having no small subgroups: $G$ is said to have no small subgroups (briefly: $G$ has NSS) if there is a neighborhood $U$ of 1 in $G$ that contains no subgroup of $G$ other than $\{1\}$. It is also useful to introduce a weaker variant of this property: $G$ is said to have no small connected subgroups (briefly: $G$ has NSCS) if there is a neighborhood $U$ of 1 in $G$ that contains no connected subgroup of $G$ other than $\{1\}$. Dimension theory also plays a modest role: call a topological space bounded in dimension if for some $n$ no subspace is homeomorphic to the unit cube $[0,1]^{n}$. Recalling that throughout $G$ is locally compact, we can now formulate the main result as characterizing Lie groups among locally compact topological groups:
+
+Main Theorem. Given $G$, the following are equivalent:
+
+\begin{itemize}
+  \item[(1)] $G$ is a Lie group;
+  \item[(2)] $G$ has NSS;
+  \item[(3)] $G$ is locally euclidean;
+  \item[(4)] $G$ is locally connected and has NSCS;
+  \item[(5)] $G$ is locally connected and bounded in dimension.
+\end{itemize}
+
+In (1) and thoughout this paper we take the definition of "Lie group" from the beginning of this Introduction: it only requires existence (not uniqueness) of a\\
+compatible real analytic manifold structure. While the identity in a Lie group has a countable neighborhood base, such countability issues play no explicit role in our treatment.
+
+We say that $G$ can be approximated by Lie groups if every neighborhood of its identity contains a compact normal subgroup $N$ of $G$ such that $G / N$ (with its quotient topology) is a Lie group. The following result, due to Yamabe, is closely related to the Main Theorem, and is important in the structure theory of locally compact groups.
+
+Theorem. Every locally compact group has an open subgroup that can be approximated by Lie groups.
+
+Hirschfeld [9] used nonstandard methods to simplify some tricky parts of the work by Gleason and Montgomery. The present paper is meant to give an account of [9] with further simplifications, and some minor corrections. We also include a proof of Yamabe's Theorem, and an appendix on nonstandard methods for readers not familiar with them. In the rest of this introduction we give more history and sketch the solution to (global) H5.
+
+Further relevant history. The clearcut formulation of H5 above became only possible after basic topological notions had crystallized sufficiently in the 1920's to permit the definition of "topological group" by Schreier. The fundamental tool of Haar measure, on any locally compact group, became available soon afterwards. Von Neumann used it to extend the Peter-Weyl theorem for compact Lie groups to all compact groups, and this led to the solution of H5 for compact groups. (In our treatment of H5 we use a weak form of this extended Peter-Weyl theorem.) Another important partial solution of H5 is for the case of commutative $G$, due to Pontrjagin, and we shall need this as well. Finally, we are going to use a result of Kuranishi [14]:\\
+if $G$ has a commutative closed normal subgroup $N$ such that $N$ and $G / N$ are Lie groups, then $G$ is a Lie group.
+
+Gleason [4] and Iwasawa [11] establish this without assuming commutativity of $N$, but we don't need this stronger version and instead obtain it as a consequence of the Main Theorem; see Section 2.
+
+Goldbring [5] elaborated Hirschfeld's approach to solve affirmatively the local form of H5. (A solution to local H5 was claimed already in [12], but about 20 years ago it was found that this paper was seriously wrong; see [17].)
+
+Gromov [6] made a remarkable use of the results from the 1950's around H5 in his proof that a finitely generated group has polynomial growth if and only if the group has a nilpotent subgroup of finite index; see also [2].
+
+Recently, Hrushovski [10] and Breuillard-Green-Tao [1] used the solution of H5 (even the local form) and Yamabe's theorem to elucidate the structure of finite approximate groups. In this connection, and for another full account of H5, see also Tao [20].
+
+One-parameter subgroups. Lie theory provides a precious guide towards solving H5. It tells us that the tangent vectors at the identity of a Lie group are in a natural bijective correspondence with the 1-parameter subgroups of the Lie group. While tangent vectors require a manifold to live on, the notion of 1-parameter subgroup makes sense in any topological group.
+
+A 1 -parameter subgroup (or $1-p s$ ) of $G$ is a continuous group morphism $\mathbb{R} \rightarrow G$. The trivial 1-parameter subgroup $o$ of $G$ is defined by $o(t)=1 \in G$ for all $t \in \mathbb{R}$. We set
+
+$$
+\mathfrak{L}(G):=\{\xi: \mathbb{R} \rightarrow G \mid \xi \text { is a } 1 \text {-ps of } G\} .
+$$
+
+For $r \in \mathbb{R}$ and $\xi \in \mathfrak{L}(G)$ we define $r \xi \in \mathfrak{L}(G)$ by $(r \xi)(t):=\xi(r t)$, and we also denote $(-1) \xi$ by $-\xi$. Note that then $0 \xi=o, 1 \xi=\xi,-\xi=\xi^{-1}$, and $r(s \xi)=(r s) \xi$ for $r, s \in \mathbb{R}$ and $\xi \in \mathfrak{L}(G)$. The operation
+
+$$
+(r, \xi) \mapsto r \xi: \quad \mathbb{R} \times \mathfrak{L}(G) \rightarrow \mathfrak{L}(G)
+$$
+
+will be referred to as scalar multiplication.\\
+The case of Lie groups. Suppose $G$ is a Lie group. Then each $\xi \in \mathfrak{L}(G)$ is analytic as a function from $\mathbb{R}$ to $G$, and thus determines a velocity vector $\xi^{\prime}(0) \in T_{1}(G)$ at the point $1 \in G$. This gives the bijection
+
+$$
+\xi \mapsto \xi^{\prime}(0): \mathfrak{L}(G) \rightarrow T_{1}(G)
+$$
+
+mentioned above. It respects scalar multiplication: $(r \xi)^{\prime}(0)=r \xi^{\prime}(0)$. The addition operation on $\mathfrak{L}(G)$ that makes this bijection an isomorphism of vector spaces over $\mathbb{R}$ is as follows: for $\xi, \eta \in \mathfrak{L}(G)$ and $s$ ranging over $\mathbb{R}^{>0}$,
+
+$$
+(\xi+\eta)(t)=\lim _{s \rightarrow \infty}(\xi(1 / s) \eta(1 / s))^{[s t]} .
+$$
+
+We make $\mathfrak{L}(G)$ a real analytic manifold such that the $\mathbb{R}$-linear isomorphisms $\mathfrak{L}(G) \cong \mathbb{R}^{n}$, with $n:=\operatorname{dim} G=\operatorname{dim}_{\mathbb{R}} \mathfrak{L}(G)$, are analytic isomorphisms. Then the so-called exponential map
+
+$$
+\xi \mapsto \xi(1): \mathfrak{L}(G) \rightarrow G
+$$
+
+yields an analytic isomorphism from an open neighborhood of $o$ in $\mathfrak{L}(G)$ onto an open neighborhood of 1 in $G$.
+
+Sketch why NSS implies Lie. These facts about Lie groups suggest that we should try to establish $\mathfrak{L}(G)$ as a substitute tangent space at 1, towards finding a compatible manifold structure on $G$. Note in this connection that the exponential map $\xi \mapsto \xi(1): \mathfrak{L}(G) \rightarrow G$ is defined for any $G$. This is our clue to proving the key implication NSS ⇒ Lie in the Main Theorem.
+
+Indeed, we shall take the following steps towards proving this implication. Suppose $G$ has NSS.
+
+\begin{itemize}
+  \item[(1)] Show that for any $\xi, \eta \in \mathfrak{L}(G)$ there is an $\xi+\eta \in \mathfrak{L}(G)$ given by
+$$
+(\xi+\eta)(t)=\lim _{s \rightarrow \infty}(\xi(1 / s) \eta(1 / s))^{[s t]}, \quad\left(s \text { ranging over } \mathbb{R}^{>0}\right)
+$$
+and that this addition operation and the scalar multiplication make $\mathfrak{L}(G)$ a vector space over $\mathbb{R}$.
+  \item[(2)] Equip $\mathfrak{L}(G)$ with its compact-open topology (defined below) and show that this makes $\mathfrak{L}(G)$ a topological vector space.
+  \item[(3)] Show that the exponential map $\xi \mapsto \xi(1): \mathfrak{L}(G) \rightarrow G$ maps some neighborhood of $o$ in $\mathfrak{L}(G)$ homeomorphically onto a neighborhood of 1 in $G$. Then local compactness of $G$ yields local compactness of $\mathfrak{L}(G)$ and hence the finite-dimensionality of $\mathfrak{L}(G)$ as a vector space over $\mathbb{R}$. It follows that $G$ is locally euclidean.
+  \item[(4)] Replacing $G$ by the connected component of 1 , we can assume that $G$ is connected. Then the adjoint representation (defined below) of $G$ on the finite-dimensional vector space $\mathfrak{L}(G)$ has as its kernel a commutative closed normal subgroup $N$ of $G$, and yields an injective continuous group morphism $G / N \rightarrow \operatorname{GL}_{n}(\mathbb{R})$. Since $N$ has NSS, it is locally euclidean by (3). But $N$ is also commutative, and hence a Lie group (Pontrjagin). The injective continous group morphism $G / N \rightarrow \mathrm{GL}_{n}(\mathbb{R})$ makes $G / N$ a Lie group (E. Cartan, von Neumann). Apply the Kuranishi theorem to conclude that $G$ is a Lie group.
+\end{itemize}
+
+Step (1) is tricky, and requires ingenious constructions due to Gleason and Yamabe. Step (2) is easy, and step (3) is of intermediate difficulty. Step (4) is a reduction of the problem to a situation that that was well-understood before 1950. New in our treatment is that we carry out steps (1) and (2) without requiring NSS: local compactness of $G$ is enough. Some of (3) and (4) can also be done in this generality, and this is the first thing we shall take care of in the next section.
+
+Sketch why every locally euclidean $\boldsymbol{G}$ has NSS. This is the other key implication in the Main Theorem, and it passes through the other equivalent conditions (4) and (5) in the Main Theorem. This goes roughly as follows. When we have done step (1) above for all $G$, without assuming NSS, we can use this to prove the following implications:
+
+\begin{itemize}
+  \item[-] if $G$ is locally connected and has NSCS, then $G$ has NSS;
+  \item[-] if $G$ does not have NSCS, then $G$ contains a homeomorphic copy of $[0,1]^{n}$ for all $n$.
+\end{itemize}
+
+It only remains to observe that if $G$ is locally euclidean, then $G$ is locally connected (trivially), and bounded in dimension (by Brouwer).
+
+Acknowledgement. We thank Emmanuel Breuillard for suggesting that our original seminar notes from 2007 might be worth publishing, and the referee for many comments that were helpful in improving the exposition.
+
+\section*{2. Preliminaries}
+Throughout this paper $G$ and $H$ are locally compact groups. A set $U \subseteq G$ is said to be symmetric if $U^{-1}=U$. Given a closed normal subgroup $N$ of $G$ we give $G / N$ its quotient topology; it makes $G / N$ a locally compact group. We also give $\mathbb{R}$ its usual topology, and each $\mathbb{R}^{n}$ the corresponding product topology. Any $n$-dimensional vector space over $\mathbb{R}$ is given the topology that makes the $\mathbb{R}$-linear isomorphisms with $\mathbb{R}^{n}$ into homeomorphisms.
+
+In this section we state some basic facts on $\mathfrak{L}(G)$ and its compact-open topology. We also list some some elementary facts about locally compact groups having NSS, and introduce the nonstandard setting that will enable an efficient account of the solution of H5.
+
+Generalities on one-parameter groups.\\
+Lemma 2.1. Suppose $\xi \in \mathfrak{L}(G)$ and $\xi \neq o$. Then either $\operatorname{ker} \xi=\{0\}$ or $\operatorname{ker} \xi=\mathbb{Z} r$ with $r \in \mathbb{R}^{>0}$. In the first case $\xi$ maps each bounded interval ( $\left.-a, a\right)\left(a \in \mathbb{R}^{>0}\right)$ homeomorphically onto its image in $G$. In the second case $\xi$ maps the interval $\left(\frac{-r}{2}, \frac{r}{2}\right)$ homeomorphically onto its image in $G$.
+
+Proof. This follows from two well-known facts: a closed subgroup of the additive group of $\mathbb{R}$ different from $\{0\}$ and $\mathbb{R}$ is of the form $\mathbb{Z} r$ with $r \in \mathbb{R}^{>0}$, and any continuous bijection from a compact space onto a hausdorff space is a homeomorphism. \(\square\)
+
+For $\xi, \eta \in \mathfrak{L}(G)$ we say that $\xi+\eta$ exists if $\lim _{s \rightarrow \infty}(\xi(1 / s) \eta(1 / s))^{[s t]}$ exists in $G$ for all $t \in \mathbb{R}$, with $s$ ranging over $\mathbb{R}^{>0}$. In that case the map
+
+$$
+t \mapsto \lim _{s \rightarrow \infty}(\xi(1 / s) \eta(1 / s))^{[s t]}: \mathbb{R} \rightarrow G
+$$
+
+is a $1-\mathrm{ps}$ of $G$, and we define $\xi+\eta$ to be this $1-\mathrm{ps}$.
+
+Lemma 2.2. Let $\xi, \eta \in \mathfrak{L}(G)$ and $p, q \in \mathbb{R}$.
+
+\begin{itemize}
+  \item[(1)] $\xi+o$ exists and equals $\xi$;
+  \item[(2)] $p \xi+q \xi$ exists and equals $(p+q) \xi$;
+  \item[(3)] if $\xi+\eta$ exists, then $\eta+\xi$ exists and equals $\xi+\eta$;
+  \item[(4)] if $\xi+\eta$ exists, then $p \xi+p \eta$ exists and equals $p(\xi+\eta)$.
+\end{itemize}
+
+Proof. We leave (1) and (2) to the reader. Note that (2) yields that $\xi+(-\xi)$ exists and equals $o$. For (3), use that for $s \in \mathbb{R}^{>0}$ and $a=\xi(1 / s), b=\eta(1 / s)$ we have $b a=b(a b) b^{-1}$, so $(b a)^{n}=b(a b)^{n} b^{-1}$. Item (4) is easy when $p>0$. To reduce the case $p<0$ to this case one first shows that if $\xi+\eta$ exists, then $(-\xi)+(-\eta)$ exists, and equals $-(\xi+\eta)$. \(\square\)
+
+We define the adjoint action of $G$ on $\mathfrak{L}(G)$ to be the left action
+
+$$
+(a, \xi) \mapsto a \xi a^{-1}: G \times \mathfrak{L}(G) \rightarrow \mathfrak{L}(G), \quad\left(a \xi a^{-1}\right)(t):=a \xi(t) a^{-1},
+$$
+
+of $G$ on the set $\mathfrak{L}(G)$. Then each $a \in G$ gives a bijection
+
+$$
+\operatorname{Ad}(a): \mathfrak{L}(G) \rightarrow \mathfrak{L}(G), \quad \operatorname{Ad}(a)(\xi):=a \xi a^{-1},
+$$
+
+and for $r \in \mathbb{R}$ and $\xi \in \mathfrak{L}(G)$ we have $\operatorname{Ad}(a)(r \xi)=r \operatorname{Ad}(a)(\xi)$. If $\xi, \eta \in \mathfrak{L}(G)$ and $\xi+\eta$ exists, then $\operatorname{Ad}(a)(\xi)+\operatorname{Ad}(a)(\eta)$ exists and equals $\operatorname{Ad}(a)(\xi+\eta)$.
+
+Corollary 2.3. Suppose that $\xi+\eta$ exists for all $\xi, \eta \in \mathfrak{L}(G)$, and that the binary operation + on $\mathfrak{L}(G)$ is associative. Then $\mathfrak{L}(G)$ with + as its addition and the usual scalar multiplication is a vector space over $\mathbb{R}$ with $o$ as zero element, and we have a group morphism $a \mapsto \operatorname{Ad}(a): G \rightarrow \operatorname{Aut}(\mathfrak{L}(G))$ of $G$ into the group of automorphisms of the vector space $\mathfrak{L}(G)$.
+
+In the situation of this corollary the map $a \mapsto \operatorname{Ad}(a): G \rightarrow \operatorname{Aut}(\mathfrak{L}(G))$ is called the adjoint representation of $G$.
+
+Next, consider a continuous group morphism $\phi: G \rightarrow H$. Then we have a map
+
+$$
+\mathfrak{L}(\phi): \mathfrak{L}(G) \rightarrow \mathfrak{L}(H), \quad \mathfrak{L}(\phi)(\xi):=\phi \circ \xi,
+$$
+
+and $\mathfrak{L}(\phi)(r \xi)=r \mathfrak{L}(\phi)(\xi)$ for all $r \in \mathbb{R}$ and $\xi \in \mathfrak{L}(G)$. Also, if $\xi, \eta \in \mathfrak{L}(G)$ and $\xi+\eta$ exists, so does $\mathfrak{L}(\phi)(\xi)+\mathfrak{L}(\phi)(\eta)$ and
+
+$$
+\mathfrak{L}(\phi)(\xi+\eta)=\mathfrak{L}(\phi)(\xi)+\mathfrak{L}(\phi)(\eta) .
+$$
+
+If $\phi$ is injective, so is $\mathfrak{L}(\phi)$. In particular, if $G$ is a subgroup of $H$ with the subspace topology and $\phi$ is the inclusion map, then we identify $\mathfrak{L}(G)$ with a\\
+subset of $\mathfrak{L}(H)$ via $\mathfrak{L}(\phi)$. With $N=\operatorname{ker}(\phi)$ (a closed subgroup of $G$ ) and $o_{H}$ the trivial 1-ps of $H$ we have
+
+$$
+\mathfrak{L}(\phi)^{-1}\left(o_{H}\right)=\mathfrak{L}(N) .
+$$
+
+Note that assigning to each $G$ the set $\mathfrak{L}(G)$ and to each $\phi$ as above the map $\mathfrak{L}(\phi)$ yields a functor $\mathfrak{L}$ from the category of locally compact groups and continuous group morphisms into the category of sets.
+
+Generalities on NSS. By "NSS-group" we mean a locally compact group that has NSS. Here are some examples of NSS-groups, and some basic facts about them that we shall use freely:
+
+\begin{itemize}
+  \item[(1)] if $G$ is discrete, then $G$ has NSS;
+  \item[(2)] the additive group of $\mathbb{R}$ has NSS;
+  \item[(3)] $\mathrm{GL}_{n}(\mathbb{R})$ has NSS;
+  \item[(4)] if $G_{1}, \ldots, G_{n}$ are NSS-groups, so is $G_{1} \times \cdots \times G_{n}$;
+  \item[(5)] if $\phi: G \rightarrow H$ is a continuous group morphism, $\phi$ is injective on a neighborhood of 1 in $G$, and $H$ has NSS, then $G$ has NSS.
+  \item[(6)] if $N$ is a closed normal subgroup of $G$ such that $N$ and $G / N$ have NSS, then $G$ has NSS.
+\end{itemize}
+
+Only the proof of (3) might not be obvious. Hint: Suppose $A \in \operatorname{GL}_{n}(\mathbb{R})$ is close to the identity I of $\mathrm{GL}_{n}(\mathbb{R})$, but $A \neq \mathrm{I}$. Then $A=\mathrm{I}+E$ where $E \in \mathrm{M}_{n}(\mathbb{R})$ is close to but different from the zero matrix. Now use that
+
+$$
+A^{m}=\mathrm{I}+m E+\binom{m}{2} E^{2}+\cdots+E^{m}
+$$
+
+is close to $\mathrm{I}+m E$ (for suitable $m$ ). Note also that the Main Theorem and (6) yield the Gleason-Iwasawa result mentioned in the Introduction.
+
+The nonstandard setting. A careful reading of the appendix should give enough background to work in this setting. Here we just fix notations and terminology. To each relevant "basic" set $S$ corresponds a set $S^{*} \supseteq S$, the star extension of $S$. Among these basic sets are $\mathbb{R}, G$, their power sets $\mathcal{P}(\mathbb{R}), \mathcal{P}(G)$, and even power sets $\mathcal{P}(\mathbb{R} \times G)$ of certain cartesian products, as needed. We make the usual Mostowski identification of the star extension $\mathcal{P}(\mathbb{R})^{*}$ with a subset of $\mathcal{P}\left(\mathbb{R}^{*}\right)$, and likewise with other powersets. Thus each $X \subseteq \mathbb{R}$ extends to $X^{*}$, an internal subset of $\mathbb{R}^{*}$. Also, any (relevant) relation $R$ and function $F$ on these basic sets extends to a relation $R^{*}$ and function $F^{*}$ on the corresponding star extensions of these basic sets. For example, the linear ordering $<$ on $\mathbb{R}$ extends to a linear\\
+ordering $<^{*}$ on $\mathbb{R}^{*}$, and the group operation $p: G \times G \rightarrow G$ of $G$ extends to a group operation $p^{*}: G^{*} \times G^{*} \rightarrow G^{*}$. For the sake of readability we often drop the star when indicating the star extension of a relation or function between these basic sets. As an example, for $x, y \in \mathbb{R}^{*}$ we use $x+y$ and $x<y$ to abbreviate the cumbersome expressions $x+^{*} y$ and $x<^{*} y$; likewise, the star extension $\xi^{*}: \mathbb{R}^{*} \rightarrow G^{*}$ of a 1 -ps $\xi: \mathbb{R} \rightarrow G$ is usually indicated just by $\xi$.
+
+As usual in nonstandard reasoning, we leave it mainly to the context as to what are the basic sets and basic relations among them: just take what is needed by the arguments. As to the degree of saturation of the nonstandard extension, it is enough to assume $\kappa^{+}$-saturation where $\kappa$ is any infinite cardinal such that $\kappa \geq \# S$ for each basic set $S$. Actually, we use $\kappa$-richness rather than $\kappa^{+}$-saturation, since in the setting of the appendix $\kappa$-richness is easier to define but equivalent to $\kappa^{+}$-saturation.
+
+Given an ambient hausdorff space $S$ and $s \in S$, the monad of $s$, notation: $\mu(s)$, is by definition the intersection of all $U^{*} \subseteq S^{*}$ with $U$ a neighborhood of $s$ in $S$; think of the elements of $\boldsymbol{\mu}(s)$ as the points of $S^{*}$ that are infinitely close to $s$. The points of $S^{*}$ that are infinitely close to some $s \in S$ are called nearstandard, and $S_{\mathrm{ns}}$ is the set of nearstandard points of $S^{*}$ :
+
+$$
+S_{\mathrm{ns}}:=\bigcup_{s \in S} \mu(s) .
+$$
+
+In particular, $S \subseteq S_{\mathrm{ns}}$. Since $S$ is hausdorff, $\boldsymbol{\mu}(s) \cap \boldsymbol{\mu}\left(s^{\prime}\right)=\varnothing$ for distinct $s, s^{\prime} \in S$. Thus we can define the standard part $\operatorname{st}(x)$ of $x \in S_{\mathrm{ns}}$ to be the unique $s \in S$ such that $x \in \boldsymbol{\mu}(s)$. We also introduce the equivalence relation $\sim$ on $S_{\mathrm{ns}}$ whose equivalence classes are the monads:
+
+$$
+x \sim y: \Longleftrightarrow \operatorname{st}(x)=\operatorname{st}(y) \quad(\text { " } x \text { and } y \text { are infinitely close" }) .
+$$
+
+Notation: for $U \subseteq S$ we let $\operatorname{cl}(U)$ and $\operatorname{int}(U)$ be the closure of $U$ and the interior of $U$ in the space $S$. We prove here two well-known basic facts.
+
+Lemma 2.4. Suppose $U \subseteq S$ has compact closure $\operatorname{cl}(U)$. Then $U^{*} \subseteq S_{\mathrm{ns}}$ and $\operatorname{st}\left(U^{*}\right)=\operatorname{cl}(U)$.
+
+Proof. Let $x \in U^{*}$, and suppose $x \notin S_{\mathrm{ns}}$. Then each $a \in \operatorname{cl}(U)$ has a neighborhood $U_{a}$ in $S$ such that $x \notin U_{a}^{*}$. Take $a_{1}, \ldots, a_{n} \in \operatorname{cl}(U)$ such that $\operatorname{cl}(U) \subseteq U_{a_{1}} \cup \cdots \cup U_{a_{n}}$. Then $U \subseteq U_{a_{1}} \cup \cdots \cup U_{a_{n}}$, so $x \in U^{*} \subseteq U_{a_{1}}^{*} \cup \cdots \cup U_{a_{n}}^{*}$, a contradiction. This argument gives $U^{*} \subseteq S_{\mathrm{ns}}$. Let again $x \in U^{*}$. Then for each neighborhood $V$ of $\operatorname{st}(x)$ in $S$ we have $x \in V^{*}$, so $V^{*} \cap U^{*} \neq \varnothing$, and thus $V \cap U \neq \varnothing$. Thus $\operatorname{st}(x) \in \operatorname{cl}(U)$. Conversely, let $a \in \operatorname{cl}(U)$. Then $V \cap U \neq \varnothing$ for every neighborhood $V$ of $a$ in $S$, so $V^{*} \cap U^{*} \neq \varnothing$ for such $V$. By richness this gives $\mu(a) \cap U^{*} \neq \varnothing$, so $a \in \operatorname{st}\left(U^{*}\right)$. \(\square\)
+
+Lemma 2.5. Suppose $S$ is a regular hausdorff space and $X$ is an internal subset of $S^{*}$ such that $X \subseteq S_{\mathrm{ns}}$. Then $\operatorname{st}(X) \subseteq S$ is compact.
+
+Proof. Let for each point $p \in \operatorname{st}(X)$ an open neighborhood $U_{p} \subseteq S$ of $p$ be given. It suffices to show that then finitely many of the $U_{p} \operatorname{cover} \operatorname{st}(X)$. By regularity we can pick for each $p \in \operatorname{st}(X)$ an open neighborhood $V_{p} \subseteq S$ of $p$ such that $\operatorname{cl}\left(V_{p}\right) \subseteq U_{p}$ (and thus $\operatorname{st}\left(V_{p}^{*}\right) \subseteq U_{p}$ ). From $X \subseteq S_{\mathrm{ns}}$ we obtain $X \subseteq \bigcup_{p \in \operatorname{st}(X)} V_{p}^{*}$, which by richness yields $X \subseteq V_{p_{1}}^{*} \cup \cdots \cup V_{p_{n}}^{*}$ with $p_{1}, \ldots, p_{n} \in \operatorname{st}(X)$. Then $\operatorname{st}(X) \subseteq U_{p_{1}} \cup \cdots \cup U_{p_{n}}$. \(\square\)
+
+Note that $G_{\mathrm{ns}}=\bigcup_{g \in G} \boldsymbol{\mu}(g)$ is a subgroup of $G^{*}$, and that the standard part map st : $G_{\mathrm{ns}} \rightarrow G$ is a group morphism that is the identity on $G$. We let $\boldsymbol{\mu}:=\boldsymbol{\mu}(1)=\operatorname{ker}(\mathrm{st})$ denote the normal subgroup of infinitesimals of $G_{\mathrm{ns}}$. The equivalence relation $\sim$ on $G_{\mathrm{ns}}$ is given by:
+
+$$
+a \sim b \Longleftrightarrow a b^{-1} \in \mu, \quad\left(a, b \in G_{\mathrm{ns}}\right) .
+$$
+
+Recall from the introduction that $m, n$ range over $\mathbb{N}$. In addition we let $i, j$ range over $\mathbb{N}^{*}, \nu$ over $\mathbb{N}^{*} \backslash \mathbb{N}$, and $k$ over $\mathbb{Z}^{*}$. Also, $\sigma$ will always denote a positive infinite element of $\mathbb{R}^{*}$. We adopt Landau's "big O" and "little o" notation in the following way: for $x, y \in \mathbb{R}^{*}$ with $y>0, x=\mathrm{o}(y)$ means that $|x|<y / n$ for all $n \geq 1$, and $x=\mathrm{O}(y)$ means that $|x|<n y$ for some $n \geq 1$. We also adapt it to $G$ as follows:
+
+$$
+\begin{aligned}
+\mathrm{O}[\sigma]=\mathrm{O}_{G}[\sigma] & :=\left\{a \in \mu \mid a^{i} \in \mu \text { for all } i=\mathrm{O}(\sigma)\right\}, \\
+\mathrm{o}[\sigma]=\mathrm{o}_{G}[\sigma] & :=\left\{a \in \mu \mid a^{i} \in \mu \text { for all } i=\mathrm{O}(\sigma)\right\} \\
+& \left.=\left\{a \in \mu \mid a^{i} \in \mu \text { for all } i \leq \sigma\right)\right\} .
+\end{aligned}
+$$
+
+So $\mathrm{o}[\sigma] \subseteq \mathrm{O}[\sigma] \subseteq \boldsymbol{\mu} \subseteq G_{\mathrm{ns}}$, and $\mathrm{o}[\sigma]$ and $\mathrm{O}[\sigma]$ are closed under $a \mapsto a^{\ell}$, for each $\ell \in \mathbb{Z}$; in particular, these sets are symmetric. By Theorem 5.8 below, o[ $\sigma$ ] and $\mathrm{O}[\sigma]$ are normal subgroups of $G_{\mathrm{ns}}$. At this point it is clear that if $a \in G_{\mathrm{ns}}$ and $b \in \mathrm{O}[\sigma], c \in \mathrm{o}[\sigma]$, then $a b a^{-1} \in \mathrm{O}[\sigma]$ and $a c a^{-1} \in \mathrm{o}[\sigma]$.
+
+Lemma 2.6. If $a \in \mathrm{O}[\sigma]$, then $a^{i} \in G_{\mathrm{ns}}$ for all $i=\mathrm{O}(\sigma)$.
+
+Proof. Let $a \in \mathrm{O}[\sigma]$, and take a compact symmetric neighborhood $U$ of 1 in $G$. If $a^{i} \in U^{*}$ for all $i=\mathrm{O}(\sigma)$, then $a^{i} \in G_{\mathrm{ns}}$ for all $i=\mathrm{O}(\sigma)$, as desired. Suppose $a^{j} \notin U^{*}$ for some $j=\mathrm{O}(\sigma)$, and take $j$ minimal with this property. Then $a^{i} \in G_{\mathrm{ns}}$ with $\operatorname{st}\left(a^{i}\right) \in U$ for $i=0, \ldots, j$. We cannot have $j=\mathrm{o}(\sigma)$, so $\sigma=\mathrm{O}(j)$. Therefore, if $i=\mathrm{O}(\sigma)$, then $i=n j+i^{\prime}$ with $i^{\prime}<j$, and thus $a^{i}=\left(a^{j}\right)^{n} a^{i^{\prime}} \in G_{\mathrm{ns}}$. \(\square\)
+
+The next lemma indicates why $\mathrm{O}[\sigma]$ is of interest: its elements generate the one-parameter subgroups of $G$ in a very intuitive way.
+
+Lemma 2.7. Let $a \in \mathrm{O}[\sigma]$. Then the map $\xi_{a}: \mathbb{R} \rightarrow G$ defined by $\xi_{a}(t):=\operatorname{st}\left(a^{[\sigma t]}\right)$ is a 1-ps of G. Moreover:
+
+\begin{itemize}
+  \item[(1)] $\xi_{a \ell}=\ell \xi_{a}$ for all $\ell \in \mathbb{Z}$;
+  \item[(2)] $b \in \boldsymbol{\mu} \Longrightarrow \xi_{b a b^{-1}}=\xi_{a}$;
+  \item[(3)] $\xi_{a}=o \Longleftrightarrow a \in \mathrm{o}[\sigma]$;
+  \item[(4)] $\mathfrak{L}(G)=\left\{\xi_{b} \mid b \in \mathrm{O}[\sigma]\right\}$.
+\end{itemize}
+
+Proof. It is clear that $\xi_{a}$ is a group morphism. To show continuity at $0 \in \mathbb{R}$, let $U$ be a neighborhood of 1 in $G$. Take a neighborhood $V$ of 1 in $G$ such that $\operatorname{cl}(V) \subseteq U$. Since $a^{k} \in \boldsymbol{\mu} \subseteq V^{*}$ for all $k=\mathrm{o}(\sigma)$, we have $n \geq 1$ such that $a^{k} \in V^{*}$ whenever $|k|<\sigma / n$. Also $a^{k} \in G_{\mathrm{ns}}$ for such $k$, so $\operatorname{st}\left(a^{k}\right) \in \operatorname{cl}(V)$ whenever $|k|<\sigma / n$. Hence $\xi_{a}(t)=\operatorname{st}\left(a^{[\sigma t]}\right) \in U$ whenever $t \in \mathbb{R}$ and $|t|<1 / n$. The remaining assertions follow easily. In connection with (4) we note that for $\xi \in \mathfrak{L}(G)$ and $b:=\xi(1 / \sigma)$ we have $b \in \mathrm{O}[\sigma]$ and $\xi=\xi_{b}$. \(\square\)
+
+The compact-open topology. Let $P$ be a locally compact space, $Q$ a hausdorff space, and $C(P, Q)$ the set of continuous maps $P \rightarrow Q$. For compact $K \subseteq P$ and open $U \subseteq Q$, put
+
+$$
+O(K, U):=\{f \in C(P, Q) \mid f(K) \subseteq U\} .
+$$
+
+We equip $C(P, Q)$ with its compact-open topology; this is the topology on $C(P, Q)$ that has the finite intersections of these sets $O(K, U)$ as basic open sets; it makes $C(P, Q)$ into a hausdorff space, and makes the evaluation map
+
+$$
+\Phi: C(P, Q) \times P \rightarrow Q, \quad \Phi(f, p):=f(p),
+$$
+
+continuous. Let $A$ be any subset of $P$ and $F$ be a closed subset of $Q$. Then
+
+$$
+\{f \in C(P, Q) \mid f(A) \subseteq F\}
+$$
+
+is closed, since its complement in $C(P, Q)$ is the union over all $a \in A$ of the open sets
+
+$$
+\{f \in C(P, Q) \mid f(a) \notin F\} .
+$$
+
+A nonstandard view of the compact-open topology is as follows: Let $f \in C(P, Q)$ and $g \in C(P, Q)^{*}$; then
+
+$$
+g \in \boldsymbol{\mu}(f) \Longleftrightarrow g\left(p^{\prime}\right) \in \mu(f(p)) \text { for all } p \in P \text { and } p^{\prime} \in \mu(p) .
+$$
+
+We apply this to the case where $P=\mathbb{R}$ is the real line and $Q=G$. Then $\mathfrak{L}(G)$ is closed in $C(\mathbb{R}, G)$, and below $\mathfrak{L}(G)$ is given the topology induced on it by the (compact-open) topology of $C(\mathbb{R}, G)$. Let $I:=[-1,1] \subseteq \mathbb{R}$. Let $\xi \in \mathfrak{L}(G)$. Then every neighborhood $U$ of 1 in $G$ determines a neighborhood
+
+$$
+N_{\xi}(U):=\{\eta \in \mathfrak{L}(G) \mid \eta(t) \in \xi(t) U \text { for all } t \in I\}
+$$
+
+of $\xi$ in $\mathfrak{L}(G)$, and the collection
+
+$$
+\left\{N_{\xi}(U) \mid U \text { is a neighborhood of } 1 \text { in } G\right\}
+$$
+
+is a neighborhood base of $\xi$ in $\mathfrak{L}(G)$. (These facts are easy to verify using the above characterization of monads in the compact-open topology.)
+
+Lemma 2.8. The following maps are continuous:
+
+\begin{itemize}
+  \item[(1)] the exponential map $\xi \mapsto \xi(1): \mathfrak{L}(G) \rightarrow G$;
+  \item[(2)] the scalar multiplication map $(r, \xi) \mapsto r \xi: \mathbb{R} \times \mathfrak{L}(G) \rightarrow \mathfrak{L}(G)$;
+  \item[(3)] the adjoint action map $G \times \mathfrak{L}(G) \rightarrow \mathfrak{L}(G)$.
+\end{itemize}
+
+Proof. Item (1) follows from the continuity of evaluation in the compact-open topology. To prove (2), let $\xi \in \mathfrak{L}(G)$ and $r \in \mathbb{R}$, and let $\xi^{\prime} \in \mathfrak{L}(G)^{*}$ and $r^{\prime} \in \mathbb{R}^{*}$ be such that $\xi^{\prime} \in \boldsymbol{\mu}(\xi)$ and $r^{\prime} \in \boldsymbol{\mu}(r)$; it suffices to show that then $r^{\prime} \xi^{\prime} \in \boldsymbol{\mu}(r \xi)$. Let $t^{\prime} \in \mathbb{R}^{*}$ with $t^{\prime} \in \boldsymbol{\mu}(t), t \in \mathbb{R}$; then $r^{\prime} t^{\prime} \in \boldsymbol{\mu}(r t)$, so
+
+$$
+\left(r^{\prime} \xi^{\prime}\right)\left(t^{\prime}\right)=\xi^{\prime}\left(r^{\prime} t^{\prime}\right) \in \mu(\xi(r t))=\mu((r \xi)(t)) .
+$$
+
+This argument shows that $r^{\prime} \xi^{\prime} \in \boldsymbol{\mu}(r \xi)$, as desired. \(\square\)
+
+Lemma 2.9. Suppose $\mathcal{U} \subseteq G$ is a compact neighborhood of 1 in $G$ and contains no subgroups of $G$ other than $\{1\}$. Then the set
+
+$$
+\mathcal{K}:=\{\xi \in \mathfrak{L}(G) \mid \xi(I) \subseteq \mathcal{U}\}
+$$
+
+is a compact neighborhood of $o$ in $\mathfrak{L}(G)$.
+
+Proof. Let $\eta \in \mathcal{K}^{*}$, that is, $\eta \in \mathfrak{L}(G)^{*}$ and $\eta\left(I^{*}\right) \subseteq \mathcal{U}^{*}$. If $\in \in \mathbb{R}^{*}$ is infinitesimal, then $\operatorname{st}(\eta(\mathbb{Z} \epsilon)) \subseteq \mathcal{U}$ is a subgroup of $G$, so $\eta(\epsilon) \in \boldsymbol{\mu}$. Hence for each neighborhood $V$ of 1 in $G$ there is $n>0$ such that $\eta(r) \in V^{*}$ for all $r \in \mathbb{R}^{*}$ with $|r|<1 / n$. Consequently, $\xi: \mathbb{R} \rightarrow G$ defined by $\xi(t)=\operatorname{st}(\eta(t))$ is a 1 -ps with $\xi(I) \subseteq \mathcal{U}$, and $\eta \in \mu(\xi)$. \(\square\)
+
+\section*{3. Generating compact connected subgroups}
+Throughout this section we let $a$ range over $G^{*}$. We say that $a$ is degenerate if $a^{i} \in \mu$ for all $i$. (Recall that $i$ ranges over $\mathbb{N}^{*}$.)
+
+Lemma 3.1. $G$ has NSS iff $G^{*}$ has no degenerate elements other than 1.\\
+Proof. We show the contrapositives. Suppose $G$ does not have NSS. Take an internal neighborhood $U \subseteq \boldsymbol{\mu}$ of 1 in $G^{*}$. Then $U$ must contain a nontrivial internal subgroup $H$ of $G^{*}$, and so any $a \in H$ is degenerate.
+
+Next, assume $a \neq 1$ is degenerate. Let $U$ be any neighborhood of 1 in $G$. Then $a^{\mathbb{Z}^{*}} \subseteq \boldsymbol{\mu} \subseteq U^{*}$, so $U^{*}$ contains a nontrivial internal subgroup of $G^{*}$, and thus $U$ contains a nontrivial subgroup of $G$. \(\square\)
+
+At this stage we do not restrict attention to NSS-groups, so we do allow degenerate elements $\neq 1$ in $\boldsymbol{\mu}$. Nondegenerate elements in $\boldsymbol{\mu}$ give rise to nontrivial connected subgroups of $G$, by the following elementary fact:
+
+Lemma 3.2. Let $a_{1}, \ldots, a_{\nu}$ be an internal sequence in $G^{*}$ such that $a_{i} \in \boldsymbol{\mu}$ and $a_{1} \cdots a_{i} \in G_{\mathrm{ns}}$ for all $i \in\{1, \ldots, \nu\}$. Then the set
+
+$$
+S:=\left\{\operatorname{st}\left(a_{1} \cdots a_{i}\right) \mid 1 \leq i \leq \nu\right\} \subseteq G
+$$
+
+is compact and connected (and contains 1).\\
+Proof. The compactness of $S$ follows from Lemma 2.5. Assume $S$ is not connected. Then we have disjoint open subsets $U$ and $V$ of $G$ such that $S \subseteq U \cup V$ and $S$ meets both $U$ and $V$. We can assume that $1 \in U$, so $a_{1} \in U^{*}$. There are $i \leq v$ such that $\operatorname{st}\left(a_{1} \cdots a_{i}\right) \in V$, and $a_{1}, \ldots, a_{i} \in V^{*}$ for such $i$. Take $i \leq v$ minimal such that $a_{1} \cdots a_{i} \in V^{*}$. Then $i \geq 2$ and $a_{1} \cdots a_{i-1} \in U^{*}$. Now $a:=\operatorname{st}\left(a_{1} \cdots a_{i-1}\right)=\operatorname{st}\left(a_{1} \cdots a_{i}\right) \in S$. If $a \in U$, this gives $a_{1} \cdots a_{i} \in U^{*}$, and if $a \in V$, it gives $a_{1} \cdots a_{i-1} \in V^{*}$, and we have a contradiction in either case. \(\square\)
+
+In the rest of this section $U$ is a compact symmetric neighborhood of $1 \in G$. If $a^{\mathbb{N}^{*}} \subseteq U^{*}$ (in particular, if $a$ is degenerate), then we set $\operatorname{ord}_{U}(a)=\infty$; if $a^{\mathbb{N}^{*}} \nsubseteq U^{*}$, then we let $\operatorname{ord}_{U}(a)$ be the largest $j$ such that $a^{i} \in U^{*}$ for all $i \leq j$. Thus $\operatorname{ord}_{U}(a)=0$ iff $a \notin U^{*}$, and $\operatorname{ord}_{U}(a)>\mathbb{N}$ if $a \in \boldsymbol{\mu}$. By convention, $k=\mathrm{o}(\infty)$ for every $k$.
+
+Lemma 3.3. Suppose $a \in \boldsymbol{\mu}$ and $a^{i} \notin \boldsymbol{\mu}$ for some $i=\mathrm{o}\left(\operatorname{ord}_{U}(a)\right)$. Then $U$ contains a nontrivial connected subgroup of $G$.
+
+Proof. By the previous lemma the set
+
+$$
+G_{U}(a):=\left\{\operatorname{st}\left(a^{k}\right) \mid k=\mathrm{o}\left(\operatorname{ord}_{U}(a)\right)\right\}
+$$
+
+is a union of connected subsets of $U$, each containing 1 , and is thus itself a connected subset of $U$. It is also a subgroup of $G$. \(\square\)
+
+An element $a \in \boldsymbol{\mu}$ is said to be $U$-pure if for some $v$ we have $a \in \mathrm{O}[v]$ and $a^{\nu+1} \notin U^{*}$; note that then $a$ is nondegenerate, $\operatorname{ord}_{U}(a) \neq \infty$, and the above holds for $v=\operatorname{ord}_{U}(a)$. If $U$ contains no nontrivial connected subgroup of $G$, then by Lemma 3.3 every nondegenerate $a \in \boldsymbol{\mu}$ is $U$-pure.
+
+An element $a \in \boldsymbol{\mu}$ is said to be pure if it is $V$-pure for some compact symmetric neighborhood $V$ of 1 in $G$. Thus:
+
+Corollary 3.4. If $G$ has NSCS, then every nondegenerate $a \in \boldsymbol{\mu}$ is pure.\\
+Lemma 3.5. Let $a \in \boldsymbol{\mu}$. Then $a$ is pure iff there is $v$ such that $a \in \mathrm{O}[v]$ and $a^{v} \notin \mu$.
+
+Proof. If $a$ is $U$-pure, say, then for $v=\operatorname{ord}_{U}(a)$ we have $a \in \mathrm{O}[v]$ and $a^{v} \notin \mu$. Conversely, let $v$ be such that $a \in \mathrm{O}[v]$ and $a^{v} \notin \boldsymbol{\mu}$. If $\operatorname{ord}_{U}(a)=\mathrm{O}(v)$, then $a$ is $U$-pure. If $v=\mathrm{O}\left(\operatorname{ord}_{U}(a)\right)$, then $a^{v} \in G_{\mathrm{ns}}$, and we can take a compact symmetric neighborhood $V$ of 1 in $G$ such that $a^{v} \notin V^{*}$, and then $a$ is $V$-pure. \(\square\)
+
+Let $Q$ range over internal symmetric subsets of $G^{*}$ such that $1 \in Q \subseteq \mu$. We define $Q^{i}$ to be the internal subset of $G^{*}$ consisting of all $a_{1} \cdots a_{i}$ where $a_{1}, \ldots, a_{i}$ is an internal sequence in $Q$. Thus
+
+$$
+Q^{\infty}:=\bigcup_{i} Q^{i}
+$$
+
+is the internal subgroup of $G^{*}$ internally generated by $Q$.\\
+We say that $Q$ is degenerate if $Q^{\infty} \subseteq \boldsymbol{\mu}$. If $Q^{\infty} \nsubseteq U^{*}$, then we let $\operatorname{ord}_{U}(Q)$ be the largest $j$ such that $Q^{j} \subseteq U^{*}$, and if $Q^{\infty} \subseteq U^{*}$, then we set $\operatorname{ord}_{U}(Q):=\infty$. Thus $e:=\operatorname{ord}_{U}(Q)>\mathbb{N}$. We set
+
+$$
+G_{U}(Q):=\left\{\operatorname{st}(a) \mid a \in Q^{i} \text { for some } i=\mathrm{o}(e)\right\}=\bigcup_{i=\mathrm{o}(e)} \operatorname{st}\left(Q^{i}\right) .
+$$
+
+Recall that $\operatorname{int}(U)$ denotes the interior of $U$ in $G$.\\
+Lemma 3.6. If $e \neq \infty$, then $\operatorname{st}\left(Q^{e}\right) \nsubseteq \operatorname{int}(U)$.
+
+Proof. Assume $e \neq \infty$, and take $b \in Q^{e}$ such that $b q \notin U^{*}$ for some $q \in Q$. One checks easily that then $\operatorname{st}(b) \notin \operatorname{int}(U)$. \(\square\)
+
+Lemma 3.7. $G_{U}(Q)$ is a compact connected subgroup of $G$ contained in $U$. In particular, if $Q^{j} \nsubseteq \mu$ for some $j=\mathrm{o}(e)$, then $U$ contains a nontrivial compact connected subgroup of $G$.
+
+Proof. The set $G_{U}(Q)$ is the union of the increasing family of subsets $\operatorname{st}\left(Q^{j}\right)$ of $G$ with $j=\mathrm{o}(e)$. We claim: there exists $j_{0}=\mathrm{o}(e)$ such that $\operatorname{st}\left(Q^{j}\right)=\operatorname{st}\left(Q^{j_{0}}\right)$ for all $j=\mathrm{o}(e)$ with $j \geq j_{0}$. Suppose there were no such $j_{0}$. Then transfinite recursion yields a (well-ordered) set $J$ of elements $j=\mathrm{o}(e)$ such that (a) for all $j \in J$ there is a $g_{j} \in \operatorname{st}\left(Q^{j}\right)$ with $g_{j} \notin \operatorname{st}\left(Q^{i}\right)$ whenever $i \in J, i<j$, and (b) for every $i=\mathrm{o}(e)$ there is a $j \in J$ with $i<j$. From (a) we get $\# J \leq \# G$, where $\# S$ denotes the cardinality of a set $S$. Since for every $j \in J$ and $n \geq 1$ there is an $i$ with $i>j$ and $i<e / n$ and we are in a $\kappa$-rich structure with $\kappa \geq \# G$, we get $i>J$ with $i=\mathrm{o}(e)$, but this contradicts (b). This proves our claim.
+
+Let $j_{0}$ be as in the claim. Then $G_{U}(Q)=\operatorname{st}\left(Q^{j_{0}}\right)$, so $G_{U}(Q)$ is compact by Lemma 2.5. As in the proof of Lemma 3.3, $G_{U}(Q)$ is a union of connected subsets of $U$, each containing 1, and is thus itself a connected subset of $U$. It is also a subgroup of $G$. \(\square\)
+
+\section*{4. Compact groups}
+Theorem 4.1. Let $G$ be compact and $U$ an open neighborhood of 1 in $G$. Then there is a continuous injective group morphism $G / N \rightarrow \mathrm{GL}_{n}(\mathbb{R})$ for some $n$ and some closed normal subgroup $N$ of $G$ contained in $U$.
+
+Proof. The Peter-Weyl theorem yields for any $a \neq 1$ in $G$ a continuous group morphism $\phi_{a}: G \rightarrow \mathrm{GL}_{n_{a}}(\mathbb{R})$ that does not have $a$ in its kernel $N_{a}$. As $a$ varies over $G \backslash U$, the open sets $G \backslash N_{a}$ cover $G \backslash U$, so there are $a_{1}, \ldots, a_{m} \in G \backslash U$ such that $N:=N_{a_{1}} \cap \cdots \cap N_{a_{m}}$ is contained in $U$. Then the desired result holds for this $N$ and $n:=n_{a_{1}}+\cdots+n_{a_{m}}$. \(\square\)
+
+Corollary 4.2. Let $G$ be compact and $U$ a neighborhood of 1 in $G$. Then there is a closed normal subgroup $N$ of $G$ contained in $U$ and an open set $V$ in $G$ such that $N \subseteq V \subseteq U$ and every subgroup of $G$ contained in $V$ is contained in $N$.
+
+Proof. We can assume that $U$ is open, and then we take $N$ as in the previous theorem, so that $G / N$ has NSS. Take an open neighborhood $W$ of the identity\\
+in $G / N$ that contains no nontrivial subgroup of $G / N$. Let $V:=\pi^{-1}(W) \cap U$, where $\pi: G \rightarrow G / N$ is the natural map. Then $V$ has the desired property. \(\square\)
+
+\section*{5. Gleason-Yamabe Lemmas and their Consequences}
+This is the most technical part of the story. The leading idea is to make $G$ act by isometries on its space of real-valued continuous functions with compact support, and to use the Haar integral on this space.
+
+Gleason-Yamabe Lemmas. Throughout this subsection we fix a compact symmetric neighborhood $\mathcal{U}$ of 1 in $G$ and a continuous function $\tau: G \rightarrow[0,1]$ such that
+
+$$
+\tau(1)=1, \quad \tau(x)=0 \text { for all } x \in G \backslash \mathcal{U} .
+$$
+
+Let $Q \subseteq \mathcal{U}$ be symmetric with $1 \in Q$ and let $e$ be a positive integer with $Q^{e} \subseteq \mathcal{U}$. Define the function $\Delta=\Delta_{Q, e}: G \rightarrow[0,1]$ by
+
+\begin{itemize}
+  \item[(i)] $\Delta(1)=0$;
+  \item[(ii)] $\Delta(x)=i /(e+1)$ if $x \in Q^{i} \backslash Q^{i-1}, 1 \leq i \leq e$;
+  \item[(iii)] $\Delta(x)=1$ if $x \notin Q^{e}$.
+\end{itemize}
+
+Then for all $x \in G$,
+
+\begin{itemize}
+  \item[(iv)] $\Delta(x)=1$ if $x \notin \mathcal{U}$;
+  \item[(v)] $|\Delta(a x)-\Delta(x)| \leq 1 / e$ for $a \in Q$.
+\end{itemize}
+
+Now use $\tau$ to smooth $1-\Delta$ : define $\theta=\theta_{Q, e}: G \rightarrow[0,1]$ by
+
+$$
+\theta(x)=\sup _{y \in G}(1-\Delta(y)) \tau\left(y^{-1} x\right)=\sup _{y \in \mathcal{U}}(1-\Delta(y)) \tau\left(y^{-1} x\right) .
+$$
+
+The following properties are easy consequences:
+
+\begin{itemize}
+  \item[(1)] $\theta$ is continuous, and $\theta(x)=0$ outside $\mathcal{U}^{2}$;
+  \item[(2)] $0 \leq \tau \leq \theta \leq 1$;
+  \item[(3)] $|\theta(a x)-\theta(x)| \leq 1 / e$ for $a \in Q$;
+\end{itemize}
+
+For continuity of $\theta$, note that if $a \in \boldsymbol{\mu}$ and $x \in G$, then $\theta(x a)-\theta(x)$ is infinitesimal in $\mathbb{R}^{*}$. To prove (3), let $a \in Q$, and note that for all $x, y \in G$,
+
+$$
+\left|\left(1-\Delta\left(a^{-1} y\right)\right)-(1-\Delta(y))\right| \leq 1 / e,
+$$
+
+and $y^{-1} a x=\left(a^{-1} y\right)^{-1} x$, so
+
+$$
+\left|(1-\Delta(y)) \tau\left(y^{-1} a x\right)-\left(1-\Delta\left(a^{-1} y\right)\right) \tau\left(\left(a^{-1} y\right)^{-1} x\right)\right| \leq 1 / e,
+$$
+
+which gives (3).\\
+Let $C$ be the real vector space of continuous functions $G \rightarrow \mathbb{R}$ with compact support, with norm given by $\|f\|=\sup _{x \in G}|f(x)|$. We have a left action $G \times C \rightarrow C$ of $G$ on $C$ given by
+
+$$
+(a, f) \mapsto a f, \quad(a f)(x)=f\left(a^{-1} x\right) .
+$$
+
+More suggestively, $(a f)(a x)=f(x)$ for $a, x \in G, f \in C$. It is clear that for $a \in G$ the map $f \mapsto a f$ is an $\mathbb{R}$-linear isometry of $C$ onto itself, and thus,
+
+$$
+\|a b f-f\| \leq\|a f-f\|+\|b f-f\| \quad(a, b \in G, f \in C) .
+$$
+
+We have the following useful equicontinuity result:
+
+\begin{itemize}
+  \item[(4)] for each $\varepsilon \in \mathbb{R}^{>0}$ there is a neighborhood $V_{\varepsilon}$ of 1 in $G$, independent of $(Q, e)$, such that $\|a \theta-\theta\| \leq \varepsilon$ for all $a \in V_{\varepsilon}$.
+\end{itemize}
+
+To see why, let $\varepsilon \in \mathbb{R}^{>0}$. Uniform continuity of $\tau$ gives a neighborhood $U$ of 1 in $G$ such that $|\tau(g)-\tau(h)|<\varepsilon$ for all $g, h \in G$ with $g h^{-1} \in U$. Take a neighborhood $V_{\varepsilon}$ of 1 in $G$ such that $y^{-1} a y \in U$ for all $(y, a) \in \mathcal{U} \times V_{\varepsilon}$. Then $\left|\tau\left(y^{-1} a x\right)-\tau\left(y^{-1} x\right)\right|<\varepsilon$ for $x \in G, y \in \mathcal{U}$ and $a \in V_{\varepsilon}$. This gives (4).
+
+A second smoothing will be done by integration. Take the unique left-invariant Haar measure $\mu$ on $G$ such that $\mu\left(\mathcal{U}^{2}\right)=1$. (Left-invariance means that $\int f(a x) d \mu(x)=\int f(x) d \mu(x)$ for $f \in C$ and $a \in G$ and $f \in C$.) Then\\
+(5) $0 \leq \int \theta(x) d \mu(x) \leq 1$, by (1) and (2).\\
+We now introduce the function
+
+$$
+\phi=\phi_{Q, e}: G \rightarrow \mathbb{R}, \quad \phi(x):=\int \theta(x u) \theta(u) d \mu(u) .
+$$
+
+Thus $\phi$, a convolution of two functions in $C$, is continuous, and we have:
+
+\begin{itemize}
+  \item[(6)] $\phi(x)=0$ outside $\mathcal{U}^{4}$;
+  \item[(7)] $\phi(1) \geq \int \tau(u)^{2} d \mu(u)>0$, by (2);
+  \item[(8)] $\|a \phi-\phi\| \leq\|a \theta-\theta\|$ for all $a \in G$;
+  \item[(9)] if $a \in Q$, then $\|a \phi-\phi\| \leq 1 / e$, by (3) and (8).
+\end{itemize}
+
+The significance of (7) is that the positive lower bound $\int \tau(u)^{2} d \mu(u)$ on $\phi(1)$ is independent of $(Q, e)$.
+
+Lemma 5.1. Let $\varepsilon \in \mathbb{R}^{>0}$. Then there is a neighborhood $U=U_{\varepsilon} \subseteq \mathcal{U}$ of 1 in $G$, independent of $(Q, e)$, such that for all $a \in Q$ and $b \in U$,
+
+$$
+\|b \cdot(a \phi-\phi)-(a \phi-\phi)\| \leq \frac{\varepsilon}{e} .
+$$
+
+Proof. Let $a \in Q, b \in \mathcal{U}$. Then, with $x \in G$ and $y:=b^{-1} x$,
+
+$$
+\begin{aligned}
+(a \phi-\phi)(x) & =\int\left[\theta\left(a^{-1} x u\right)-\theta(x u)\right] \theta(u) d \mu(u) \\
+b(a \phi-\phi)(x)=(a \phi-\phi)(y) & =\int\left[\theta\left(a^{-1} y u\right)-\theta(y u)\right] \theta(u) d \mu(u)
+\end{aligned}
+$$
+
+By the left-invariance of our Haar measure we can replace $u$ by $x^{-1} y u$ in the function of $u$ integrated in the first identity, so
+
+$$
+(a \phi-\phi)(x)=\int\left[\theta\left(a^{-1} y u\right)-\theta(y u)\right] \theta\left(x^{-1} y u\right) d \mu(u)
+$$
+
+Taking differences gives
+
+$$
+[b \cdot(a \phi-\phi)-(a \phi-\phi)](x)=\int[(a \theta-\theta)(y u)]\left[\left(\theta-y^{-1} x \theta\right)(u)\right] d \mu(u) .
+$$
+
+If the left hand side here is nonzero, then $x \in \mathcal{U}^{4}$ or $a^{-1} x \in \mathcal{U}^{4}$ or $b^{-1} x \in \mathcal{U}^{4}$ or $a^{-1} b^{-1} x \in \mathcal{U}^{4}$, and thus $x \in \mathcal{U}^{6}$ in all cases. Also $y^{-1} x=x^{-1} b x$, so by (4) we can take the neighborhood $U_{c, \varepsilon} \subseteq \mathcal{U}$ of 1 in $G$ so small that for all $b \in U_{\varepsilon}$ and $x \in \mathcal{U}^{6}$ we have $y^{-1} x \in \mathcal{U}$ and $\left\|\theta-y^{-1} x \theta\right\|<\varepsilon / \mu\left(\mathcal{U}^{3}\right)$. Then $U_{\varepsilon}$ has the desired property. \(\square\)
+
+Lemma 5.2. With $\varepsilon \in \mathbb{R}^{>0}$, let $U=U_{\varepsilon}$ be as in the previous lemma and let $a \in Q$ and $n \geq 1$ be such that $a^{i} \in U$ for $i=0, \ldots, n$. Then
+
+$$
+\left\|\left(a^{n} \phi-\phi\right)-n(a \phi-\phi)\right\| \leq \frac{n \varepsilon}{e} .
+$$
+
+Proof. We have $a^{n} \phi-\phi=\sum_{i=0}^{n-1} a^{i}(a \phi-\phi)$, so
+
+$$
+\left(a^{n} \phi-\phi\right)-n(a \phi-\phi)=\sum_{i=0}^{n-1} a^{i}(a \phi-\phi)-(a \phi-\phi) .
+$$
+
+By the previous lemma we have for $i=0, \ldots, n-1$,
+
+$$
+\left\|a^{i}(a \phi-\phi)-(a \phi-\phi)\right\| \leq \frac{\varepsilon}{e},
+$$
+
+which gives the desired result by summation. \(\square\)
+
+Suppose now that $Q$ is a symmetric internal subset of $G^{*}$ with $1 \in Q$ and $Q \subseteq \boldsymbol{\mu}$. Let $e \in \mathbb{N}^{*}$ be such that $e \geq 1$ and $Q^{e} \subseteq \mathcal{U}^{*}$. Then the constructions and results above transfer automatically to the nonstandard setting and yield internally continuous functions
+
+$$
+\theta=\theta_{Q, e}: G^{*} \rightarrow[0,1]^{*}, \quad \phi=\phi_{Q, e}: G^{*} \rightarrow \mathbb{R}^{*}
+$$
+
+satisfying the internal versions of (1)-(9) and Lemmas 5.1 and 5.2. With these assumptions we have
+
+Corollary 5.3. Suppose $a \in Q, v=\mathrm{O}(e)$, and $a \in \mathrm{o}[v]$. Then
+
+$$
+v\|a \phi-\phi\| \sim 0 .
+$$
+
+Proof. By Lemma 5.2 we have for each $\varepsilon \in \mathbb{R}^{>0}$,
+
+$$
+\left\|\left(a^{\nu} \phi-\phi\right)-\nu(a \phi-\phi)\right\| \leq \frac{\nu \varepsilon}{e},
+$$
+
+so the lefthand side in this inequality is infinitesimal. Also, by (8) and (4) we have $\left\|a^{\nu} \phi-\phi\right\| \leq\left\|a^{\nu} \theta-\theta\right\|$, so $\left\|a^{\nu} \phi-\phi\right\|$ is infinitesimal. \(\square\)
+
+\section*{Consequences of the Gleason-Yamabe Lemmas.}
+Lemma 5.4. Let $a_{1}, \ldots, a_{v}$ be an internal sequence in $G^{*}$ such that all $a_{i} \in \mathrm{o}[v]$. Then $a_{1} \cdots a_{v} \in \mu$.
+
+Proof. Put $Q:=\left\{1, a_{1}, \ldots, a_{\nu}, a_{1}^{-1}, \ldots, a_{\nu}^{-1}\right\}$, and towards a contradiction, suppose that $Q^{v} \nsubseteq \mu$. Take a compact symmetric neighborhood $U$ of 1 in $G$ such that $Q^{\nu+1} \nsubseteq U^{*}$, so $\operatorname{ord}_{U}(Q) \leq \nu$. By decreasing $\nu$ if necessary, and $Q$ accordingly, we arrange that $\operatorname{ord}_{U}(Q)=\nu$ or $\operatorname{ord}_{U}(Q)=\nu-1$.
+
+Consider first the special case that $Q^{i} \subseteq \boldsymbol{\mu}$ for all $i=\mathrm{o}(v)$. (This occurs if $G$ has NSCS). Take $b \in Q^{\nu}$ such that $\operatorname{st}(b) \neq 1$, and then take a compact symmetric neighborhood $\mathcal{U} \subseteq U$ of 1 in $G$ such that $\operatorname{st}(b) \notin \mathcal{U}^{4}$, and put $e:=\operatorname{ord}_{\mathcal{U}}(Q)$, so $v=\mathrm{O}(e)$. The previous subsection yields an internally continuous function $\phi=\phi_{Q, e}: G^{*} \rightarrow \mathbb{R}^{*}$ satisfying the internal versions of (6)-(9) and Lemma 5.3. In particular, $\phi(x)=0$ outside $\left(\mathcal{U}^{*}\right)^{4}$ (hence $\phi\left(b^{-1}\right)=0$ ), and $\phi(1)$ is not infinitesimal. Then $\|b \phi-\phi\|$ is not infinitesimal. Take an internal sequence $b_{1}, \ldots, b_{v}$ in $Q$ such that $b=b_{1} \cdots b_{v}$. Then Lemma 5.3 yields
+
+$$
+\|b \phi-\phi\| \leq \sum_{i=1}^{\nu}\left\|b_{i} \phi-\phi\right\| \sim 0,
+$$
+
+and we have a contradiction.\\
+Next, assume that $Q^{i} \nsubseteq \boldsymbol{\mu}$ for some $i=\mathrm{o}(\nu)$. Then we set
+
+$$
+H:=G_{U}(Q)=\left\{\operatorname{st}(b) \mid b \in Q^{i} \text { for some } i=\mathrm{o}(v)\right\},
+$$
+
+so $H$ is a nontrivial compact subgroup of $G$ contained in $U$, by Lemma 3.7. By Corollary 4.2 we can take a proper closed normal subgroup $N$ of $H$ and a compact symmetric neighborhood $V \subseteq U$ of 1 in $G$ such that $N \subseteq \operatorname{int}(V)$ and every subgroup of $H$ contained in $V$ is contained in $N$. Put $\mu:=\operatorname{ord}_{V}(Q)$, so $\mathbb{N}<\mu \leq \nu$, and we have the compact subgroup
+
+$$
+G_{V}(Q)=\left\{\operatorname{st}(b) \mid b \in Q^{i} \text { for some } i=\mathrm{o}(\mu)\right\}
+$$
+
+of $H$ with $G_{V}(Q) \subseteq V$, so $G_{V}(Q) \subseteq N$. By Lemma 3.6 we can take $b \in Q^{\mu}$ with $\operatorname{st}(b) \notin \operatorname{int}(V)$. Then $\operatorname{st}(b) \notin N$, so we can take a compact symmetric neighborhood $\mathcal{U}$ of 1 in $G$ such that $N \subseteq \operatorname{int}(\mathcal{U}), \mathcal{U}^{4} \subseteq V$ and $\operatorname{st}(b) \notin \mathcal{U}^{4}$.
+
+Put $e:=\operatorname{ord}_{\mathcal{U}}(Q)$. If $e=\mathrm{o}(\mu)$, then $\operatorname{st}\left(Q^{e}\right) \subseteq G_{V}(Q) \subseteq N$, contradicting $\operatorname{st}(b) \notin N$. This shows $\mu=\mathrm{O}(e)$. The rest of the proof now proceeds as in the special case considered earlier, with $\nu$ replaced by $\mu$, and $b_{1}, \ldots, b_{\nu}$ by an internal sequence $b_{1}, \ldots, b_{\mu}$ in $Q$ such that $b=b_{1} \cdots b_{\mu}$. \(\square\)
+
+Corollary 5.5. Let $a_{1}, \ldots, a_{v}$ be an internal sequence in $G^{*}$ such that all $a_{i} \in \mathrm{O}[v]$. Then $a_{1} \cdots a_{v} \in G_{\mathrm{ns}}$.
+
+Proof. If $a_{1} \cdots a_{v} \in \mathcal{U}^{*}$, we are done. Assume otherwise. Take the least $j$ with $a_{i} \cdots a_{i+j} \notin \mathcal{U}^{*}$ for some $i$ with $1 \leq i<i+j \leq \nu$. Then by the previous lemma we cannot have $j=\mathrm{o}(v)$, and this gives $n \geq 1$ with $n j \leq v<(n+1) j$. Hence
+
+$$
+a_{1} \cdots a_{v}=\left(a_{1} \cdots a_{j}\right)\left(a_{j+1} \cdots a_{2 j}\right) \cdots\left(a_{n j+1} \cdots a_{v}\right) \in\left(\mathcal{U}^{*}\right)^{n} \subseteq G_{\mathrm{ns}} .
+$$ \(\square\)
+
+Lemma 5.6. If $a \in \mathrm{O}[v]$ and $b \in \mathrm{o}[v]$, then $(a b)^{i} \sim a^{i}$ for all $i \leq v$.\\
+Proof. Set $b_{i}:=a^{i} b a^{-i}$. Then $(a b)^{i}=b_{1} \cdots b_{i} \cdot a^{i}$. Assuming $a \in \mathrm{O}[v]$ and $b \in \mathrm{o}[v]$, we have $b_{i} \in \mathrm{o}[v]$ for $i \leq v$ by Lemma 2.6 and the remark preceding it, so $b_{1} \cdots b_{i} \in \boldsymbol{\mu}$ for all $i \leq \nu$, by Lemma 5.4. \(\square\)
+
+Lemma 5.7. Suppose that $a, b \in \mathrm{O}[v]$ and $a^{i} \sim b^{i}$ for all $i \leq v$. Then $a^{-1} b \in \mathrm{o}[v]$.
+
+Proof. If $a \in \mathrm{o}[v]$, then $b \in \mathrm{o}[v]$, so $\left(a^{-1} b\right)^{i} \sim a^{-i} \in \boldsymbol{\mu}$ for all $i \leq v$, and we are done. So we can assume that $a \notin \mathrm{o}[v]$, and then, replacing $v$ by an element of $\mathbb{N}^{*}$ of the same archimedean class, we have $a^{\nu} \notin \boldsymbol{\mu}$. Let $Q:=\left\{1, a, a^{-1}, b, b^{-1}\right\}$. Then $Q^{i} \subseteq \boldsymbol{\mu}$ for all $i=\mathrm{o}(v)$ by Lemma 5.4, and $Q^{v} \subseteq G_{\mathrm{ns}}$ by Corollary 5.5. Suppose towards a contradiction that $\left(a^{-1} b\right)^{j} \notin \boldsymbol{\mu}$, where $j \leq v$. Then $v=\mathrm{O}(j)$. Take a compact symmetric neighborhood $\mathcal{U}$ of 1 in $G$ such that $a^{v} \notin \mathcal{U}$ and $\left(a^{-1} b\right)^{j} \notin \mathcal{U}^{4}$, and put $e=\operatorname{ord}_{\mathcal{U}}(Q)$, so $e$ and $v$ have the same archimedean class. As before we have the internally continuous function $\phi=\phi_{Q, e}: G^{*} \rightarrow \mathbb{R}^{*}$ satisfying the internal versions of (6)-(9) and Lemma 5.3. Then $\phi\left(\left(a^{-1} b\right)^{j}\right)=0$ and $\varepsilon:=\phi(1)>0$ is not infinitesimal, and thus
+
+$$
+\begin{aligned}
+\varepsilon & \leq\left\|\left(b^{-1} a\right)^{j} \phi-\phi\right\| \leq j\left\|\left(b^{-1} a\right) \phi-\phi\right\| \\
+& =j\|a \phi-b \phi\|=j\|(a \phi-\phi)-(b \phi-\phi)\| .
+\end{aligned}
+$$
+
+where the first equality uses the first line of the proof of Lemma 5.2. The desired contradiction will be obtained by showing that
+
+$$
+j\|(a \phi-\phi)-(b \phi-\phi)\|<\varepsilon .
+$$
+
+Let $\delta \in \mathbb{R}^{>0}$; then Lemma 5.2 gives a compact symmetric neighborhood $U \subseteq \mathcal{U}$ of 1 in $G$ such that if $k>0$ and $a^{i}, b^{i} \in U^{*}$ for all $i \leq k$, then
+
+$$
+\begin{aligned}
+\left\|\left(a^{k} \phi-\phi\right)-k(a \phi-\phi)\right\| & \leq k \delta / e, \quad\left\|\left(b^{k} \phi-\phi\right)-k(b \phi-\phi)\right\| \leq k \delta / e, \text { so } \\
+\left\|\frac{j}{k}\left(a^{k} \phi-\phi\right)-j(a \phi-\phi)\right\| & \leq j \delta / e, \quad\left\|\frac{j}{k}\left(b^{k} \phi-\phi\right)-j(b \phi-\phi)\right\| \leq j \delta / e .
+\end{aligned}
+$$
+
+Choose $\delta \in \mathbb{R}^{>0}$ such that $j \delta / e<\varepsilon / 3$, and put $k:=\min \left(\operatorname{ord}_{U}(a), \operatorname{ord}_{U}(b)\right)$. Then $k<v$ and $a^{i}, b^{i} \in U^{*}$ for all $i \leq k$, and therefore
+
+$$
+\left\|\frac{j}{k}\left(a^{k} \phi-\phi\right)-j(a \phi-\phi)\right\|<\varepsilon / 3, \quad\left\|\frac{j}{k}\left(b^{k} \phi-\phi\right)-j(b \phi-\phi)\right\|<\varepsilon / 3 .
+$$
+
+Also $v=\mathrm{O}(k)$, and hence $j / k<n$ for some $n$. Since $a^{k} \sim b^{k}$, this gives
+
+$$
+\left\|(j / k)\left(a^{k} \phi-\phi\right)-(j / k)\left(b^{k} \phi-\phi\right)\right\|=(j / k)\left\|a^{k} \phi-b^{k} \phi\right\| \sim 0 .
+$$
+
+In view of the earlier inequalities, this yields
+
+$$
+\|j(a \phi-\phi)-j(b \phi-\phi)\|<\varepsilon,
+$$
+
+as promised. \(\square\)
+
+Recall that $\sigma \in \mathbb{R}^{*}, \sigma>\mathbb{R}$.
+
+Theorem 5.8. The sets $\mathrm{O}[\sigma]$ and $\mathrm{o}[\sigma]$ have the following properties:
+
+\begin{itemize}
+  \item[(1)] $\mathrm{O}[\sigma]$ and $\mathrm{o}[\sigma]$ are normal subgroups of $G_{\mathrm{ns}}$;
+  \item[(2)] if $a \in \mathrm{O}[\sigma]$ and $b \in \boldsymbol{\mu}$, then $[a, b]:=a b a^{-1} b^{-1} \in \mathrm{o}[\sigma]$;
+  \item[(3)] $\mathrm{O}[\sigma] / \mathrm{o}[\sigma]$ is commutative, and $\mathrm{O}[\sigma] / \mathrm{o}[\sigma] \subseteq \operatorname{center}(\mu / \mathrm{o}[\sigma])$.
+\end{itemize}
+
+Proof. As to (1), let $a, b \in \mathrm{O}[\sigma]$. Then $(a b)^{i} \in \boldsymbol{\mu}$ for all $i=\mathrm{o}(\sigma)$ by Lemma 5.4, so $a b \in \mathrm{O}[\sigma]$. Thus $\mathrm{O}[\sigma]$ is a normal subgroup of $G_{\mathrm{ns}}$. For $i=\mathrm{O}(\sigma)$ this argument shows that $\mathrm{o}[\sigma]$ is a normal subgroup of $G_{\mathrm{ns}}$. Item (2) follows from the previous lemma. Item (3) is immediate from (2). \(\square\)\\
+$\mathfrak{L}(G)$ as a topological vector space. It follows from Lemma 5.6 that for $a \in \mathrm{O}[\sigma]$ and $b \in \mathrm{o}[\sigma]$ we have $\xi_{a}=\xi_{a b}$, so we have a surjective map
+
+$$
+a \mathrm{o}[\sigma] \mapsto \xi_{a}: \quad \mathrm{O}[\sigma] / \mathrm{o}[\sigma] \rightarrow \mathfrak{L}(G) .
+$$
+
+By Lemma 5.7 we also have for $a, b \in \mathrm{O}[\sigma]$ that if $\xi_{a}=\xi_{b}$, then $a^{-1} b \in \mathrm{o}[\sigma]$, so the above map is a bijection. We make $\mathfrak{L}(G)$ into an abelian group with group operation $+_{\sigma}$ so that this bijection is a group isomorphism $\mathrm{O}[\sigma] / \mathrm{o}[\sigma] \rightarrow \mathfrak{L}(G)$, in other words, $\xi_{a}+_{\sigma} \xi_{b}=\xi_{a b}$ for $a, b \in \mathrm{O}[\sigma]$. Note that $\xi_{a}+_{\sigma} \xi_{a}=2 \xi_{a}$ for $a \in \mathrm{O}[\sigma]$. To show that this operation $+_{\sigma}$ is independent of $\sigma$, we need the next lemma. In its proof we use that for $g, h \in G$ and $[g, h]:=g h g^{-1} h^{-1}$ we have $g h=[g, h] h g$.
+
+Lemma 5.9. Let $a, b \in \mathrm{o}[v]$ and $a^{v} \in \mathrm{O}[\sigma]$. Then $(a b)^{v}=c a^{v} b^{v}$ with $c \in \mathrm{o}[\sigma]$. Likewise, $(b a)^{\nu}=b^{\nu} a^{\nu} d$ with $d \in \mathrm{o}[\sigma]$.
+
+Proof. We define $c_{i}:=\left[a^{i-1},\left[b^{i-1}, a\right]\right]\left[b^{i-1}, a\right] \in \boldsymbol{\mu}$ for $i=1, \ldots, \nu$, so $c_{1}=1$. We claim that then $(a b)^{i}=c_{1} \cdots c_{i} a^{i} b^{i}$. This is clear for $i=1$. Assume the claim holds for a certain $i<v$. Then
+
+$$
+\begin{aligned}
+(a b)^{i+1} & =c_{1} \cdots c_{i} a^{i} b^{i} a b=c_{1} \cdots c_{i} a^{i}\left[b^{i}, a\right] a b^{i+1} \\
+& =c_{1} \cdots c_{i}\left[a^{i},\left[b^{i}, a\right]\right]\left[b^{i}, a\right] a^{i+1} b^{i+1}=c_{1} \cdots c_{i+1} a^{i+1} b^{i+1} .
+\end{aligned}
+$$
+
+This proves our claim. Now $a^{\nu} \in \mathrm{O}[\sigma]$ gives $a \in \mathrm{O}[\nu \sigma]$, so $\left[b^{i}, a\right] \in \mathrm{o}[\nu \sigma]$ for $0 \leq i<v$, hence $c_{i} \in \mathrm{o}[v \sigma]$ for $1 \leq i \leq v$. Put $c:=c_{1} \cdots c_{\nu}$. Then for $1 \leq j \leq \sigma$, the element $c^{j}=\left(c_{1} \cdots c_{\nu}\right)^{j}$ is a product of $j \nu \leq \nu \sigma$ elements, each in $\mathrm{o}[v \sigma]$, so $c^{j} \in \boldsymbol{\mu}$ by Lemma 5.4, and thus $c \in \mathrm{o}[\sigma]$, as desired.
+
+With $a^{-1}, b^{-1}$ in place of $a, b$, this yields the second part. \(\square\)
+
+Lemma 5.10. Let $\xi, \eta \in \mathfrak{L}(G)$. Then $\xi+\eta$ exists and equals $\xi+{ }_{\sigma} \eta$.\\
+Proof. It suffices to show that $\xi+_{\sigma} \eta=\xi+_{\tau} \eta$ for all positive infinite $\tau \in \mathbb{R}^{*}$. Consider first the case $\tau=\nu \sigma$ (with $\nu \in \mathbb{N}^{*}, \nu>\mathbb{N}$ by convention), and set
+
+$$
+a:=\xi(1 / \tau), \quad b:=\eta(1 / \tau), \quad a_{\sigma}:=\xi(1 / \sigma), \quad b_{\sigma}:=\eta(1 / \sigma),
+$$
+
+so $a_{\sigma}=a^{\nu}, b_{\sigma}=b^{\nu}$. We have $a, b \in \mathrm{o}[\nu]$, so $a^{\nu} b^{\nu}=c(a b)^{\nu}$ with $c \in \mathrm{o}[\sigma]$ by Lemma 5.9. Setting $d:=(a b)^{v}$ we have $d=c^{-1} a_{\sigma} b_{\sigma}$, and in view of $a_{\sigma}, b_{\sigma} \in \mathrm{O}[\sigma]$ and Theorem 5.8 this gives $d \in \mathrm{O}[\sigma]$. Hence
+
+$$
+\xi+_{\sigma} \eta=\xi_{a_{\sigma} b_{\sigma}}=\xi_{c d}=\xi_{d},
+$$
+
+and thus for all $t \in \mathbb{R}$,
+
+$$
+\left(\xi+{ }_{\sigma} \eta\right)(t)=\operatorname{st}\left(d^{[\sigma t]}\right)=\operatorname{st}\left((a b)^{[\tau t]}\right)=\left(\xi+{ }_{\tau} \eta\right)(t) .
+$$
+
+Next we consider the case $\tau=(1+\varepsilon) \sigma$ with infinitesimal $\varepsilon \in \mathbb{R}^{*}$. With $a, b, a_{\sigma}, b_{\sigma}$ defined as before, we have $a, b, a_{\sigma}, b_{\sigma} \in \mathrm{O}[\sigma]=\mathrm{O}[\tau]$ and
+
+$$
+a_{\sigma}=a \cdot \xi(\varepsilon / \tau), \quad b_{\sigma}=b \cdot \eta(\varepsilon / \tau), \quad \xi(\varepsilon / \tau), \eta(\varepsilon / \tau) \in \mathrm{o}[\sigma]=\mathrm{o}[\tau],
+$$
+
+so $a_{\sigma} b_{\sigma}=a b c$ with $c \in \mathrm{o}[\sigma]$ by Theorem 5.8. For $t \in \mathbb{R}^{>0}$ we have $[\sigma t]=[\tau t]+k$ with $k=\mathrm{o}(\sigma)$, so by the definition of $\mathrm{O}[\sigma]$ and using Lemma 5.6,
+
+$$
+\left(a_{\sigma} b_{\sigma}\right)^{[\sigma t]} \sim\left(a_{\sigma} b_{\sigma}\right)^{[\tau t]}=(a b c)^{[\tau t]} \sim(a b)^{[\tau t]},
+$$
+
+and thus $\xi+_{\sigma} \eta=\xi+_{\tau} \eta$. For arbitrary positive infinite $\tau \in \mathbb{R}^{*}$ we reduce to the previous two cases by taking $\nu, \nu^{\prime} \in \mathbb{N}^{*} \backslash \mathbb{N}$ such that $\nu^{\prime} \tau=(1+\varepsilon) \nu \sigma$ with infinitesimal $\varepsilon \in \mathbb{R}^{*}$. \(\square\)
+
+By Lemma 5.10 we now have the real vector space $\mathfrak{L}(G)$ as indicated in Lemma 2.3. In Section 2 we gave it the topology induced by the compactopen topology of $C(\mathbb{R}, G)$. Note also that for $\xi, \eta \in \mathfrak{L}(G)$ and $r \in \mathbb{R}$ we have $(\xi+\eta)(r)=(r \xi+r \eta)(1)$, that is,
+
+$$
+(\xi+\eta)(r)=\lim _{s \rightarrow \infty}\left(\xi\left(\frac{1}{s}\right) \eta\left(\frac{1}{s}\right)\right)^{[r s]}=\lim _{s \rightarrow \infty}\left(\xi\left(\frac{r}{s}\right) \eta\left(\frac{r}{s}\right)\right)^{[s]} .
+$$
+
+Corollary 5.11. $\mathfrak{L}(G)$ is a topological vector space over $\mathbb{R}$.\\
+Proof. Lemma 2.8 gives the continuity of scalar multiplication, so it remains to establish the continuity of + . Let $\xi, \eta \in \mathfrak{L}(G)$, and let $W$ be a neighborhood of $\xi+\eta$ in $\mathfrak{L}(G)$. It suffices to obtain neighborhoods $P$ and $Q$ of $\xi$ and $\eta$ in $\mathfrak{L}(G)$ such that for all $\xi^{\prime} \in P$ and $\eta^{\prime} \in Q$ we have $\xi^{\prime}+\eta^{\prime} \in W$. To get such $P, Q$, take a compact neighborhood $U$ of 1 in $G$ so small that for all $\zeta \in \mathfrak{L}(G)$, if $\zeta(t) \in(\xi+\eta)(t) U$ for all $t \in I:=[-1,1]$, then $\zeta \in W$. Next, let $\xi^{\prime}, \eta^{\prime} \in \mathfrak{L}(G)^{*}$ and $\xi \sim \xi^{\prime}$ and $\eta \sim \eta^{\prime}$. Fix some $v>\mathbb{N}$, and put
+
+$$
+a:=\xi(1 / v), \quad a^{\prime}:=\xi^{\prime}(1 / v), \quad b:=\eta(1 / v), \quad b^{\prime}:=\eta^{\prime}(1 / v),
+$$
+
+so $a, a^{\prime}, b, b^{\prime} \in \mathrm{O}[\nu]$ and $a^{i} \sim a^{\prime i}$ and $b^{i} \sim b^{\prime i}$ for all $i \leq \nu$, so $a$ o $[\nu]=a^{\prime}$ o[ $v$ ] and $b$ o[v] $=b^{\prime}$ o[v] by Lemma 5.7. Hence $(a b)^{k} \sim\left(a^{\prime} b^{\prime}\right)^{k}$ whenever $|k| \leq \nu$, so
+
+$$
+\left(\xi^{\prime}\left(\frac{1}{v}\right) \eta^{\prime}\left(\frac{1}{v}\right)\right)^{k} \in\left(\left(\xi\left(\frac{1}{v}\right) \eta\left(\frac{1}{v}\right)\right)^{k}\right) U^{*} \quad \text { whenever }|k| \leq v .
+$$
+
+By overspill (see the subsection on topological spaces and continuity in the appendix) this gives neighborhoods $P$ and $Q$ of $\xi$ and $\eta$ in $\mathfrak{L}(G)$ such that for all $\xi^{\prime} \in P$ and $\eta^{\prime} \in Q$ we have
+
+$$
+\left(\xi^{\prime}\left(\frac{1}{v}\right) \eta^{\prime}\left(\frac{1}{v}\right)\right)^{k} \in\left(\left(\xi\left(\frac{1}{v}\right) \eta\left(\frac{1}{v}\right)\right)^{k}\right) U^{*} \quad \text { whenever }|k| \leq v .
+$$
+
+It follows that for all $\xi^{\prime} \in P$ and $\eta^{\prime} \in Q$ we have
+
+$$
+\left(\xi^{\prime}+\eta^{\prime}\right)(t) \in(\xi+\eta)(t) \cdot U \quad \text { for all } t \in I .
+$$
+
+This gives $\xi^{\prime}+\eta^{\prime} \in W$ for all $\xi^{\prime} \in P$ and $\eta^{\prime} \in Q$. \(\square\)
+
+Corollary 5.12. Suppose the exponential map of $G$ maps some neighborhood of $o$ in $\mathfrak{L}(G)$ homeomorphically onto a neighborhood of 1 in $G$. Then $G$ is locally euclidean and has NSS.
+
+Proof. Since $G$ is locally compact, so is $\mathfrak{L}(G)$. It follows that $\mathfrak{L}(G)$ has finite dimension as vector space over $\mathbb{R}$, and so we can put a norm on $\mathfrak{L}(G)$. With respect to this norm we take an open ball $B$ centered at $o$ that is homeomorphic to a neighborhood $U$ of 1 in $G$ via the exponential map of $G$. Take $n>1$ such that $V:=\left\{\xi(1) \left\lvert\, \xi \in \frac{1}{n} B\right.\right\}$ satisfies $V^{2} \subseteq U$. We claim that then $V$ contains no subgroup of $G$ other than $\{1\}$. To see why, let $a \in V, a \neq 1$. Take $\xi \in \frac{1}{n} B$ with $a=\xi(1)$, and take $m>1$ such that $m \xi \in B \backslash \frac{1}{n} B$. Then $(m \xi)(1)=a^{m} \in U \backslash V$, so $a^{\mathbb{Z}} \nsubseteq V$. \(\square\)
+
+\section*{6. Consequences of NSS}
+In this section we assume that our locally compact group $G$ has NSS. We shall now carry out step (3) from the sketch in the Introduction.
+
+Lemma 6.1. There is a neighborhood $U$ of 1 such that for all $x, y \in U$, $x^{2}=y^{2} \Longrightarrow x=y$.
+
+Proof. Towards a contradiction, let $x, y \in \boldsymbol{\mu}, x \neq y$ and $x^{2}=y^{2}$. Then
+
+$$
+y^{-1}\left(x y^{-1}\right) y=y^{-1} x=\left(x y^{-1}\right)^{-1},
+$$
+
+so with $a:=x y^{-1}$ we get $y^{-1} a y=a^{-1}$. Then $y^{-1} a^{k} y=a^{-k}$ for all $k$. Take a compact symmetric neighborhood $U$ of 1 in $G$ that contains no non-trivial subgroup of $G$. Take positive $k$ such that $a^{i} \in U^{*}$ for $0 \leq i \leq k$ and $a^{k+1} \notin U^{*}$. Set $b:=\operatorname{st}\left(a^{k}\right)$, so $b \neq 1, b \in U$, and $b=b^{-1}$, so $\{1, b\}$ is a non-trivial subgroup of $G$ contained in $U$, a contradiction. \(\square\)
+
+By a special neighborhood of $G$ we mean a compact symmetric neighborhood $U$ of 1 in $G$ such that $U$ contains no non-trivial subgroup of $G$ and for all $x, y \in U$, if $x^{2}=y^{2}$, then $x=y$.
+
+In the rest of this section we fix a special neighborhood $\mathcal{U}$ of $G$ (which exists by the lemma above), and we set $\operatorname{ord}(a):=\operatorname{ord}_{\mathcal{U}}(a)$.
+
+Corollary 6.2. Suppose $G$ is not discrete. Then $\mathfrak{L}(G) \neq\{o\}$.\\
+Proof. Take $a \in \boldsymbol{\mu}$ with $a \neq 1$, and set $\sigma:=\operatorname{ord}(a)$. Then $a \in \mathrm{O}[\sigma]$ and $a \notin \mathrm{o}[\sigma]$, so $\xi_{a} \in \mathfrak{L}(G), \xi_{a} \neq o$ where $\xi_{a}$ is defined as in Lemma 2.6. \(\square\)
+
+Set $\mathcal{K}:=\{\xi \in \mathfrak{L}(G) \mid \xi(I) \subseteq \mathcal{U}\}$, with $I=[-1,1]$, so $\mathcal{K}$ is a compact neighborhood of $o$ in $\mathfrak{L}(G)$, by Lemma 2.9. Note that for any $\xi \in \mathfrak{L}(G)$ there is $\lambda \in \mathbb{R}^{>0}$ such that $\lambda \xi \in \mathcal{K}$. Put $K:=\{\xi(1) \mid \xi \in \mathcal{K}\}$, so $K$ is compact by Lemma 2.8. Note also that $K=\bigcup_{\xi \in \mathcal{K}} \xi(I)$, so $K$ is pathconnected.
+
+Corollary 6.3. The vector space $\mathfrak{L}(G)$ has finite dimension. The exponential map $\xi \mapsto \xi(1): \mathfrak{L}(G) \rightarrow G$ maps $\mathcal{K}$ homeomorphically onto $K$.
+
+Proof. The first assertion follows from Riesz's theorem that a locally compact topological vector space over $\mathbb{R}$ has finite dimension. For the second assertion it suffices that the exponential map is injective on $\mathcal{K}$. Let $\xi, \eta \in \mathcal{K}$ and $\xi(1)=\eta(1)$. Then $(\xi(1 / 2))^{2}=(\eta(1 / 2))^{2}$, so $\xi(1 / 2)=\eta(1 / 2)$, and by induction, $\xi\left(1 / 2^{n}\right)=\eta\left(1 / 2^{n}\right)$ for all $n$, and thus $\xi\left(i / 2^{n}\right)=\eta\left(i / 2^{n}\right)$ for all $i \in \mathbb{Z}$ and $n$. By density this gives $\xi=\eta$. \(\square\)
+
+Lemma 6.4. Let $a \in G^{*}$. Then ord $a$ is infinite iff $a \in \boldsymbol{\mu}$.\\
+Proof. Suppose ord $a$ is infinite. Then $a \in \mathcal{U}^{*}$ and $a^{\mathbb{Z}} \subseteq \mathcal{U}^{*}$, so $(\operatorname{st} a)^{\mathbb{Z}} \subseteq \mathcal{U}$, and thus st $a=1$. \(\square\)
+
+For any symmetric $P \subseteq G$ with $1 \in P$ we let $\operatorname{ord}(P)$ be the largest $n$ such that $P^{n} \subseteq \mathcal{U}$ if there is such an $n$, and set ord $P:=\infty$ if $P^{n} \subseteq \mathcal{U}$ for all $n$.
+
+We set $\mathcal{U}_{n}:=\{x \in G \mid$ ord $x \geq n\}$ for $n \geq 1$, so $\mathcal{U}_{n} \supseteq \mathcal{U}_{n+1}$.\\
+Lemma 6.5. The sets $\mathcal{U}_{n}$ have the following properties:
+
+\begin{itemize}
+  \item[(1)] each $\mathcal{U}_{n}$ is a compact symmetric neighborhood of 1 in $G$;
+  \item[(2)] $\left\{\mathcal{U}_{n} \mid n \geq 1\right\}$ is a (countable) neighborhood base of 1 in $G$;
+  \item[(3)] $\operatorname{ord} \mathcal{U}_{n} \geq c n$ for all $n \geq 1$ and some $c>0$ independent of $n$.
+\end{itemize}
+
+Proof. Given $n \geq 1$, it is clear that $\mathcal{U}_{n} \subseteq \mathcal{U}$, that the complement of $\mathcal{U}_{n}$ in $G$ is open, and that $\mathcal{U}_{n}$ is a neighborhood of 1 in $G$. This gives (1). For each $v$ we consider the internal set
+
+$$
+\mathcal{U}_{\nu}:=\left\{g \in G^{*} \mid \text { ord } g \geq \nu\right\} .
+$$
+
+Since $\nu>\mathbb{N}$ by convention, we have $\mathcal{U}_{\nu} \subseteq \boldsymbol{\mu}$ by Lemma 6.4. It follows that for any neighborhood $U$ of 1 in $G$ we have $\mathcal{U}_{n} \subseteq U$ for all sufficiently large $n$; this gives (2). From $\mathcal{U}_{v} \subseteq \boldsymbol{\mu}$ we also obtain $\mathcal{U}_{v} \subseteq \mathrm{O}[v]$, hence $\left(\mathcal{U}_{v}\right)^{i} \subseteq \boldsymbol{\mu}$ for all $i=\mathrm{o}(v)$ by Lemma 5.4, so ord $\mathcal{U}_{v} \geq c v$ for some $c \in \mathbb{R}^{>0}$. This gives (3): nonexistence of $c$ as in (3) gives $v$ with $\operatorname{ord} \mathcal{U}_{v}<c v$ for all $c \in \mathbb{R}^{>0}$. \(\square\)
+
+Because 1 has a countable neighborhood base in $G$, the topology of $G$ is induced by some metric on $G$. Given such a metric $d$ on $G$ we obtain also a metric $d$ on $\mathfrak{L}(G)$ by $d(\xi, \eta):=\max _{|t| \leq 1} d(\xi(t), \eta(t))$, and one verifies easily that this metric induces the same topology on $\mathfrak{L}(G)$ as the compact-open topology of $C(\mathbb{R}, G)$. We do not need this metric, but it may help in visualizing some arguments.
+
+Proof that $\boldsymbol{G}$ is locally euclidean.. Let $\xi \in \mathfrak{L}(G)^{*}$. We say that $\xi$ is infinitesimal if $\xi \in \boldsymbol{\mu}(o)$, the monad of $o$ in $\mathfrak{L}(G)^{*}$. Therefore,
+
+$$
+\xi \text { is infinitesimal } \Longleftrightarrow \xi\left(I^{*}\right) \subseteq \boldsymbol{\mu},
+$$
+
+by the definitions and Corollary 6.3.\\
+Lemma 6.6. Let $\xi, \eta \in \mathfrak{L}(G)^{*}$ be infinitesimal, with $\eta(1) \in \mathrm{O}[\sigma]$. Then
+
+$$
+\xi(1) \eta(1)=(\xi+\eta)(1) \cdot z \quad \text { with } z \in \mathrm{o}[\sigma] .
+$$
+
+Proof. Put $a:=\xi(1), b:=\eta(1), c:=(\xi+\eta)(1)$. Take an open neighborhood $U$ of 1 in $G$ with $U \subseteq \mathcal{U}$ and take $v$ with $\sigma=o(v)$ and put
+
+$$
+W:=\left\{w \in G^{*} \mid w^{i} \in U^{*} \text { for } i=1, \ldots, \nu\right\} .
+$$
+
+Then $W$ is internally open in $G^{*}$ and $1 \in W \subseteq \mathrm{O}[\nu] \subseteq \mathrm{o}[\sigma]$. By the definition of $c$ and using transfer we have $\left(\xi\left(\frac{1}{e}\right) \eta\left(\frac{1}{e}\right)\right)^{e} \in c W$ for all sufficiently large $e \in \mathbb{N}^{*} \backslash \mathbb{N}$, so
+
+$$
+\left(\xi\left(\frac{1}{e}\right) \eta\left(\frac{1}{e}\right)\right)^{e}=c w_{e}, \quad w_{e} \in \mathrm{o}[\sigma],
+$$
+
+for all sufficiently large $e \in \mathbb{N}^{*} \backslash \mathbb{N}$. But also, by Lemma 5.9,
+
+$$
+\left(\xi\left(\frac{1}{e}\right) \eta\left(\frac{1}{e}\right)\right)^{e}=a b d_{e}, \quad d_{e} \in \mathrm{o}[\sigma],
+$$
+
+for all $e \in \mathbb{N}^{*} \backslash \mathbb{N}$. Hence $a b=c\left(w d^{-1}\right)$ with $w, d \in \mathrm{o}[\sigma]$. \(\square\)
+
+Lemma 6.7. $K$ is a neighborhood of 1 in $G$.\\
+Proof. It is enough to show that $\boldsymbol{\mu} \subseteq K^{*}$. Let $a \in \boldsymbol{\mu}$ and suppose towards a contradiction that $a \notin K^{*}$. Since $K$ is compact we have $K=\bigcap_{n} K \mathcal{U}_{n}$, and so $K^{*}=\bigcap_{\nu} K^{*} \mathcal{U}_{\nu}$ by transfer. Take $\nu$ maximal with $a \in K^{*} \mathcal{U}_{\nu}$. Then $a=b c$ with $b \in K^{*}$ and $c \in \mathcal{U}_{v} \subseteq \boldsymbol{\mu}$, and ord $c=v$. With $\xi:=\xi_{c} \in \mathfrak{L}(G)$ defined by $\xi(t)=\operatorname{st}\left(c^{[\nu t]}\right)$ we have $\xi \in \mathcal{K}$, and thus for $d:=\xi(1 / \nu) \in K^{*}$ we have $c^{i} \sim d^{i}$ for all $i \leq v$, and thus $c=d u$ with $u \in \mathrm{o}[v]$ by Lemma 5.7. Hence $a=b d u$. By Lemma 6.6 we have $b d=g h$ with $g \in K^{*}$ and $h \in \mathrm{o}[v]$. Hence $a=g(h u)$ with $\nu=\mathrm{o}(\operatorname{ord}(h u))$, contradicting the maximality of $\nu$. \(\square\)
+
+From Lemma 6.7 and Corollaries 5.12 and 6.3 we obtain:\\
+Corollary 6.8. $G$ is locally euclidean of dimension $\operatorname{dim}_{\mathbb{R}} \mathfrak{L}(G)$.
+
+The adjoint representation. Take an $\mathbb{R}$-linear isomorphism $\mathfrak{L}(G) \cong \mathbb{R}^{n}$ of vector spaces. It induces a group isomorphism
+
+$$
+\operatorname{Aut}(\mathfrak{L}(G)) \cong \mathrm{GL}_{n}(\mathbb{R}) \subseteq \mathbb{R}^{n^{2}},
+$$
+
+and we give the set $\operatorname{Aut}(\mathfrak{L}(G))$ the topology that makes this bijection into a homeomorphism, and thus into an isomorphism of topological groups. It is clear that this topology on $\operatorname{Aut}(\mathfrak{L}(G))$ does not depend on the initial choice of $\mathbb{R}$-linear isomorphism $\mathfrak{L}(G) \cong \mathbb{R}^{n}$.
+
+Let $G_{\mathrm{o}}$ be the connected component of 1 in $G$. It is the subgroup of $G$ generated by the elements $\xi(t)$ with $\xi \in \mathfrak{L}(G)$ and $t \in \mathbb{R}$. It is open in $G$.
+
+Lemma 6.9. The group morphism $\operatorname{Ad}: G \rightarrow \operatorname{Aut}(\mathfrak{L}(G))$ is continuous, and $\operatorname{ker}(\operatorname{Ad})=\left\{a \in G:\right.$ a commutes with all elements of $\left.G_{\mathrm{o}}\right\}$. In particular, if $G$ is connected, then $\operatorname{ker}(\operatorname{Ad})=\operatorname{center}(G)$.
+
+Proof. One checks easily that if $a \in \boldsymbol{\mu}$ and $\xi \in \mathfrak{L}(G)$, then $a \xi a^{-1} \in \boldsymbol{\mu}(\xi)$ in $\mathfrak{L}(G)^{*}$. Applying this to the $\xi$ from a basis of the vector space $\mathfrak{L}(G)$, we see that Ad is continuous at 1. Since Ad is a group morphism, it follows that Ad is continuous. Clearly, $\operatorname{ker}(\operatorname{Ad})$ consists of those $a \in G$ that commute with all elements of the form $\xi(t)$ with $\xi \in \mathfrak{L}(G)$ and $t \in \mathbb{R}$. \(\square\)
+
+As indicated in the Introduction, step (4) of "Sketch why NSS implies Lie", we may now conclude:
+
+Corollary 6.10. $G$ is a Lie group.
+
+\section*{7. Locally Euclidean implies NSS}
+In these last two sections we revert to the assumption that $G$ is just a locally compact group, not necessarily locally euclidean or having NSS.
+
+Lemma 7.1. Let $U$ be a neighborhood of 1 in $G$. Then $U$ contains a compact subgroup $H$ of $G$ and a neighborhood $V$ of 1 in $G$ such that $H$ contains every subgroup of $G$ contained in $V$.
+
+Proof. Shrinking $U$ we arrange that $\operatorname{cl}(U)$ is compact. Take an internal neighborhood $V$ of 1 in $G^{*}$ such that $V \subseteq \boldsymbol{\mu}$. Let $S$ be the internal subgroup of $G^{*}$ that is internally generated by the union of the internal subgroups of $G^{*}$ that are contained in $V$. Then $S \subseteq \boldsymbol{\mu}$ by Lemma 5.4, and so the internal closure $H$ of $S$ in $G^{*}$ is an internal subgroup of $G^{*}$ contained in $U^{*}$. By transfer, there is a neighborhood $V$ of 1 in $G$ and a closed subgroup $H$ of $G$ such that $H \subseteq U$ and $H$ contains every subgroup of $G$ contained in $V$. \(\square\)
+
+Corollary 7.2. If $\mathfrak{L}(G)=\{o\}$, then there is a neighborhood base of 1 in $G$ consisting of compact open subgroups of $G$.
+
+Proof. Let $U$ be a neighborhood of 1 in $G$, and take $H$ and $V$ as in the previous lemma. If $\mathfrak{L}(G)=\{o\}$, then every $a \in \boldsymbol{\mu}$ is degenerate, hence $a^{\mathbb{Z}^{*}} \subseteq H^{*}$ for each $a \in \boldsymbol{\mu}$, so $H$ is open. \(\square\)
+
+Corollary 7.3. If $G$ is connected and $G \neq\{1\}$, then $\mathfrak{L}(G) \neq\{o\}$.\\
+We define a topological space to be totally disconnected if its connected components are all singletons.
+
+Lemma 7.4. Let $N$ be a totally disconnected closed normal subgroup of $G$ and let $\pi: G \rightarrow G / N$ be the canonical map. Then the induced map $\mathfrak{L}(\pi): \mathfrak{L}(G) \rightarrow \mathfrak{L}(G / N)$ is surjective.
+
+Proof. Let $H:=G / N$, and $\eta \in \mathfrak{L}(H)$ with $\eta(1) \neq 1_{H}$. Fix $v$ and put $h:=\eta(1 / \nu) \in \boldsymbol{\mu}\left(1_{H}\right)$. Take a compact symmetric neighborhood $V$ of $1_{H}$ in $H$ such that $\eta(1) \notin V$. Take a compact symmetric neighborhood $U$ of 1 in $G$ such that $\pi(U) \subseteq V$. Since $\pi$ is an open map we have $\pi(\boldsymbol{\mu}) \supseteq \boldsymbol{\mu}\left(1_{H}\right)$. Take $a \in \mu$ with $\pi(a)=h$. Then $\pi\left(a^{\nu}\right)=h^{\nu}=\eta(1)$, so $a^{\nu} \notin U$, so $\sigma:=\operatorname{ord}_{U}(a) \leq \nu$. We have $\pi\left(\operatorname{st}\left(a^{k}\right)\right)=\operatorname{st}\left(h^{k}\right)=1_{H}$ for all $k=\mathrm{o}(\sigma)$, so the connected subgroup $G_{U}(a)=\left\{\operatorname{st}\left(a^{k}\right) \mid k=\mathrm{o}(\sigma)\right\}$ of $G$ is contained in $N$. But $N$ is totally disconnected, so $G_{U}(a)=\{1\}$, that is, $a \in \mathrm{O}[\sigma]$. Also $a \notin \mathrm{o}[\sigma]$, so $\xi \neq o$ where $\xi=\xi_{a} \in \mathfrak{L}(G)$ is defined by $\xi(t)=\operatorname{st}\left(a^{[\sigma t]}\right)$. If $\sigma=\mathrm{o}(v)$, then $\pi(\xi(t))=\operatorname{st}\left(h^{[\sigma t]}\right)=1$ for all $t$, so $\xi \in \mathfrak{L}(N) \subseteq \mathfrak{L}(G)$, that is $\xi=o$, a contradiction. Thus $\sigma=(r+\epsilon) v$ with $r \in \mathbb{R}^{>0}$ and infinitesimal $\epsilon \in \mathbb{R}^{*}$. Hence $\pi(\xi(t))=\operatorname{st}\left(h^{[\nu r t]}\right)=(r \eta)(t)$ for all $t \in \mathbb{R}$, that is, $\mathfrak{L}(\pi)(\xi)=r \eta$, and thus $\mathfrak{L}(\pi)\left(\frac{1}{r} \xi\right)=\eta$. \(\square\)
+
+Recall: a topological space is locally connected iff every neighborhood of any point in it contains a connected neighborhood of that point.
+
+Lemma 7.5. If $G$ is locally connected and has NSCS, then $G$ has NSS.
+
+Proof. Suppose $G$ is locally connected and has NSCS. Take a compact symmetric neighborhood $U$ of 1 in $G$ that contains no connected subgroup of $G$ other than $\{1\}$. By Lemma 7.1 we can take an open neighborhood $V \subseteq U$ of 1 in $G$ and a compact subgroup $N_{1}$ of $G$ such that $N_{1} \subseteq U$ and all subgroups of $G$ contained in $V$ are contained in $N_{1}$. Since $N_{1} \subseteq U$ we have $\mathfrak{L}\left(N_{1}\right)=\{o\}$, so $N_{1}$ is totally disconnected by Corollary 7.2, and we have a compact subgroup $N$\\
+of $N_{1}$ such that $N$ is open in $N_{1}$ and $N \subseteq V$. Take an open subset $W$ of $V$ such that $N=N_{1} \cap W$. Note that the set
+
+$$
+\left\{a \in W \mid a N a^{-1} \subseteq W\right\}
+$$
+
+is open. But if $a \in W$ and $a N a^{-1} \subseteq W$, then $a N a^{-1} \subseteq N_{1}$, so $a N a^{-1} \subseteq N$. Thus the normalizer $G_{1}$ of $N$ in $G$ is open in $G$. Let $H:=G_{1} / N$, and let $\pi: G_{1} \rightarrow H$ be the canonical map. Next we show that $H$ has NSS.
+
+Let $a \in \boldsymbol{\mu} \cap G_{1}^{*}$. If $a$ is degenerate, then $a \in N_{1}^{*}$, so $a \in N^{*}$ and $\pi(a)=1_{H}$. Suppose $a$ is pure, and put $v:=\operatorname{ord}_{U}(a)$. Then $a^{v+1} \notin U^{*}$. Take an open neighborhood $V^{\prime}$ of 1 in $G$ such that $V^{\prime} N \subseteq V \subseteq U$, so $\pi(a)^{\nu+1} \notin \pi\left(V^{\prime}\right)$, while $\pi(a)^{i} \in \mu\left(1_{H}\right)$ for all $i=\mathrm{o}(v)$. Thus $\pi(a)$ is pure in $H$. Thus all infinitesimals of $H$ other than $1_{H}$ are pure, that is, $H$ has NSS. Thus $\mathfrak{L}(H)$ is finite-dimensional, and by Lemma 7.4 the $\mathbb{R}$-linear map
+
+$$
+\mathfrak{L}(\pi): \mathfrak{L}\left(G_{1}\right)=\mathfrak{L}(G) \rightarrow \mathfrak{L}(H)
+$$
+
+is continuous and surjective with kernel $\mathfrak{L}(N)=\{o\}$, and thus a homeomorphism. (So far we have not used that $G$ is locally connected.)
+
+Take a special neighborhood $\mathcal{V}$ of $H$, as defined in Section 6. As $G$ is locally connected, we can take a connected neighborhood $\mathcal{U}$ of 1 in $G_{1}$ such that
+
+$$
+\pi(\mathcal{U}) \subseteq\{\eta(1) \mid \eta \in \mathfrak{L}(H), \quad \eta(I) \subseteq \mathcal{V}\}, \quad I:=[-1,1] .
+$$
+
+Let $x \in \mathcal{U}$. Then $\pi(x)=\eta(1)$ for a unique $\eta \in \mathfrak{L}(H)$ with $\eta(I) \subseteq \mathcal{V}$, and there is a unique $\xi \in \mathfrak{L}\left(G_{1}\right)$ such that $\pi \circ \xi=\eta$, so $x=\xi(1) x(N)$ with $x(N) \in N$. The map that assigns to each $x \in \mathcal{U}$ the above $\eta \in \mathfrak{L}(H)$ is continuous, by Corollary 6.3. Since $\mathfrak{L}(\pi): \mathfrak{L}\left(G_{1}\right) \rightarrow \mathfrak{L}(H)$ is a homeomorphism, it follows that the map $x \mapsto x(N): \mathcal{U} \rightarrow N$ is continuous. But $N$ is totally disconnected and $1(N)=1$, so $x(N)=1$ for all $x \in \mathcal{U}$. We now use this to derive $\mathcal{U} \cap N=\{1\}$. Let $x \in \mathcal{U} \cap N$, so $\pi(x)=1$. Then $\eta:=o_{H}$ satisfies $\pi(x)=\eta(1), \eta(I) \subseteq \mathcal{V}$, and as $\pi \circ o_{G}=o_{H}$ we get $x=o_{G}(1)=1$. From $\mathcal{U} \cap N=\{1\}$ we obtain that $\pi$ is injective on some neighborhood of 1 in $G_{1}$, so $G_{1}$ has NSS, and thus $G$ has NSS. \(\square\)
+
+Recall that a topological space is bounded in dimension if for some $n$ it does not contain a homeomorphic copy of $[0,1]^{n}$.
+
+Lemma 7.6. If $G$ is bounded in dimension, then $G$ has NSCS.\\
+Proof. Suppose $G$ does not have NSCS. Let $U, V$ range over compact symmetric neighborhoods of 1 in $G$. We claim that for every $n$ and $U$, some compact\\
+subgroup of $G$ contained in $U$ contains a homeomorphic copy of the $n$-cube $[0,1]^{n}$. Assume this holds for a certain $n$ and let $U$ be given. By Lemma 7.1 we can take $V \subseteq U$ and a compact subgroup $H \subseteq U$ of $G$ that contains every subgroup of $G$ contained in $V$. Since $V$ contains a nontrivial connected compact subgroup of $G$, Corollary 7.3 yields a nontrivial $\xi \in \mathfrak{L}(H)$. By decreasing $V$ if necessary we can assume that $\xi(\mathbb{R}) \nsubseteq V$. Take a compact subgroup $G(V) \subseteq V$ of $G$ with a homeomorphism
+
+$$
+\eta:[0,1]^{n} \rightarrow \eta\left([0,1]^{n}\right) \subseteq G(V) .
+$$
+
+Then $\xi(\mathbb{R}) \nsubseteq G(V)$, so $\{t \in \mathbb{R} \mid \xi(t) \in G(V)\}$ is a proper closed subgroup of the additive group of $\mathbb{R}$, hence equals $\mathbb{Z} r$ for some real $r \geq 0$. Replacing $\xi$ by $s \xi$ for a some real $s>0$ we arrange that for $I:=[-1,1]: \xi(I) \subseteq V, \xi$ is injective on $I$ and $\xi(I) \cap G(V)=\{1\}$. Since $G(V) \subseteq H$ we can define
+
+$$
+\zeta:[0,1] \times[0,1]^{n} \rightarrow H, \quad \zeta(s, t):=\xi(s) \eta(t) \quad \text { for } s \in[0,1], t \in[0,1]^{n} .
+$$
+
+It is easy to check that then $\zeta:[0,1]^{n+1} \rightarrow \zeta\left([0,1]^{n+1}\right)$ is injective and continuous, and thus a homeomorphism. \(\square\)
+
+Corollary 7.7. If $G$ is bounded in dimension and locally connected, then $G$ has NSS. In particular, if $G$ is locally euclidean, then $G$ has NSS.
+
+Proof. Use Lemmas 7.6 and 7.5. \(\square\)
+
+This concludes the proof of the Main Theorem.
+
+\section*{8. Yamabe's Theorem}
+We keep the convention that $G$ is a locally compact group, and use the results above to derive Yamabe's Theorem on approximating some open subgroup of $G$ by Lie groups. This doesn't involve any nonstandard methods.
+
+Lemma 8.1. Let $U$ be a neighborhood of 1 in $G$. Then there is an open subgroup $G^{\prime}$ of $G$ and a compact normal subgroup $N^{\prime}$ of $G^{\prime}$ such that $N^{\prime} \subseteq U$ and $G^{\prime} / N^{\prime}$ has NSS.\\
+\includegraphics[max width=\textwidth, alt={}, center]{0d4f323c-edc1-4127-aa1a-8f9a986e28db-30_205_210_1937_740}
+
+Proof. By Lemma 7.1 we can take a compact subgroup $H \subseteq U$ of $G$ and an open neighborhood $W \subseteq U$ of 1 in $G$ such that every subgroup of $G$ contained in $W$ is a subgroup of $H$. Since $H$ is compact, Theorem 4.1 yields a compact normal subgroup $N^{\prime} \subseteq W$ of $H$ and a continuous injective group morphism $H / N^{\prime} \rightarrow \mathrm{GL}_{n}(\mathbb{R})$. Since $\mathrm{GL}_{n}(\mathbb{R})$ has NSS, it follows that $H / N^{\prime}$ has NSS. The latter gives an open $W^{\prime} \subseteq W$ such that $N^{\prime} \subseteq W^{\prime}$ and every subgroup of $G$ contained in $W^{\prime}$ is a subgroup of $N^{\prime}$. Set
+
+$$
+G^{\prime}:=\text { the normalizer of } N^{\prime} \text { in } G=\left\{g \in G \mid g N^{\prime} g^{-1}=N^{\prime}\right\},
+$$
+
+so $G^{\prime}$ is a subgroup of $G$ and $N^{\prime}$ is a normal subgroup of $G^{\prime}$. We claim that $G^{\prime}$ and $N^{\prime}$ have the desired properties.
+
+Since $N^{\prime}$ is compact and $W^{\prime}$ is open, we have a symmetric neighborhood $V$ of 1 in $G$ such that $V N^{\prime} V \subseteq W^{\prime}$. Then for all $g \in V$, the subgroup $g N^{\prime} g^{-1}$ of $G$ is contained in $W^{\prime}$, so $g N^{\prime} g^{-1} \subseteq N^{\prime}$, which by symmetry of $V$ gives $g N^{\prime} g^{-1}=N^{\prime}$. Consequently, $V \subseteq G^{\prime}$ and thus $G^{\prime}$ is open. It remains to show that $G^{\prime} / N^{\prime}$ has NSS. This holds because $V N^{\prime} \subseteq W^{\prime}$ is a neighborhood of $N^{\prime}$ in $G^{\prime}$, so every subgroup of $G^{\prime}$ contained in $V N^{\prime}$ is contained in $W^{\prime}$ and thus in $N^{\prime}$. \(\square\)
+
+Let $G_{\mathrm{o}}$ be the connected component of 1 in $G$. (This was defined earlier in Section 6, but there we assumed $G$ to have NSS.) It is clear that $G_{\mathrm{o}}$ is a closed normal subgroup of $G$ and is contained in every open subgroup of $G$. It is also easy to verify that $G / G_{\mathrm{o}}$ is totally disconnected.
+
+Recall from the Introduction that " $G$ can be approximated by Lie groups" means that every neighborhood of 1 in $G$ contains a compact normal subgroup $N$ of $G$ such that $G / N$ is a Lie group.
+
+Theorem 8.2. Suppose $G / G_{\mathrm{o}}$ is compact. Then $G$ can be approximated by Lie groups.
+
+Proof. Let $U$ be a neighborhood of 1 in $G$. By Lemma 8.1 and its proof we obtain $G^{\prime}$ and $N^{\prime}$ as in that lemma and an open neighborhood $W^{\prime}$ of $N^{\prime}$ such that any subgroup of $G$ contained in $W^{\prime}$ is a subgroup of $N^{\prime}$. Note that $G_{\mathrm{o}} \subseteq G^{\prime}$ since $G^{\prime}$ is clopen in $G$. Consequently, $G^{\prime} / G_{\mathrm{o}}$ is an open subgroup of the compact group $G / G_{\mathrm{o}}$, and thus of finite index in $G / G_{\mathrm{o}}$. Hence $G^{\prime}$ has finite index in $G$, so $G=g_{1} G^{\prime} \cup \cdots \cup g_{n} G^{\prime}$ where $g_{1}, \ldots, g_{n} \in G$. Given $g \in G$ we have $g=g_{i} a$ with $1 \leq i \leq n$ and $a \in G^{\prime}$, so $g N^{\prime} g^{-1}=g_{i}\left(a N^{\prime} a^{-1}\right) g_{i}^{-1}=g_{i} N^{\prime} g_{i}^{-1}$, since $N^{\prime}$ is normal in $G^{\prime}$. Thus
+
+$$
+N:=\bigcap_{i=1}^{n} g_{i} N^{\prime} g_{i}^{-1}=\bigcap_{g \in G} g N^{\prime} g^{-1}
+$$
+
+is a compact normal subgroup of $G$ and $N \subseteq N^{\prime} \subseteq U$. It remains to show that $G / N$ has NSS. Let
+
+$$
+W:=\bigcap_{i=1}^{n} g_{i} W^{\prime} g_{i}^{-1},
+$$
+
+an open subset of $G$ containing $N$. If $H \subseteq W$ is any subgroup of $G$, then for each $i$ we have $g_{i}^{-1} H g_{i} \subseteq W^{\prime}$, so $g_{i}^{-1} H g_{i} \subseteq N^{\prime}$, and thus $H \subseteq N$. \(\square\)
+
+Corollary 8.3. If $G$ is connected, then $G$ can be approximated by Lie groups.\\
+Lemma 8.4. Let $X$ be a compact space and $x \in X$. Then the connected component of $x$ in $X$ is the intersection of all compact open subsets of $X$ that contain $x$.
+
+Proof. Let $\left\{C_{\lambda} \mid \lambda \in \Lambda\right\}$ be the collection of all compact open subsets of $X$ that contain $x$ and put $C:=\bigcap_{\lambda} C_{\lambda}$. Consider a decomposition
+
+$$
+C=A \cup B, \quad A, B \text { closed in } X, A \cap B=\varnothing .
+$$
+
+Since $X$ is normal we can take disjoint open $U, V \subseteq X$ with $A \subseteq U$ and $B \subseteq V$. Then $C$ and $X \backslash(U \cup V)$ are disjoint, which gives a finite subset $\Lambda_{0}$ of $\Lambda$ such that $D:=\bigcap_{\lambda \in \Lambda_{0}} C_{\lambda}$ and $X \backslash(U \cup V)$ are disjoint. Then $D$ is compact and open, and $x \in D$. We have $D=(U \cap D) \cup(V \cap D)$, and only one of the compact open sets $U \cap D, V \cap D$ contains $x$, say $U \cap D$. Then $U \cap D=C_{\lambda}$ for a certain $\lambda \in \Lambda$, and then $B \cap C_{\lambda}=\varnothing$, so $B=\varnothing$. This argument shows that $C$ is connected. It follows that $C$ is the connected component of $x$ in $X$. \(\square\)
+
+Corollary 8.5. Let $X$ be a compact space, $C$ a connected component of $X$, and $F$ a closed subset of $X$ such that $C \cap F=\varnothing$. Then there is a compact open subset $D$ of $X$ such that $C \subseteq D$ and $D \cap F=\varnothing$.
+
+Lemma 8.6. Every compact open neighborhood of 1 in $G$ contains a compact open subgroup of $G$.
+
+Proof. Let $U$ be a compact open neighborhood of 1 in $G$. Set $F=U^{2} \backslash U$, so $F$ is closed. Now $U$ is compact, $G \backslash F$ is open, and $U \subseteq G \backslash F$, so we have an open symmetric neighborhood $V$ of 1 in $G$ with $V \subseteq U$ and $U V \subseteq G \backslash F$. Then $U V \subseteq U^{2}$ gives $U V \subseteq U$. Hence $V^{n} \subseteq U V^{n} \subseteq U$ for all $n$. Thus $H:=\bigcup_{n} V^{n}$ is an open subgroup of $G$ contained in $U$. But open subgroups are also closed, and $U$ is compact, so $H$ is compact. \(\square\)
+
+Lemma 8.7. Suppose $G$ is totally disconnected. Then every compact neighborhood of 1 contains a compact open subgroup of $G$.
+
+Proof. Let $U$ be a compact neighborhood of 1. Take an open neighborhood $V \subseteq U$ of 1 in $G$, and set $F=U \backslash V$. As \{1\} is a connected component of $U$, Corollary 8.5 yields compact $D \subseteq U$, open in $U$, such that $1 \in D$ and $D \cap F=\varnothing$. Then $D \subseteq V$, so $D$ is open in $G$. Apply Lemma 8.6 to $D$. \(\square\)
+
+Corollary 8.8. $G$ has an open subgroup $G^{\prime}$ such that $G^{\prime} / G_{\mathrm{o}}$ is compact.\\
+Proof. Apply Lemma 8.7 to $G / G_{\mathrm{o}}$ in the role of $G$. \(\square\)
+
+Combining Theorem 8.2 and Lemma 8.8, we obtain Yamabe's Theorem as stated in the Introduction.
+
+\section*{9. Appendix on nonstandard methods}
+This appendix is for readers not familiar with nonstandard methods. For another exposition, see [2]; for a detailed treatment, see [7].
+
+The basic set-up. Suppose a mathematical structure is given by certain ambient sets, together with certain relations between them. (This covers almost anything. For example, a group is a set with a ternary relation on it, namely the graph of its group operation; a topological space is given by two sets, the set of points of the space, and the set of open subsets of the space, together with the membership relation between points and open sets.) More precisely, let $S_{1}, \ldots, S_{p}$ $\left(p \in \mathbb{N}^{\geq 1}\right)$ be the ambient sets, assumed to be nonempty and called basic sets, and let $R_{1}, \ldots, R_{q}(q \in \mathbb{N})$ be the relations between $S_{1}, \ldots, S_{p}$ describing our mathematical structure: for each index $j \in\{1, \ldots, q\}$ we are given indices $i(1), \ldots, i(n) \in\{1, \ldots, p\}$ such that
+
+$$
+R_{j} \subseteq S_{i(1)} \times \cdots \times S_{i(n)} .
+$$
+
+These relations $R_{j}$ are referred to as the basic relations or as the primitives of the structure. Often these primitives are (graphs of) functions
+
+$$
+f: S_{i(1)} \times \cdots \times S_{i(n)} \rightarrow S_{i(n+1)} .
+$$
+
+Using nonstandard analysis to study this structure includes three things:\\
+(NA1) Each basic set $S_{i}$ is extended to a set $S_{i}^{*} \supseteq S_{i}$, and to each basic relation $R_{j}$ as displayed above is associated a corresponding relation
+
+$$
+R_{j}^{*} \subseteq S_{i(1)}^{*} \times \cdots \times S_{i(n)}^{*}
+$$
+
+whose intersection with $S_{i(1)} \times \cdots \times S_{i(n)}$ is the original relation $R_{j}$. Thus our original structure $\mathbf{S}=\left(S_{1}, \ldots, S_{p} ; R_{1}, \ldots, R_{q}\right)$ ) gets extended to a structure\\
+$\mathbf{S}^{*}=\left(S_{1}^{*}, \ldots, S_{p}^{*} ; R_{1}^{*}, \ldots, R_{q}^{*}\right)$. This nonstandard extension $\mathbf{S}^{*}$ of $\mathbf{S}$ might contain useful "ideal" elements that are missing in $\mathbf{S}$.\\
+(NA2) Any elementary statement about the original structure S is true in S if and only if it is true in $\mathbf{S}^{*}$ : the transfer principle. After the example below we explain in a separate subsection what elementary statements are.\\
+(NA3) The structure S* enjoys a certain logical compactness property-it is $\kappa$-rich, $\kappa$ being an infinite cardinal- that S typically does not.
+
+We define " $\kappa$-rich" below. For many nonstandard arguments, it is enough to have (NA3) for $\kappa=\boldsymbol{\aleph}_{0}$. For our purpose it is enough to have $\kappa \geq \# S_{i}$ for $i=1, \ldots, p$. A key fact is that for any $\mathbf{S}$ and any infinite cardinal $\kappa$, there is always an extension $\mathbf{S}^{*}$ such that (NA1), (NA2), and (NA3) hold. At the end of this appendix we indicate one way-not the most constructive one, but easy to describe-to obtain such extensions $\mathbf{S}^{*}$, namely ultrapowers.
+
+Example. In applications, one of the basic sets will often be $\mathbb{R}$, with its usual ordering and (the graphs of) addition and multiplication among the primitives. We can express by an elementary statement that $\mathbb{R}$ with these primitives is an ordered field. Then by transfer, $\mathbb{R}^{*}$ with the corresponding starred primitives will be an ordered field extension of $\mathbb{R}$.
+
+Often we also have the subset $\mathbb{Z}$ of $\mathbb{R}$ as a primitive, and then we can express by an elementary statement the fact that $\mathbb{Z}$ is (the underlying subset of) a subring of the field $\mathbb{R}$ and that for every $r \in \mathbb{R}$ there exists a unique $k \in \mathbb{Z}$ with $k \leq r<k+1$. Then by transfer the set $\mathbb{Z}^{*}$ is a subring of the field $\mathbb{R}^{*}$ and there is for each $r \in \mathbb{R}^{*}$ a unique $k \in \mathbb{Z}^{*}$ with $k \leq r<k+1$; the latter expression abbreviates $k \leq^{*} r<^{*} k+^{*} 1$ : we omit stars when the context invites the reader to insert them mentally.
+
+One manifestation of (NA3) here is that there are $x \in \mathbb{R}^{*}$ such that $x>n$ for every $n$. This is because for any $n_{1}, \ldots, n_{m} \in \mathbb{N}$ there is an $x \in \mathbb{R}^{*}$ (even an $x \in \mathbb{R}$ ) with $x>n_{1}, \ldots, x>n_{m}$. Such an element $x>\mathbb{R}$ is said to be positive infinite, and its reciprocal is then a positive infinitesimal: $0<1 / x<1 / n$ for all $n \geq 1$.
+
+Elementary statements. Let a structure $\mathbf{S}=\left(\left(S_{i}\right) ;\left(R_{j}\right)\right)$ as above be given. For each basic set $S_{i}$ we take variables that we consider as ranging over $S_{i}$; these are just the symbols $v_{i}^{0}, v_{i}^{1}, v_{i}^{2}, \ldots$. We also fix for each element $a \in S_{i}$ a name ( $a, i$ ) for $a$ in its role as element of $S_{i}$. This allows us to form so-called atomic $\mathbf{S}$-formulas: these are expressions of the form $v_{i}^{m}=v_{i}^{n}$, or of the form $v_{i}^{m}=c$ where $c$ is the name of an element of $S_{i}$, or of the form $R_{j}\left(t_{1}, \ldots, t_{n}\right)$ where $R_{j} \subseteq S_{i(1)} \times \cdots \times S_{i(n)}$ is a primitive, and $t_{k}$ is for $k=1, \ldots, n$ either a variable ranging over $S_{i(k)}$, or the name of a particular element of $S_{i(k)}$.
+
+Arbitrary $\mathbf{S}$-formulas are constructed, starting with atomic $\mathbf{S}$-formulas, using the logical symbols for negation, disjunction, conjunction, existential quantification, and universal quantification: in other words, if $\phi, \psi$ are $\mathbf{S}$-formulas and $v$ is a variable, then
+
+$$
+\neg \phi, \quad(\phi \vee \psi), \quad(\phi \wedge \psi), \quad \exists v \phi, \quad \forall v \phi
+$$
+
+are also $\mathbf{S}$-formulas; in the latter two, the occurrences of $v$ are said to be bound by the quantifier $\exists v$, respectively, $\forall v$. An $\mathbf{S}$-sentence (or elementary statement about $\mathbf{S}$ ) is an $\mathbf{S}$-formula in which all occurrences of variables are bound by quantifiers. We have a recursive definition of what it means for such a sentence to be true in S. This recursion just reflects the usual meaning of the logical symbols: for example, an $\mathbf{S}$-sentence $\exists v \phi$, with $v=v_{i}^{n}$, is true in $\mathbf{S}$ iff for some $a \in S_{i}$ the shorter $\mathbf{S}$-sentence obtained by replacing the free (=non-bound) occurrences of $v$ in $\phi$ by the name of $a$ is true in S.
+
+Let in addition an extension $\mathbf{S}^{*}$ of $\mathbf{S}$ as in (NA1) be given. Then we have $\mathbf{S}^{*}$-formulas and $\mathbf{S}^{*}$-sentences, using the names we gave to elements $a \in S_{i}$ as well as names for new elements in $S_{i}^{*} \backslash S_{i}$. Every $\mathbf{S}$-formula is considered as an $\mathbf{S}^{*}$-formula by reading each $R_{j}$ in the atomic subformulas as standing for $R_{j}^{*}$. In particular, every $\mathbf{S}$-sentence is also an $\mathbf{S}^{*}$-sentence, but in an $\mathbf{S}^{*}$-sentence each variable $v_{i}^{n}$ ranges of course over $S_{i}^{*}$. In this way we make sense of the requirement (NA2).
+
+Definable sets. Let $\mathbf{S}$ be as before. Let $\phi(v(1), \ldots, v(n))$ be an $\mathbf{S}$-formula, that is, an $\mathbf{S}$-formula $\phi$ together with distinct variables $v(1), \ldots, v(n)$ that include all variables occurring free in $\phi$. Let $v(k)$ range over $S_{i(k)}$ for $k=1, \ldots, n$. Then we say that $\phi(v(1), \ldots, v(n))$ defines the subset of $S_{i(1)} \times \cdots \times S_{i(n)}$ consisting of those $\left(a_{1}, \ldots, a_{n}\right) \in S_{i(1)} \times \cdots \times S_{i(n)}$ for which the $\mathbf{S}$-sentence obtained from $\phi$ by replacing the free occurrences of $v(k)$ by the name of $a_{k} \in S_{i(k)}$ for $k=1, \ldots, n$ is true in $\mathbf{S}$.
+
+A set $X \subseteq S_{i(1)} \times \cdots \times S_{i(n)}$ is said to be $\mathbf{S}$-definable if it is defined in this way by some $\mathbf{S}$-formula $\phi(v(1), \ldots, v(n))$ as above. Every primitive $R_{j} \subseteq S_{i(1)} \times \cdots \times S_{i(n)}$ is $\mathbf{S}$-definable, and so is every finite subset of $S_{i(1)} \times \cdots \times S_{i(n)}$.
+
+If $X, Y \subseteq S_{i(1)} \times \cdots \times S_{i(n)}$ are $\mathbf{S}$-definable, then so are $X \cup Y, X \cap Y, X \backslash Y$. An $\mathbf{S}$-definable map is a map $f: X \rightarrow Y$ where $X \subseteq S_{i(1)} \times \cdots \times S_{i(m)}$ and $Y \subseteq S_{i(m+1)} \times \cdots \times S_{i(m+n)}$ are $\mathbf{S}$-definable and the graph of $f$ is $\mathbf{S}$-definable as a subset of $S_{i(1)} \times \cdots \times S_{i(m)} \times S_{i(m+1)} \times \cdots \times S_{i(m+n)}$. If $f: X \rightarrow Y$ is $\mathbf{S}$ -definable and $X^{\prime} \subseteq X$ is $\mathbf{S}$-definable, then the image $f\left(X^{\prime}\right) \subseteq Y$ is $\mathbf{S}$-definable set. Likewise with inverse images.
+
+Let $\mathbf{S}^{*}$ be an extension of $\mathbf{S}$ satisfying (NA1) and (NA2). Let an $\mathbf{S}$ -definable set $X \subseteq S_{i(1)} \times \cdots \times S_{i(n)}$ be given. Then we have an $\mathbf{S}^{*}$-definable set $X^{*} \subseteq S_{i(1)}^{*} \times \cdots \times S_{i(n)}^{*}$ with $X=X^{*} \cap\left(S_{i(1)} \times \cdots \times S_{i(n)}\right)$ : an S-formula that defines $X$ will define, in its role of $\mathbf{S}^{*}$-formula, the set $X^{*}$. (This is independent of the choice of $\mathbf{S}$-formula defining $X$.) Note that if $X$ is finite, then $X^{*}=X$. The transfer principle (NA2) extends to elementary statements about $\mathbf{S}$ that use the S-definable sets $X$ as primitives, with $X$ to be read as $X^{*}$ in construing the statement to be about $\mathbf{S}^{*}$.
+
+The sets $X^{*}$ above are in general not the only $\mathbf{S}^{*}$-definable sets. For example, any $a \in S_{i}^{*} \backslash S_{i}$ yields an $\mathbf{S}^{*}$-definable set $\{a\} \subseteq S_{i}^{*}$ that is not of the form $X^{*}$ for any $\mathbf{S}$-definable $X \subseteq S_{i}$.
+
+Richness. Let now $\kappa$ be an infinite cardinal. Our structure S is said to be $\kappa$-rich if for all $i(1), \ldots, i(n) \in\{1, \ldots, p\}$ and every family $\left(X_{\lambda}\right)_{\lambda \in \Lambda}$ of S-definable subsets of $S_{i(1)} \times \cdots \times S_{i(n)}$ with the finite intersection property and $\# \Lambda \leq \kappa$ we have $\bigcap_{\lambda} X_{\lambda} \neq \varnothing$. (It is enough to require this for $n=1$.) Here the "finite intersection property" means that $X_{\lambda_{1}} \cap \cdots \cap X_{\lambda_{m}} \neq \varnothing$ for all $\lambda_{1}, \ldots, \lambda_{m} \in \Lambda$. We often apply richness in its dual form as a covering property: if S is $\kappa$-rich and an $\mathbf{S}$-definable set $X \subseteq S_{i(1)} \times \cdots \times S_{i(n)}$ is covered by $\mathbf{S}$-definable sets $X_{\lambda} \subseteq S_{i(1)} \times \cdots \times S_{i(n)}$ with $\lambda \in \Lambda$ and $\# \Lambda \leq \kappa$, then $X$ is already covered by finitely many of these $X_{\lambda}$.
+
+Note that, as an ordered set, $\mathbb{R}$ is not $\aleph_{0}$-rich, since $\bigcap_{n}(n,+\infty)=\varnothing$. Thus our initial structure S will usually not be rich in any way. Suppose S* is an extension of $\mathbf{S}$ such that (NA1), (NA2), and (NA3) hold, so $\mathbf{S}^{*}$ is $\kappa$-rich. Thus if $X \subseteq S_{i(1)}^{*} \times \cdots \times S_{i(n)}^{*}$ is $\mathbf{S}^{*}$-definable and infinite, then $\# X>\kappa$.
+
+Power sets and internal sets. We now come to a point that is very characteristic of the nonstandard setting: for certain basic sets $S$ of our structure $\mathbf{S}$ we often include also its power set $\mathcal{P}(S)$ as a basic set, and the membership relation $\in_{S}:=\{(x, Y) \in S \times \mathcal{P}(S) \mid x \in Y\}$ as a primitive. Then we can quantify over elements of $\mathcal{P}(S)$, which gives enormous expressive power. For example, with $\mathbb{R}$ and $\mathcal{P}(\mathbb{R})$ as basic sets, together with the membership relation between them and the ordering on $\mathbb{R}$ as primitives, we can express by an elementary statement the fact that every nonempty subset of $\mathbb{R}$ with an upperbound in $\mathbb{R}$ has a least upperbound in $\mathbb{R}$.
+
+Let $S$ and $\mathcal{P}(S)$ be among the basic sets of our structure $\mathbf{S}$, with $\in_{S}$ among the primitives. Given $Y \in \mathcal{P}(S)$, the formula $v \in_{S} c_{Y}$, with $v$ a variable ranging over $S$ and $c_{Y}$ the name of $Y$ as element of $\mathcal{P}(S)$, defines the subset $Y$ of $S$, so $Y$ is not only an element in our structure $\mathbf{S}$, but also an $\mathbf{S}$-definable subset of $S$. In particular, every subset of $S$ is now $\mathbf{S}$-definable!
+
+Next, let an extension $\mathbf{S}^{*}$ of $\mathbf{S}$ be given that satisfies (NA1) and (NA2). Then $S^{*}$ and $\mathcal{P}(S)^{*}$ are basic sets of $\mathbf{S}^{*}$, and the star extension $\in_{S}^{*}$ of $\in_{S}$ is among the primitives. We arrange that the elements of $\mathcal{P}(S)^{*}$ are subsets of $S^{*}$ and $\in_{S}^{*}$ is the appropriate membership relation by replacing each $P \in \mathcal{P}(S)^{*}$ with $\left\{a \in S^{*} \mid a \in_{S}^{*} P\right\}$ ("Mostowski collapse"). This identifies $\mathcal{P}(S)^{*}$ with a subset of $\mathcal{P}\left(S^{*}\right)$. A set $X \subseteq S^{*}$ such that $X \in \mathcal{P}(S)^{*}$ via this identification is traditionally called an internal subset of $S^{*}$. We leave it to the reader to check that this is equivalent to being an $\mathbf{S}^{*}$-definable subset of $S^{*}$. A drawback of this identification is that it destroys the set inclusion $\mathcal{P}(S) \subseteq \mathcal{P}(S)^{*}$ : with the above identification a set $Y \in \mathcal{P}(S)$ turns into $Y^{*} \subseteq S^{*}$, as is easily verified, and usually $Y \neq Y^{*}$.
+
+To illustrate the above for $S=\mathbb{R}$ with its ordering among the primitives: the least upperbound property of $\mathbb{R}$ now yields by transfer the fact that every nonempty internal subset of $\mathbb{R}^{*}$ with an upperbound in the ordered set $\mathbb{R}^{*}$ has a least upperbound in $\mathbb{R}^{*}$. (Also, every nonempty internal subset of $\mathbb{R}^{*}$ that is contained in $\mathbb{N}^{*}$ has a least element, and, if it has an upperbound in $\mathbb{R}^{*}$, a largest element.) If our nonstandard extension $\mathbf{S}^{*}$ is $\boldsymbol{\aleph}_{0}$-rich, it follows for example that the subset $\mathbb{R}$ of $\mathbb{R}^{*}$ is not internal, since it has an upperbound in $\mathbb{R}^{*}$ but not a least one.
+
+Internal sequences. These powerset conventions on a basic set $S$ apply also to any finite cartesian product of basic sets. For example, a sequence $a_{1}, \ldots, a_{v}$ in $S^{*}$ with $\nu \in \mathbb{N}^{*}$, is formally the set of pairs
+
+$$
+\left\{\left(i, a_{i}\right) \mid i \in \mathbb{N}^{*}, 1 \leq i \leq \nu\right\} \subseteq \mathbb{R}^{*} \times S^{*} .
+$$
+
+To refer to this sequence as being internal will have an obvious meaning if we have, say, $\mathbb{R}, S, \mathcal{P}(\mathbb{R}), \mathcal{P}(\mathbb{R} \times S)$ among the basic sets, and the ordering on $\mathbb{R}$ and the various membership relations as primitives. It is best left to the reader in such cases to decide what to take as basic sets and primitives in order for the use of terms like "internal" to make sense.
+
+Products of internal sequences in groups. Let now a group $G$ be part of our structure S: its underlying set is one of the basic sets, and its product operation is a primitive. For any $n$ and any sequence $a_{1}, \ldots, a_{n}$ in $G$ there is a unique sequence $b_{0}, \ldots, b_{n}$ in $G$ such that $b_{0}=1_{G}$ and $b_{i+1}=b_{i} a_{i+1}$ for all $i \in \mathbb{N}$ with $0 \leq i<n$. By transfer this yields for an appropriate nonstandard extension $G^{*}$ : for any $v \in \mathbb{N}^{*}$ and any internal sequence $a_{1}, \ldots, a_{\nu}$ in $G^{*}$ there is a unique internal sequence $b_{0}, \ldots, b_{v}$ in $G^{*}$ such that $b_{0}=1_{G}$ and $b_{i+1}=b_{i} a_{i+1}$ for all $i \in \mathbb{N}^{*}$ with $0 \leq i<v$; in this case we use of course $a_{1} \cdots a_{v}$ as a\\
+suggestive notation for $b_{\nu}$; if all $a_{i}$ are equal to a fixed $a \in G$, then we write this "product" as $a^{\nu}$.
+
+Given any symmetric $X \subseteq G$, the smallest subgroup of $G$ that contains $X$ (usually called the subgroup of $G$ generated by $X$ ) is
+
+$$
+\left\{a_{1} \cdots a_{n} \mid a_{1}, \ldots, a_{n} \text { is a sequence in } X\right\} .
+$$
+
+By transfer, this yields: given any internal symmetric $X \subseteq G^{*}$, the smallest internal subgroup of $G^{*}$ that contains $X$ (which deserves to be called the internal subgroup internally generated by $X$ ) is
+
+$$
+\left\{a_{1} \cdots a_{\nu} \mid \nu \in \mathbb{N}^{*}, a_{1}, \ldots, a_{\nu} \text { is an internal sequence in } X\right\} .
+$$
+
+Topological spaces and continuity. To include a (nonempty) topological space $(S, \tau)$ in $\mathbf{S}$, where $\tau$ is the set of open sets of the space, we take $S$ and $\mathcal{P}(S)$ as basic sets, together with the membership relation $\in_{S} \subseteq S \times \mathcal{P}(S)$ and $\tau \subseteq \mathcal{P}(S)$ as primitives. (Of course there may be further primitives involving $S$.) Let $\mathbf{S}^{*}$ be an extension of $\mathbf{S}$ satisfying (NA1) and (NA2). Then we have $\left(S^{*}, \tau^{*}\right)$ as part of $\mathbf{S}^{*}$, with $\tau^{*} \subseteq \mathcal{P}\left(S^{*}\right)$ after Mostowski collapse. However, $\tau^{*}$ is not in general the set of open sets for a topology on the set $S^{*}$. The sets in $\tau^{*}$ are by definition the internally open subsets of $S^{*}$; their complements in $S^{*}$ are the internally closed subsets of $S^{*}$. By transfer, there is for each internal subset $X$ of $S^{*}$ a smallest internally closed subset of $S^{*}$ containing $X$, and we call this the internal closure of $X$ in $S^{*}$. An internal neighborhood of a point $x \in S^{*}$ is by definition an internal set $U \subseteq S^{*}$ that contains some internally open $V \subseteq S^{*}$ with $x \in V$.
+
+Let a point $x \in S$ be given. The monad $\boldsymbol{\mu}(x)$ of $x$ is by definition the intersection of all sets $U^{*}$ with $U$ a neighborhood of $x$ in $S$. These sets $U^{*}$ are among the internal neighborhoods of $x$. Now assume that our extension $\mathbf{S}^{*}$ is $\kappa$-rich with $\kappa \geq \mathcal{P}(S)$. Then there are internal neighborhoods of $x$ that are contained in every such $U^{*}$, that is, there are internal neighborhoods of $x$ contained in $\boldsymbol{\mu}(x)$. Another useful consequence ("overspill"): if $X \subseteq S^{*}$ is internal and $\boldsymbol{\mu}(x) \subseteq X$, then $U^{*} \subseteq X$ for some neighborhood $U$ of $x$ in $S$.
+
+Let the topological space $\left(S^{\prime}, \tau^{\prime}\right)$ also be part of our structure $\mathbf{S}$ as explained above; of course we allow $(S, \tau)=\left(S^{\prime}, \tau^{\prime}\right)$. To deal with the set $C\left(S, S^{\prime}\right)$ of continuous functions $f: S \rightarrow S^{\prime}$ we include $\mathcal{P}\left(S \times S^{\prime}\right)$ and $\in_{S \times S^{\prime}}$ as part of $\mathbf{S}$. Then $C\left(S, S^{\prime}\right)$ is an $\mathbf{S}$-definable subset of $\mathcal{P}\left(S \times S^{\prime}\right)$, where a function is identified with its graph. After Mostowski collapse, the $\mathbf{S}^{*}$-definable set $C\left(S, S^{\prime}\right)^{*} \subseteq \mathcal{P}\left(S^{*} \times S^{\prime *}\right)$ consists of the (graphs of) functions $g: S^{*} \rightarrow S^{\prime *}$ with the property that $g^{-1}(U) \in \tau^{*}$ for all $U \in \tau^{\prime *}$. It is these functions $g$ that are called internally continuous.
+
+Ultrapowers. Fix an infinite index set $\Lambda$ (often $\Lambda=\mathbb{N}$ ). An ultrafilter on $\Lambda$ is by definition a collection $\mathbf{u}$ of subsets of $\Lambda$ such that for all $A, B \subseteq \Lambda$ :
+
+\begin{itemize}
+  \item[(1)] $\varnothing \notin \mathbf{u}, \Lambda \in \mathbf{u}$,
+  \item[(2)] $A, B \in \mathbf{u} \Longrightarrow A \cap B \in \mathbf{u}$,
+  \item[(3)] $A \in \mathbf{u}, A \subseteq B \Longrightarrow B \in \mathbf{u}$,
+  \item[(4)] $A \in \mathbf{u}$ or $\Lambda \backslash A \in \mathbf{u}$.
+\end{itemize}
+
+An ultrafilter $\mathbf{u}$ on $\Lambda$ defines a finitely additive measure $\mu: \mathcal{P}(\Lambda) \rightarrow \mathbb{R}$ on the boolean algebra $\mathcal{P}(\Lambda)$ of all subsets of $\Lambda$, by setting $\mu(A)=0$ if $A \notin \mathbf{u}$ and $\mu(A)=1$ if $A \in \mathbf{u}$. So $\mu(\Lambda)=1$, and this measure only takes the values 0 and 1 . Any finitely additive measure $\mu: \mathcal{P}(\Lambda) \rightarrow \mathbb{R}$ taking its values in $\{0,1\}$ with $\mu(\Lambda)=1$ arises from a unique ultrafilter u on $\Lambda$ in this way. The conditions (1), (2), (3) above define the notion of a proper filter on $\Lambda$. It is routine to check that ultrafilters on $\Lambda$ are exactly the proper filters on $\Lambda$ that are maximal with respect to inclusion. Thus by Zorn, every proper filter on $\Lambda$ is contained in an ultrafilter on $\Lambda$.
+
+Given $\lambda \in \Lambda$, we have the ultrafilter $\mathbf{u}(\lambda):=\{A \subseteq \Lambda \mid \lambda \in A\}$, and ultrafilters of this form are called principal. If an ultrafilter u on $\Lambda$ is not principal, it has no finite subset of $\Lambda$ as an element, and thus
+
+$$
+\operatorname{cofinite}(\Lambda):=\{A \subseteq \Lambda \mid \Lambda \backslash A \text { is finite }\} \subseteq \mathbf{u} .
+$$
+
+Since cofinite $(\Lambda)$ is a proper filter on $\Lambda$, there do exist ultrafilters $\mathbf{u}$ on $\Lambda$ with cofinite $(\Lambda) \subseteq \mathbf{u}$, and these are called nonprincipal.
+
+Let $\mathbf{u}$ be an ultrafilter on $\Lambda$. This allows us to extend functorially each set $S$ to a set $S^{*}$ as follows. Elements $\left(x_{\lambda}\right)$ and $\left(y_{\lambda}\right)$ of the set $S^{\Lambda}$ are said to be $\mathbf{u}$-equivalent if $\left\{\lambda \in \Lambda \mid x_{\lambda}=y_{\lambda}\right\} \in \mathbf{u}$, that is, $x_{\lambda}=y_{\lambda}$ for almost all $\lambda$ in the sense of the measure associated to $\mathbf{u}$. This defines an equivalence relation on $S^{\Lambda}$, and we define $S^{*}$ to be the set of equivalence classes $\left(x_{\lambda}\right) / \mathbf{u}$. We identify $S$ with a subset of $S^{*}$ via the diagonal embedding $S \rightarrow S^{*}$, which sends $x \in S$ to the equivalence class $\left(x_{\lambda}\right) / \mathbf{u}$ with $x_{\lambda}=x$ for all $\lambda$.
+
+Given sets $S_{1}, \ldots, S_{n}$ and a relation $R \subseteq S_{1} \times \cdots \times S_{n}$, we have a relation $R^{*} \subseteq S_{1}^{*} \times \cdots \times S_{n}^{*}$ such that for all $\left(x_{1 \lambda}\right) \in S_{1}^{\Lambda}, \ldots,\left(x_{n \lambda}\right) \in S_{n}^{\Lambda}$,
+
+$$
+\left(\left(x_{1 \lambda}\right) / \mathbf{u}, \ldots,\left(x_{n \lambda}\right) / \mathbf{u}\right) \in R^{*} \Longleftrightarrow\left(x_{1 \lambda}, \ldots, x_{n \lambda}\right) \in R \text { for } \mathbf{u} \text {-almost all } \lambda .
+$$
+
+Then $R^{*} \cap\left(S_{1} \times \cdots \times S_{n}\right)=R$, and so (NA1) holds with this definition of starring sets and relations among them. Also (NA2) holds by a well-known theorem of Łoś; its proof is easy and can be found in most basic texts on model theory. If u is principal, then $S^{*}=S$ for all $S$, and we get nothing new. But if u is nonprincipal and $\Lambda$ is countable, then (NA3) holds in the sense that $\mathbf{S}^{*}$ is\\
+$\kappa_{0}$-rich. This is adequate for many applications. For any infinite cardinal $\kappa$ and any set $\Lambda$ with $\# \Lambda \geq \kappa$ there exist ultrafilters $\mathbf{u}$ on $\Lambda$ such that for any initial structure $\mathbf{S}$ the extension $\mathbf{S}^{*}$ resulting from $\mathbf{u}$ as above is $\kappa$-rich.
+
+\section*{References}
+\begin{itemize}
+  \item[] [1] E. Breuillard, B. Green and T. Tao, The structure of approximate groups. Publ. Math. IHES 116 (2012), 115-221. Zbl 1260.20062 MR 3090256
+  \item[] [2] L. van den Dries and A. J. Wilkie, Gromov's theorem on groups of polynomial growth and elementary logic. J. Algebra 89 (1984), 349-374. Zbl 0552.20017 MR 0751150
+  \item[] [3] A. M. Gleason, Groups without small subgroups. Ann. of Math. 56 (1952), 193-212. Zbl 0049.30105 MR 0049203
+  \item[] [4] A. M. Gleason, On the structure of locally compact groups. Duke Math. J. 18 (1951), 85-104.
+  \item[] [5] I. Goldbring, Hilbert's fifth problem for local groups. Ann. of Math. 172 (2010), 1269-1314. Zbl 1219.22004 MR 2680491
+  \item[] [6] M. Gromov, Groups of polynomial growth and expanding maps. Publ. Math. IHES 53 (1981), 53-73. Zbl 0474.20018 MR 0623534
+  \item[] [7] C. W. Henson, Foundations of Nonstandard Analysis: A Gentle Introduction to Nonstandard Extensions; Nonstandard Analysis: Theory and Applications. L. O. Arkeryd, N. J. Cutland, and C. W. Henson, eds., NATO Science Series C:, Springer, 2001. Zbl 0910.03040 MR 1603228
+  \item[] [8] D. Hilbert, Mathematische Probleme. Nachr. Akad. Wiss. Göttingen (1900), 253-297. JFM 31.0068.03
+  \item[] [9] J. Hirschfeld, The nonstandard treatment of Hilbert's fifth problem. Trans. AMS 321 (1990), 379-400. Zbl 0705.03033 MR 0967314
+  \item[] [10] E. Hrushovski, Stable group theory and approximate subgroups. Journal of the American Mathematical Society 25 (2012), 189-243. Zbl 1259.03049 MR 2833482
+  \item[] [11] K. Iwasawa, On some types of topological groups. Ann. of Math. 2 (1949), 507-557. Zbl 0034.01803 MR 0029911
+  \item[] [12] R. Jacoby, Some theorems on the structure of locally compact local groups. Ann. of Math. 66 (1957), 36-69. Zbl 0084.03202 MR 0089997
+  \item[] [13] I. Kaplansky, Lie Algebras and Locally Compact Groups. University of Chicago Press, 1971. Zbl 0223.17001 MR 0276398
+  \item[] [14] M. Kuranishi, On local euclidean groups satisfying certain conditions. Proc. Amer. Math. Soc. 1 (1950), 372-380. Zbl 0038.01701 MR 0036238
+  \item[] [15] D. Montgomery and L. Zippin, Small subgroups of finite-dimensional groups. Ann. of Math. 56 (1952), 213-241. Zbl 0049.30106 MR 0049204
+  \item[] [16] D. Montgomery and L. Zippin, Topological Transformation Groups. Interscience, New York, 1955. Zbl 0068.01904 MR 0073104
+\end{itemize}
+
+\begin{itemize}
+  \item[] [17] P. Olver, Non-associative local Lie groups. Journal of Lie Theory 6 (1996), 23-51. Zbl 0862.22005 MR 1406004
+  \item[] [18] Palais, Gleason's Contribution to the Solution of Hilbert's Fifth Problem. Notices of the AMS 56 (2009), 1243-1248.
+  \item[] [19] J.-P. Serre, Le cinquiéme probléme de Hilbert. Etat de la question en 1951. Bull. Soc. Math. France 80 (1952), 1-10. Zbl 0046.25302 MR 0049205
+  \item[] [20] T. Tao, Hilbert's fifth problem and related topics, American Mathematical Society, 2014. Zbl 1298.22001 MR 3237440
+  \item[] [21] H. Yamabe, On the conjecture of Iwasawa and Gleason. Ann. of Math. 58 (1953), 48-54. Zbl 0053.01601 MR 0054613
+  \item[] [22] H. Yamabe, A generalization of a theorem of Gleason. Ann. of Math. 58 (1953), 351-365. Zbl 0053.01602 MR 0058607
+\end{itemize}
+
+(Reçu le 23 juin 2013)\\
+Lou van den Dries, University of Illinois, Department of Mathematics, 1409 W.\\
+Green Street, Urbana, IL 61801, USA\\
+e-mail: \href{mailto:vddries@math.uiuc.edu}{vddries@math.uiuc.edu}
+
+Isaac Goldbring, University of Illinois at Chicago, Department of Mathematics, Statistics, and Computer Science, Science and Engineering Offices (M/C 249), 851 S.\\
+Morgan St., Chicago, IL 60607, USA\\
+e-mail: \href{mailto:isaac@math.uic.edu}{isaac@math.uic.edu}
+
+
+\end{document}
