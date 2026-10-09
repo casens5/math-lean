@@ -1,0 +1,1284 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+
+\title{The number of squares and $B_{h}[g]$ sets }
+
+\author{BEN GREEN ${ }^{1}$ (Cambridge)}
+\date{}
+
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\DeclareUnicodeCharacter{25A1}{\ifmmode\square\else{$\square$}\fi}
+
+\begin{document}
+\maketitle
+by
+
+
+
+\begin{enumerate}
+  \item Introduction. In this paper we investigate the problem of minimising, over all functions $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ with $\sum_{x} f(x)=N$, the quantity
+\end{enumerate}
+
+$$
+M(f)=\sum_{\substack{a, b, c, d \\ a+b=c+d}} f(a) f(b) f(c) f(d) .
+$$
+
+We obtain a non-trivial lower bound for $M(f)$ using techniques from Fourier analysis. We then demonstrate the relevance of this bound to upper bounds for $B_{h}[g]$ sets. Recall that $A \subseteq\{1, \ldots, N\}$ is a $B_{h}[g]$-set if the number of representations of any $x$ as $a_{1}+\cdots+a_{h}$ (with $a_{i} \in A$ ) is at most $g$, where we consider two such representations to be the same if they differ only in the ordering of the summands. Letting $A(h, g, N)$ denote the size of the largest $B_{h}[g]$ set that one may pick from $\{1, \ldots, N\}$, we prove that
+
+$$
+A(3,1, N) \leq\left(\frac{7}{2}\right)^{1 / 3} N^{1 / 3}(1+o(1))
+$$
+
+and that
+
+$$
+A(4,1, N) \leq 7^{1 / 4} N^{1 / 4}(1+o(1)) .
+$$
+
+Both of these improve on the current best-known bounds. We then obtain new bounds for $A(h, 1, N)$ when $h$ is large. In the final part of the paper we turn our attention to bounds for $A(2, g, N)$. Using an idea from a recent paper of Cilleruelo, Ruzsa and Trujillo [3] in combination with our own approach, we improve on the best-known bounds.\\
+2. Fourier analysis on $\mathbb{Z}_{N}$. We shall make substantial use of Fourier analysis. Our notation follows [5], but for the convenience of the reader we take this opportunity to give a swift introduction.
+
+Let $N$ be a fixed positive integer, and write $\mathbb{Z}_{N}$ for the cyclic group with $N$ elements. Let $\omega$ denote the complex number $e^{2 \pi i / N}$. Although $\omega$ clearly depends on $N$, we shall not indicate this dependence in the rest of the paper, trusting that the value of $N$ is clear from context. Let $f: \mathbb{Z}_{N} \rightarrow \mathbb{C}$ be any
+
+\footnotetext{${ }^{1}$ Supported by a grant from the Engineering and Physical Sciences Research Council (EPSRC) of the United Kingdom.
+}
+function. Then for $r \in \mathbb{Z}_{N}$ we define the Fourier transform
+$$
+\hat{f}(r)=\sum_{x \in \mathbb{Z}_{N}} f(x) \omega^{r x} .
+$$
+We shall repeatedly use two important properties of the Fourier transform. The first is Parseval's identity, which states that if $f: \mathbb{Z}_{N} \rightarrow \mathbb{C}$ and $g$ : $\mathbb{Z}_{N} \rightarrow \mathbb{C}$ are two functions then
+$$
+N \sum_{x \in \mathbb{Z}_{N}} f(x) \overline{g(x)}=\sum_{r \in \mathbb{Z}_{N}} \hat{f}(r) \overline{\hat{g}(r)} .
+$$
+The second is the interaction of convolutions with the Fourier transform. If $f, g: G \rightarrow \mathbb{C}$ are two functions on an abelian group $G$ we define the convolution
+$$
+(f * g)(x)=\sum_{y \in G} f(y) \overline{g(y-x)} .
+$$
+A key fact, which we shall use without further comment, is that
+$$
+(f * g)^{\wedge}(r)=\hat{f}(r) \overline{\hat{g}(r)} .
+$$
+The reader will note that this is a rather non-standard definition and, in particular, that the operation we have defined is not associative. There are some situations in which it would be very tedious to indicate the intended bracketing of terms. Therefore we shall adopt the convention that
+$$
+f_{1} * f_{2} * \cdots * f_{k}=\left(\left(\left(f_{1} * f_{2}\right) * f_{3}\right) \cdots * f_{k}\right) .
+$$
+Take, for example, sets $A_{j}(j=1,2,3)$ and identify them with their characteristic functions. Then $\left(A_{1} * A_{2} * A_{3}\right)(x)$ is simply the number of triples $\left(a_{1}, a_{2}, a_{3}\right) \in A_{1} \times A_{2} \times A_{3}$ with $a_{1}-a_{2}+a_{3}=x$. We will often use the * notation in contexts similar to this, and the practice of identifying a set with its characteristic function will also feature repeatedly in what follows.
+
+If $f: G \rightarrow \mathbb{C}$ is a function then very occasionally we will write $f^{\circ}$ for the function defined by $f^{\circ}(x)=f(-x)$. Observe that $\left(A_{1} * A_{2}^{\circ}\right)(x)$ is the number of pairs $\left(a_{1}, a_{2}\right) \in A_{1} \times A_{2}$ with $a_{1}+a_{2}=x$.
+
+One more piece of notation: throughout this paper we use $O$-notation for quantities varying with $N$, so that (for example) $X=o(1)$ means that $X \rightarrow 0$ as $N \rightarrow \infty$.
+
+\begin{itemize}
+  \item[3.] $B_{h}[g]$ sets. This section is a summary of the results known about
+\end{itemize}
+
+$B_{h}[g]$ sets up to March 2000. Other accounts may be found in [3], [6], [8] and [14].
+
+From now on we denote by $A(h, g, N)$ the size of the largest $B_{h}[g]$-set contained in $\{1, \ldots, N\}$, and write $A(h, 1, N)=A(h, N)$ for short.
+
+An early paper in this area was that of Erdős and Turán [4] in 1941, which is nicely exposited in [9]. This paper dealt with the problem of $B_{2}$ [1]-sets, which are also known as $B_{2}$ - or Sidon Sets. The bound
+
+
+\begin{equation*}
+A(2, N) \leq N^{1 / 2}+N^{1 / 4}+1 \tag{1}
+\end{equation*}
+
+
+can be obtained from their argument. Together with a slightly earlier result of Singer, which demonstrates the existence of $B_{2}$-sets with $|A|=$ $N^{1 / 2}(1+o(1))$, this provides an asymptotically correct bound for $A(2, N)$. The question of the best possible error term is an extremely interesting one, not least because no-one has managed so much as to improve the constant attached to the $N^{1 / 4}$ in (1). It has often been conjectured that the correct error term is $O\left(N^{\epsilon}\right)$.
+
+The situation for all other values of $h$ and $g$ is rather different, and in fact the correct asymptotics have not been obtained in any case. By way of lower bounds Bose and Chowla showed that $A(h, N) \geq N^{1 / h}(1+o(1))$, and in a recent preprint Cilleruelo, Ruzsa and Trujillo [3] obtained good lower bounds for $A(2, g, N)$ with $g>1$.
+
+Turning to upper bounds, a fairly simple counting argument shows that
+
+
+\begin{equation*}
+A(h, g, N) \leq(g h \cdot h!)^{1 / h} N^{1 / h} . \tag{2}
+\end{equation*}
+
+
+We call this the trivial bound, and for the reader's convenience we sketch now the case $h=2$. Let $A \subseteq\{1, \ldots, N\}$ be a $B_{2}[g]$-set. Observe that if $x=a_{1}+a_{2}$ with $a_{i} \in A$ then $1 \leq x \leq 2 N$. Hence by double counting ordered pairs $\left(a_{1}, a_{2}\right) \in A^{2}$ we find that $|A|^{2} \leq 2 g \cdot 2 N$, which translates into the trivial bound in this case, namely
+
+
+\begin{equation*}
+A(2, g, N) \leq(4 g)^{1 / 2} N^{1 / 2} . \tag{3}
+\end{equation*}
+
+
+These results show that $A(h, g, N)$ has order of magnitude $N^{1 / h}$, so it makes sense to define
+
+$$
+\alpha(h, g)=\limsup _{N \rightarrow \infty} N^{-1 / h} A(h, g, N)
+$$
+
+for all $h \geq 2$ and $g \geq 1$. We write $\alpha(h)=\alpha(h, 1)$. The trivial bound and the Bose-Chowla theorem combine to give, in this notation,
+
+$$
+1 \leq \alpha(h, g) \leq(g h \cdot h!)^{1 / h}
+$$
+
+and the results of Erdős - Turán and Singer show that $\alpha(2)=1$.\\
+Until recently the trivial bound had not been improved for any pair $(h, g)$ with $g>1$. However Cilleruelo, Ruzsa and Trujillo [3] show that
+
+
+\begin{equation*}
+\alpha(2, g) \leq \frac{2 \pi+4}{\sqrt{\pi^{2}+4 \pi+8}} g^{1 / 2} . \tag{4}
+\end{equation*}
+
+
+The constant appearing here is about 1.864. For $g=2$ Cilleruelo [2] and Helm have independently given the bound
+
+
+\begin{equation*}
+\alpha(2,2) \leq \sqrt{6} . \tag{5}
+\end{equation*}
+
+
+Cilleruelo's proof is simple and combinatorial, but only generalises to give
+
+$$
+\alpha(2, g) \leq \sqrt{4 g-2},
+$$
+
+a slight improvement on (3). In §8 we offer our own improvement to the upper bound (3). This improves previously known results for $g \leq 68$. Finally in §9 we combine some of our ideas with some of the ideas in [3] to improve the bound (4) for all $g$.
+
+In the case $g=1$ the situation is slightly better. Here the technique of Erdős and Turán, which gave the value of $\alpha(2)$, has a natural generalisation which gives a non-trivial upper bound for $\alpha(h)$. The first result of this kind was obtained by Lindström [12] in 1969. He showed that
+
+
+\begin{equation*}
+\alpha(4) \leq 8^{1 / 4} . \tag{6}
+\end{equation*}
+
+
+Generalising his technique, Jia [10] obtained the bound
+
+
+\begin{equation*}
+\alpha(2 k) \leq\left(k(k!)^{2}\right)^{1 / 2 k} . \tag{7}
+\end{equation*}
+
+
+A modification of this approach gives a corresponding bound for odd values of $h$. Indeed the bound
+
+
+\begin{equation*}
+\alpha(2 k-1) \leq(k!)^{2 /(2 k-1)} \tag{8}
+\end{equation*}
+
+
+was obtained independently by Chen [1] and Graham [6]. We conclude this introduction by mentioning two further results. The first is the paper of Kolountzakis [11], in which the bound (7) is obtained by an interesting Fourier technique. We believe that this proof and that of Jia are morally the same, but the new perspective is interesting. Secondly it is worth remarking\\[0pt]
+that Graham [6] obtained a slight improvement on (8) in the case $k=2$. He proved that
+
+
+\begin{equation*}
+\alpha(3) \leq\left(4-\frac{1}{228}\right)^{1 / 3} . \tag{9}
+\end{equation*}
+
+
+The argument is long and combinatorial.\\
+4. Bounds for $B_{4}$ sets - the first part of the argument. In this section we begin our treatment of $B_{4}$ sets. It is hoped that, after reading this section, the reader will have a good idea of the direction in which we are headed.
+
+Like all previous approaches, our attack takes as motivation the original argument of Erdős and Turán from 1941 [4]. We now give this argument in the form that we use to get our generalisation. We leave it as a (slightly non-trivial) exercise for the reader to check that our argument and that of [4] are really the same.
+
+Theorem 1 (Erdős - Turán) For all $N$ we have the bound
+
+$$
+A(2, N) \leq N^{1 / 2}+N^{1 / 4}+1 .
+$$
+
+P r o o f. Let $A \subseteq\{1, \ldots, N\}$ be a $B_{2}$-set. It is easy to check that we must have $A * A(x) \leq 1$ for all $x \neq 0$. Let $u$ be a positive integer to be chosen later, and regard $A$ as a subset of $\mathbb{Z}_{N+u}$. It is no longer the case that the modular version of $A * A$ satisfies $A * A(x) \leq 1$ for all $x$, but it is true that $A * A(x) \leq 1$ for $0<|x| \leq u$. Let $I$ be the characteristic function of $\{1, \ldots, u\}$, and write
+
+$$
+E=\sum_{x \in \mathbb{Z}_{N+u}} A * A(x) I * I(x) .
+$$
+
+We count $E$ in two ways. Firstly, by the discussion above, we have
+
+$$
+\begin{aligned}
+E & \leq|A| u+\sum_{0<|x| \leq u} A * A(x) I * I(x) \\
+& \leq|A| u+u^{2} .
+\end{aligned}
+$$
+
+Secondly, by Parseval's identity, we have
+
+$$
+\begin{aligned}
+E & =\frac{1}{N+u} \sum_{r}|\hat{A}(r)|^{2}|\hat{I}(r)|^{2} \\
+& \geq \frac{|A|^{2} u^{2}}{N+u},
+\end{aligned}
+$$
+
+where the hat symbol denotes Fourier transform in $\mathbb{Z}_{N+u}$. Comparing these upper and lower bounds for $E$, and putting $u=\left\lfloor N^{3 / 4}\right\rfloor$, gives the result. □
+
+An interesting feature of the argument is that we only used the fact that $A * A(x) \leq 1$ for $0<|x| \leq N^{3 / 4}$, which seems to be a much weaker statement than saying that $A$ is $B_{2}$. Somehow this fact is the major barrier to improving the error term in (1).
+
+We now move on to $B_{4}$-sets. Let $A \subseteq\{1, \ldots, N\}$ be a $B_{4}$-set.\\
+Lemma 2 For all $x \in \mathbb{Z}$ we have
+
+$$
+A * A * A * A(x) \leq 4(1+|A|(A * A)(x)) .
+$$
+
+P r o o f. Fix $x$. The quantity $A * A * A * A(x)$ counts the number of quadruples $\left(a_{1}, a_{2}, b_{1}, b_{2}\right) \in A^{4}$ with
+
+
+\begin{equation*}
+a_{1}+a_{2}-b_{1}-b_{2}=x . \tag{10}
+\end{equation*}
+
+
+If there are no solutions to this equation then the lemma is immediate.\\
+We show first that if there is a solution to (10) in which $a_{i} \neq b_{j}$ for all $i, j$ then (10) has at most 4 solutions. Indeed fix such a solution $\left(a_{1}, a_{2}, b_{1}, b_{2}\right)$ and suppose that $\left(a_{1}^{\prime}, a_{2}^{\prime}, b_{1}^{\prime}, b_{2}^{\prime}\right)$ is another solution. Then
+
+$$
+a_{1}+a_{2}+b_{1}^{\prime}+b_{2}^{\prime}=a_{1}^{\prime}+a_{2}^{\prime}+b_{1}+b_{2} .
+$$
+
+But $A$ is $B_{4}$, so the quadruples $\left(a_{1}, a_{2}, b_{1}^{\prime}, b_{2}^{\prime}\right)$ and $\left(a_{1}^{\prime}, a_{2}^{\prime}, b_{1}, b_{2}\right)$ are the same up to a reordering. It follows that $\left\{a_{1}^{\prime}, a_{2}^{\prime}\right\}=\left\{a_{1}, a_{2}\right\}$ and $\left\{b_{1}^{\prime}, b_{2}^{\prime}\right\}=\left\{b_{1}, b_{2}\right\}$, giving at most 4 possibilities.
+
+If there is no solution of the kind discussed here then all solutions have $a_{1}=b_{1}, a_{1}=b_{2}, a_{2}=b_{1}$ or $a_{2}=b_{2}$. It is clear that, for each of these possibilities, (10) has $|A|(A * A)(x)$ solutions. Adding together everything above gives the result of the lemma. \(\square\)
+
+We remark that the important feature of the above bound is the number 4. On average, $A * A(x)$ will be tiny.
+
+Once again we embed the problem into a cyclic group where we can take finite Fourier transforms. Let $v \leq N$ be a parameter to be chosen later, and $\operatorname{regard} A$ as a subset of $\mathbb{Z}_{2 N+v}$ in the obvious way. Since $A+A \subseteq[1, \ldots, 2 N]$, the modular version of $A * A * A * A$ will satisfy the bound of Lemma 2 for $|x| \leq v$. That is to say,
+
+
+\begin{equation*}
+A * A * A * A(x) \leq 4(1+|A|(A * A)(x)) \tag{11}
+\end{equation*}
+
+
+for $|x| \leq v$, where everything in sight lives in $\mathbb{Z}_{2 N+v}$. Let $I=[1, \ldots, u]$ (as a subset of $\mathbb{Z}_{2 N+v}$ ), where $u \leq v$ is another parameter to be chosen later. It will turn out that $u$ needs to be significantly smaller than $v$. For the remainder of this section the hat symbol refers to Fourier transforms on $\mathbb{Z}_{2 N+v}$. Using (11) we have the following key computation.
+
+
+\begin{align*}
+\frac{1}{2 N+v} \sum_{r}|\hat{A}(r)|^{4}|\hat{I}(r)|^{2} & =\sum_{x}(A * A * A * A)(x)(I * I)(x) \\
+& \leq 4 u^{2}+4|A| \sum_{x}(A * A)(x)(I * I)(x) \\
+& =4 u^{2}+\frac{4|A|}{2 N+v} \sum_{r}|\hat{A}(r)|^{2}|\hat{I}(r)|^{2} \\
+& \leq 4 u^{2}+\frac{4|A|}{2 N+v}|A|^{2} \sum_{r}|\hat{I}(r)|^{2} \\
+& =4 u^{2}+\frac{4|A|}{2 N+v}|A|^{2}(2 N+v) u \\
+& \leq 4 u^{2}+\frac{2^{24} N^{7 / 4} u}{2 N+v}, \tag{12}
+\end{align*}
+
+
+where we have used the fact that $v \leq N$ and the trivial bound $|A| \leq$ $100 N^{1 / 4}$. The inequality (12) gives immediately that
+
+
+\begin{equation*}
+8 N u^{2}+4 u^{2} v+2^{24} N^{7 / 4} u \geq \sum_{r}|\hat{A}(r)|^{4}|\hat{I}(r)|^{2} . \tag{13}
+\end{equation*}
+
+
+Using the trivial lower bound $|A|^{4} u^{2}$ for the right hand side of (13) together with $u=v=N^{7 / 8}$ gives the Lindström bound (6). However we are in a position to make a further improvement. The set $A$ is extremely irregularly distributed in $\mathbb{Z}_{2 N}$, being contained in $\{1, \ldots, N\}$. This information allows us to say something non-trivial about $\hat{A}(r)$ when $r$ is small and non-zero. Much of our paper is concerned with exactly how much it is possible to deduce from this observation as regards (13). However the reader who is keen to see an improvement of (6) as quickly as possible may care to find a positive constant $c$ such that either $|\hat{A}( \pm 1)| \geq c|A|$ or $|\hat{A}( \pm 2)| \geq c|A|$. Since $I$ is a rather small interval the coefficients $\hat{I}( \pm 1)$ and $\hat{I}( \pm 2)$ are as near to $|I|$ as makes no difference. Substituting into (13) and putting $u=v=N^{7 / 8}$ gives a bound of form
+
+$$
+|A| \leq\left(8-2 c^{4}\right)^{1 / 4} N^{1 / 4}(1+o(1)) .
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item A lower bound for the number of squares. Let $f:\{1, \ldots, N\} \rightarrow$ $\mathbb{R}$ be a function. Write $|f|=\sum_{x} f(x)$ and suppose that $|f|=N$. Define\\
+the quantity $M(f)$ by
+\end{enumerate}
+
+$$
+M(f)=\sum_{\substack{a, b, c, d \\ a+b=c+d}} f(a) f(b) f(c) f(d)=\sum_{x}(f * f)(x)^{2}=f * f * f * f(0) .
+$$
+
+Since it is quite standard to refer to a quadruple of integers $(a, b, c, d)$ with $a+b=c+d$ as a square, we call $M(f)$ the number of squares for $f$. Let us now introduce Fourier analysis to the study of $M(f)$. We can regard $f$ as a subset of $\mathbb{Z}_{2 N}$ in a natural way, by identifying $\{1, \ldots, N\}$ with the "first half" of $\mathbb{Z}_{2 N}$. Furthermore when we do this the modular convolution $f * f(x)$ is precisely the same as the $\mathbb{Z}$-version, since the $\mathbb{Z}$-version of $f * f$ is supported in an interval of length $2 N$. It follows that
+
+
+\begin{equation*}
+M(f)=\sum_{x \in \mathbb{Z}_{2 N}} f * f(x)^{2}=\frac{1}{2 N} \sum_{r \in \mathbb{Z}_{2 N}}|\hat{f}(r)|^{4} . \tag{14}
+\end{equation*}
+
+
+We shall be concerned with the following problem.\\
+Problem 3 How small can $M(f)$ be, if $|f|=N$ ?\\
+The reader who has looked at Section 4 will realise, in view of (14), the pertinence of this problem to the issue of upper bounds for $B_{4}$-sets.
+
+To get a feel for Problem 3 we prove a few easy results.\\
+Lemma 4 We have $M(f) \geq N^{3} / 2$ for all $f$.\\
+P r o o f. Observe that $\sum_{x} f * f(x)=N^{2}$ and that $f * f(x)=0$ for $x \notin\{-N+1, \ldots, N-1\}$. The result is now immediate from the Cauchy-Schwarz inequality. Alternatively, the result is trivial from (14). \(\square\)
+
+Lemma 5 We can have $M(f) \leq 2 N^{3} / 3+O(N)$.\\
+P r o o f. Take $f$ to be the characteristic function of $\{1, \ldots, N\}$. \(\square\)
+
+Exactly as in Section 4 we realise, on closer examination of the second argument in Lemma 4, that a lot of information has been thrown away. We have not considered any of the non-zero Fourier coefficents $\hat{f}(r)(r \neq 0)$. Furthermore, since $f$ is extremely irregularly distributed (being contained in $\{1, \ldots, N\}$, which only fills half of $\mathbb{Z}_{2 N}$ ) we have every right to expect that the contribution from these coefficients will be significant. In fact, because of the way that $f$ is distributed, we expect the non-zero Fourier coefficients $\hat{f}(r)$ with $|r|$ very small to make a significant contribution. Our objective\\
+now is to obtain a strong quantitative result from this observation.\\
+Let $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be a function. Let $v$ be a positive integer (which will be assigned various values later on) and regard $f$ as a function on $\mathbb{Z}_{2 N+v}$ in the natural way. In the following we will use the hat symbol (\^{}) to denote Fourier transforms on $\mathbb{Z}_{2 N+v}$. Exactly as in (14) we have
+
+
+\begin{equation*}
+M(f)=\frac{1}{2 N+v} \sum_{r}|\hat{f}(r)|^{4} . \tag{15}
+\end{equation*}
+
+
+The reason for introducing $v$ will be clear to the reader who has studied §4.\\
+Define
+
+$$
+E(X)=\sum_{0<|r| \leq X}|\hat{f}(r)|^{4} .
+$$
+
+We can now state the main theorem of this section. In this theorem (and for the remainder of the section) the tilde symbol ( ${ }^{\sim}$ ) denotes the Fourier transform on $\mathbb{R}$. In other words if $F \in \mathcal{L}^{1}[0,1]$ then we write, for $\lambda \in \mathbb{R}$,
+
+$$
+\tilde{F}(\lambda)=\int_{-\infty}^{\infty} F(x) e^{i x \lambda} d x
+$$
+
+Theorem 6 Let $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be a function with $|f|=N$, and let $v, X$ be positive integers. Let $f$ be regarded as a function on $\mathbb{Z}_{2 N+v}$ in the natural way, and let the hat symbol denote Fourier transforms on that group. Let $p \in \mathcal{C}^{1}[0,1]$ be such that
+
+$$
+\int_{0}^{1} p(x) d x=2 .
+$$
+
+Then there is a constant $C$, depending only on $p$, such that
+
+$$
+E(X) \geq \gamma(p) N^{4}\left(1-C\left(\frac{v}{N}+\frac{N^{2}}{v^{2} X}+\frac{X^{2}}{N}\right)\right),
+$$
+
+where
+
+$$
+\gamma(p)=2\left(\sum_{r \geq 1}|\tilde{p}(\pi r)|^{4 / 3}\right)^{-3} .
+$$
+
+P r o of. We remark that, for suitable choices of $v$ and $X$, the dominant term in the above bound will be $\gamma(p) N^{4}$. Throughout this proof $C$ will denote a constant which depends only on the fixed function $p$. We follow the traditional convention in analytic number theory of allowing the same\\
+letter $C$ to denote different constants!\\
+For $x \in[0,2]$ define
+
+\[
+U(x)= \begin{cases}1 & (0 \leq x<1)  \tag{16}\\ 1-p(x-1) & (1 \leq x<2),\end{cases}
+\]
+
+and set, for $x \in \mathbb{Z}_{2 N+v}$,
+
+
+\begin{equation*}
+G(x)=U\left(\frac{x}{N+\frac{v}{2}}\right) . \tag{17}
+\end{equation*}
+
+
+Let $I$ be the characteristic function of the interval $\left\{1, \ldots, \frac{v}{4}\right\}$ and write
+
+
+\begin{equation*}
+H(x)=\left(\frac{4}{v}\right)^{2} G *(I * I)(x) . \tag{18}
+\end{equation*}
+
+
+The idea here is that $G$ is a discretised version of $U$, and $H$ is a smoothed version of $G$. Observe that $G$ is equal to 1 for $x=1, \ldots, N+\frac{v}{2}$, and that $I * I$ is supported in $\{-v / 4, v / 4\}$. Therefore $H$ is equal to 1 for $x=\frac{v}{4}, \ldots, N+\frac{v}{4}$. It follows that
+
+$$
+\sum_{x} f(x) H\left(x+\frac{v}{4}\right)=N .
+$$
+
+Applying Parseval's identity and the triangle inequality gives
+
+
+\begin{equation*}
+\sum_{r}|\hat{f}(r)||\hat{H}(r)| \geq 2 N^{2} . \tag{19}
+\end{equation*}
+
+
+In order to use this we require a variety of estimates for $\hat{H}(r)$. These will be of two forms. The first estimate says that, when $|r|$ is small, $\hat{H}(r)$ can be estimated by approximating the sum
+
+$$
+\hat{H}(r)=\sum_{x} H(x) \omega^{r x}
+$$
+
+by an integral. Observe that here we are using $\omega$ to denote the quantity $e^{\frac{2 \pi i}{2 N+v}}$, because we are working with the group $\mathbb{Z}_{2 N+v}$. The second estimate tells us that $\hat{H}(r)$ is small when $|r|$ is at all large. It is for the purpose of proving such a result that we are using the smoothed function $H$ rather than $G$.
+
+Lemma 7 Let $r:[0,1] \rightarrow \mathbb{R}$ be piecewise continuously differentiable, and let $M$ be an integer. Then
+
+$$
+\left|\int_{0}^{1} r(x) d x-\frac{1}{M} \sum_{0 \leq n<M} r\left(\frac{n}{M}\right)\right| \leq \frac{\left\|r^{\prime}\right\|_{\infty}}{M} .
+$$
+
+Proof. This is just an easy application of the Fundamental Theorem of Calculus. \(\square\)
+
+Observe that
+
+
+\begin{equation*}
+|\hat{H}(r)|=\left(\frac{4}{v}\right)^{2}|\hat{G}(r) \| \hat{I}(r)|^{2} . \tag{20}
+\end{equation*}
+
+
+It follows that $|\hat{H}(r)| \leq|\hat{G}(r)|$ for all $r$. Furthermore when $r \neq 0$ we have
+
+$$
+|\hat{G}(r)|=\left|\sum_{0 \leq x<N+\frac{v}{2}} p\left(\frac{x}{N+\frac{v}{2}}\right) \omega^{r x}\right| .
+$$
+
+Hence, using this and Lemma 7 with $r(x)=p(x) e^{\pi i r x}$ and $M=N+\frac{v}{2}$ gives us what we called our first estimate.
+
+Lemma 8 Let $0<|r|<N+\frac{v}{2}$. Then we have the inequality
+
+$$
+|\hat{H}(r)| \leq|\hat{G}(r)| \leq(N+v)|\tilde{p}(\pi r)|+C|r| .
+$$
+
+P r o o f. Indeed we can take $C=4\left(\left\|p^{\prime}\right\|_{\infty}+\|p\|_{\infty}\right)$. \(\square\)
+
+It is possible to prove by very similar means that
+
+
+\begin{equation*}
+|\hat{H}(0)| \leq C . \tag{21}
+\end{equation*}
+
+
+We now turn our attentions to estimating $|\hat{H}(r)|$ for large $|r|$. To this end recall (20). It follows immediately from Lemma 8 that there is a constant $C$ such that
+
+
+\begin{equation*}
+|\hat{G}(r)| \leq C N \tag{22}
+\end{equation*}
+
+
+for all $|r| \leq N+\frac{v}{2}$. We shall also require an upper bound for $|\hat{I}(r)|$.\\
+Lemma 9 Let $0<|r| \leq N+\frac{v}{2}$. Then
+
+$$
+|\hat{I}(r)| \leq \frac{3 N}{|r|} .
+$$
+
+P r o of. By summing a geometric progression it is easy to see that
+
+$$
+\begin{aligned}
+|\hat{I}(r)| & \leq \frac{2}{\left|\omega^{r}-1\right|} \\
+& =\left(\sin \left(\frac{\pi r}{2 N+v}\right)\right)^{-1} .
+\end{aligned}
+$$
+
+It is also a simple matter to verify, for $\theta \in[-\pi / 2, \pi / 2]$, the inequality
+
+$$
+|\sin \theta|^{-1} \leq|\theta|^{-1}+1 .
+$$
+
+The lemma follows immediately. \(\square\)
+
+Lemma 10 There is a constant $C$ such that
+
+$$
+|\hat{H}(r)| \leq \frac{C N^{3}}{v^{2}|r|^{2}} .
+$$
+
+Proof. This follows quickly from (20), (22) and the previous lemma. \(\square\)
+
+Using Lemma 10 and the fact that $|f|=N$, we get that
+
+$$
+\sum_{|r|>X}|\hat{f}(r)||\hat{H}(r)| \leq \frac{C N^{4}}{v^{2} X} .
+$$
+
+Using this and (21) it follows from (19) that
+
+$$
+\sum_{0<|r| \leq X}|\hat{f}(r) \| \hat{H}(r)| \geq 2 N^{2}\left(1-C\left(\frac{1}{N}+\frac{N^{2}}{v^{2} X}\right)\right) .
+$$
+
+Bringing Lemma 8 to bear on this gives, after a little calculation,
+
+
+\begin{equation*}
+\sum_{0<|r| \leq X}|\hat{f}(r)||\tilde{p}(\pi r)| \geq 2 N\left(1-C\left(\frac{v}{N}+\frac{N^{2}}{v^{2} X}+\frac{X^{2}}{N}\right)\right) . \tag{23}
+\end{equation*}
+
+
+Since both $f$ and $p$ are real-valued we have that $|\hat{f}(r)|=|\hat{f}(-r)|$ and $|\tilde{p}(\pi r)|=|\tilde{p}(-\pi r)|$ for all $r$. Therefore (23) implies that
+
+
+\begin{equation*}
+\sum_{1 \leq r \leq X}|\hat{f}(r)||\tilde{p}(\pi r)| \geq N\left(1-C\left(\frac{v}{N}+\frac{N^{2}}{v^{2} X}+\frac{X^{2}}{N}\right)\right) . \tag{24}
+\end{equation*}
+
+
+The proof of Theorem 6 can now be concluded by a single application of Hölder's Inequality with exponents (4, 4/3). \(\square\)
+
+Apart from the problem of choosing a suitable function $p$, we can use Theorem 6 to get a lower bound for $M(f)$.
+
+Theorem 11 Let $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be a function with $|f|=N$. Let $p \in \mathcal{C}^{1}[0,1]$ be such that
+
+$$
+\int_{0}^{1} p(x) d x=2 .
+$$
+
+Then
+
+$$
+M(f) \geq\left(\frac{1+\gamma(p)}{2}\right) N^{3}\left(1+O\left(N^{-1 / 7}\right)\right),
+$$
+
+where
+
+$$
+\gamma(p)=2\left(\sum_{r \geq 1}|\tilde{p}(\pi r)|^{4 / 3}\right)^{-3} .
+$$
+
+Proof. Recall (15). Using this and Theorem 6 with $v=N^{6 / 7}, X=N^{3 / 7}$ gives the result. \(\square\)
+
+It only remains to choose a good function $p$, where "good" means that $\int_{0}^{1} p(x) d x$ equals 2 and $\gamma(p)$ is as large as possible. Unfortunately we have not been able to give a best possible choice in closed form. A simple function that gives a good bound is
+
+
+\begin{equation*}
+p(x)=\frac{5}{2}-40\left(x-\frac{1}{2}\right)^{4} . \tag{25}
+\end{equation*}
+
+
+One can compute that
+
+\[
+|\tilde{p}(\pi r)|= \begin{cases}\frac{40}{\pi^{2}|r|^{2}}-\frac{960}{\pi^{4}|r|^{4}} & r \text { even, } r \neq 0  \tag{26}\\ \frac{240}{\pi^{3}|r|^{3}}-\frac{1920}{\pi^{5}|r|^{5}} & r \text { odd, }\end{cases}
+\]
+
+and then that
+
+
+\begin{equation*}
+\gamma(p)=\frac{2\left(\frac{\pi^{2}}{40}\right)^{4}}{\left(S_{1}+\left(\frac{6}{\pi}\right)^{4 / 3} S_{2}\right)^{3}}, \tag{27}
+\end{equation*}
+
+
+where
+
+
+\begin{equation*}
+S_{1}=\sum_{\substack{r \in \text { even } \\ r \geq 0}}\left|\frac{1}{r^{2}}-\frac{24}{\pi^{2} r^{4}}\right|^{4 / 3} \tag{28}
+\end{equation*}
+
+
+and
+
+
+\begin{equation*}
+S_{2}=\sum_{\substack{r \text { odd } \\ r \geq 0}}\left|\frac{1}{r^{3}}-\frac{8}{\pi^{2} r^{5}}\right|^{4 / 3} . \tag{29}
+\end{equation*}
+
+
+There seems to be little hope of an analytic expression for these series, but one can compute that $S_{1} \approx 0.0839757, S_{2} \approx 0.1219299$. It then follows from\\
+(27) that $\gamma(p)>1 / 7$ (in fact it turns out that $\gamma(p) \approx 1 / 6.9994$ ).
+
+To conclude this section we restate Theorems 6 and 11 with this particular choice of $p$.
+
+Theorem 12 Let $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be a function with $|f|=N$, and let $v, X$ be positive integers. Let $f$ be regarded as a function on $\mathbb{Z}_{2 N+v}$ in the natural way, and let the hat symbol denote Fourier transforms on that group. Write
+
+$$
+E(X)=\sum_{0<|r|<X}|\hat{f}(r)|^{4} .
+$$
+
+Then there is an absolute constant $C$ such that
+
+$$
+E(X) \geq \frac{1}{7} N^{4}\left(1-C\left(\frac{v}{N}+\frac{N^{2}}{v^{2} X}+\frac{X^{2}}{N}\right)\right) .
+$$
+
+Theorem 13 Let $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be a function with $|f|=N$. Then we have
+
+$$
+M(f) \geq \frac{4}{7} N^{3}
+$$
+
+for all sufficiently large $N$.\\
+6. A return to $B_{4}$ sets. Recall that our knowledge of $B_{4}$ sets is currently encapsulated in (13), which we urge the reader to reconsider now. In the remarks following that equation we stated that our goal would be to say something about the Fourier coefficients $\hat{A}(r)$ with $r$ non-zero and small. We now have this knowledge, in the form of Theorem 12.
+
+In (13) we must contend with the presence of $|\hat{I}(r)|^{2}$. Notice, however, that $|\hat{I}(r)|$ will differ insignificantly from $u$ if $|r| \ll N / u$. Indeed
+
+Lemma 14
+
+$$
+|\hat{I}(r)| \geq u-\frac{\pi|r| u^{2}}{N} .
+$$
+
+P r o o f. Let $\omega=e^{2 \pi i /(2 N+v)}$. Then we have
+
+$$
+|u-\hat{I}(r)| \leq \sum_{x=1}^{u}\left|1-\omega^{r x}\right| \leq \frac{2 \pi|r| u^{2}}{2 N+v} \leq \frac{\pi|r| u^{2}}{N},
+$$
+
+which is all we need. \(\square\)
+
+Applying Theorem 12 with $f(x)=N A(x) /|A|$ gives
+
+$$
+\begin{aligned}
+\sum_{r}|\hat{A}(r)|^{4}|\hat{I}(r)|^{2} & \geq \sum_{|r| \leq X}|\hat{A}(r)|^{4}|\hat{I}(r)|^{2} \\
+& \geq \frac{8}{7} u^{2}|A|^{4}\left(1-C\left(\frac{v}{N}+\frac{N^{2}}{v^{2} X}+\frac{X^{2}}{N}\right)\right)\left(1-\frac{\pi X u}{N}\right)^{2},
+\end{aligned}
+$$
+
+where $C$ is an absolute constant. From (13) we now have
+
+
+\begin{equation*}
+8 N+2^{24}\left(v+\frac{N^{7 / 4}}{u}\right) \geq \frac{8}{7}|A|^{4}\left(1-C\left(\frac{v}{N}+\frac{N^{2}}{v^{2} X}+\frac{X^{2}}{N}+\frac{X u}{N}\right)\right) . \tag{30}
+\end{equation*}
+
+
+We must now choose suitable values for $u, v$ and $X$, recalling that we require $u \leq v$. There are many such choices and one is $u=N^{13 / 17}, v=N^{16 / 17}$, $X=N^{3 / 17}$. With these values in (30) we get
+
+Theorem 15
+
+$$
+A(4, N) \leq 7^{1 / 4} N^{1 / 4}(1+o(1)) .
+$$
+
+We now turn our attention to $B_{3}$-sets. We shall be very brief here as there very little difference between this and the case of $B_{4}$-sets.
+
+Lemma 16 Let $A \subseteq\{1, \ldots, N\}$ be a $B_{3}$-set. Then
+
+$$
+A * A * A * A(x) \leq 2|A|(1+(A * A)(x)) .
+$$
+
+Proof. A counting argument very similar to that in Lemma 2 gives
+
+$$
+A * A * A(x) \leq 2(1+|A| A(x)) .
+$$
+
+Using the fact that
+
+$$
+A * A * A * A(x)=\sum_{y}(A * A * A)(y) A(y-x),
+$$
+
+the lemma follows immediately. \(\square\)
+
+The remainder of the derivation is almost exactly as before. One winds up with
+
+Theorem 17
+
+$$
+A(3, N) \leq\left(\frac{7}{2}\right)^{1 / 3} N^{1 / 3}(1+o(1)) .
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{6}
+  \item Large values of $h$. In this section we again consider upper bounds for $B_{h}$-sets. Our aim is to convince the reader that the methods we have just been using for $B_{3}$ and $B_{4}$ sets generalise rather easily to the case $h \geq 5$. For any given value of $h \geq 5$, the difficulties we have experienced optimising our approach (i.e. choosing a good function $p$ ) are even more apparent. Therefore we shall not, in the sequel, discuss any such specific value of $h$. Rather we shall turn our attention to the behaviour of our methods as $h$ becomes large. It turns out that rather simple ideas constitute essentially the best possible application of the methods of this paper.
+\end{enumerate}
+
+Let $f: G \rightarrow \mathbb{R}$ be a function on an abelian group $G$. Then throughout this section we will write $f^{* k}$ for the $k$-fold convolution of $f$ with itself.
+
+The following proposition, a sort of generalisation of Theorem 12, will be our main tool. This comes as little surprise.
+
+Proposition 18 Let $k$ be a positive integer. Let $f:\{1, \ldots, N\} \rightarrow \mathbb{R}^{+}$be a function, and regard $f$ as a function on $\mathbb{Z}_{k N+v}$ in the natural way. Here $k$ is to be regarded as fixed (but large), and $N, v$ are positive integers with $v \ll N$. Then we have
+
+
+\begin{equation*}
+\sum_{|r| \leq k / 2}|\hat{f}(r)|^{2 k} \geq \frac{1}{\sqrt{\pi}} k^{1 / 2}(1-\varepsilon(k))|f|^{2 k}, \tag{31}
+\end{equation*}
+
+
+where $\varepsilon(k) \rightarrow 0$ as $k \rightarrow \infty$.\\
+Proof. The idea is rather simple, but (as the form of (31) might suggest) some fairly careful analysis is required. Throughout the following $k$ will be taken sufficiently large. We have
+
+$$
+\begin{aligned}
+|\hat{f}(r)| & =\left|\sum_{x} f(x) \omega^{r\left(x-\frac{N}{2}\right)}\right| \\
+& \geq \sum_{x} f(x) \cos \left(\frac{2 \pi r\left(x-\frac{N}{2}\right)}{k N+v}\right) .
+\end{aligned}
+$$
+
+Therefore if $|r| \leq k / 2$ we have
+
+$$
+|\hat{f}(r)| \geq|f| \cos \left(\frac{\pi r}{k}\right) .
+$$
+
+Now we simply compute
+
+$$
+\begin{aligned}
+|f|^{-2 k} \sum_{|r| \leq k / 2}|\hat{f}(r)|^{2 k} & \geq \sum_{|r| \leq k / 2}\left|\cos \frac{\pi r}{k}\right|^{2 k} \\
+& \geq \sum_{|r| \leq k^{5 / 8}}\left|1-\frac{\pi^{2} r^{2}}{2 k^{2}}\right|^{2 k} \\
+& \geq\left|1-\frac{25}{k^{3 / 2}}\right|^{2 k} \sum_{|r| \leq k^{5 / 8}} e^{-\pi^{2} r^{2} / k} .
+\end{aligned}
+$$
+
+In this last step we have used the inequality
+
+$$
+1-x \geq e^{-x}\left(1-x^{2}\right),
+$$
+
+which holds for $x \leq 1$. Now one observes that
+
+$$
+\left|1-\frac{25}{k^{3 / 2}}\right|^{2 k} \longrightarrow 1
+$$
+
+as $k \rightarrow \infty$, and that
+
+$$
+\frac{1}{\sqrt{k}} \sum_{|r| \leq k^{5 / 8}} e^{-\pi^{2} r^{2} / k} \longrightarrow \int_{-\infty}^{\infty} e^{-\pi^{2} x^{2}} d x=\frac{1}{\sqrt{\pi}}
+$$
+
+The proposition now follows. The conscientious reader may care to check that we can even take $\varepsilon(k)=100 k^{-1 / 8}$. \(\square\)
+
+Interestingly the above is essentially best possible. We take the opportunity to sketch a proof of this fact now.
+
+Proposition 19 The bound of Proposition 18 is best possible in that the constant $1 / \sqrt{\pi}$ cannot be increased.
+
+SketchProof. Let $\delta>0$ and let $\chi$ be the characteristic function of the set $A_{\delta}$, which consists of the integers $n \in\{-N / 2, \ldots, N / 2\}$ with $|n| \geq(1-\delta) N / 2$. Let $f(n)=\delta^{-1} \chi(n)$, so that $|f|=N(1+o(1))$. For $x \in[-1 / 2,1 / 2]$ define
+
+$$
+g(x)= \begin{cases}\delta^{-1} & (|x| \geq(1-\delta) / 2) \\ 0 & \text { (otherwise) }\end{cases}
+$$
+
+Now $g$ is the probability density function of a random variable $X$ with mean 0 and variance
+
+
+\begin{equation*}
+\sigma^{2}=\frac{1-(1-\delta)^{3}}{12 \delta}>\frac{1}{4}(1-\delta) . \tag{32}
+\end{equation*}
+
+
+Let $\left\{X_{i}\right\}_{i=1}^{\infty}$ be a sequence of independent identically distributed random variables with density $g$. Then, by a suitable version of the Central Limit Theorem (see [7]), the density function of
+
+$$
+\frac{X_{1}+\cdots+X_{m}}{\sigma \sqrt{m}}
+$$
+
+tends to the standard normal $\frac{1}{\sqrt{2 \pi}} e^{-x^{2} / 2}$ uniformly in $x$. In other words,
+
+$$
+\sqrt{m} \cdot g^{* m}(x \sigma \sqrt{m}) \longrightarrow \frac{1}{\sigma \sqrt{2 \pi}} e^{-x^{2} / 2}
+$$
+
+uniformly in $x$. In particular for $m \geq m(\delta)$ we have, using (32), that
+
+
+\begin{equation*}
+g^{* m}(0) \leq \sqrt{\frac{2}{m \pi(1-\delta)}} . \tag{33}
+\end{equation*}
+
+
+Now let $k$ be a fixed positive integer, and regard $f$ as a function on $\mathbb{Z}_{k N}$ in the natural way (in Proposition 18 we worked with $\mathbb{Z}_{k N+v}$, but we choose to ignore this technicality here). Using the hat symbol to denote Fourier transforms on this group, we have
+
+
+\begin{align*}
+\sum_{r}|\hat{f}(r)|^{2 k} & =k N \sum_{x}\left|f^{* k}(x)\right|^{2} \\
+& =k N\left|f^{* 2 k}(0)\right| . \tag{34}
+\end{align*}
+
+
+Note that the modular version of $\left|f^{* 2 k}(0)\right|$ is the same as the $\mathbb{Z}$-version because $f$ is supported in $\{-N / 2, N / 2\}$. It is thus not hard to see that, as $N \rightarrow \infty$, we have
+
+$$
+\frac{f^{* 2 k}(0)}{N^{2 k-1}} \longrightarrow g^{* 2 k}(0) .
+$$
+
+It follows from (34) that
+
+$$
+|f|^{-2 k} \sum_{r}|\hat{f}(r)|^{2 k} \longrightarrow k g^{* 2 k}(0),
+$$
+
+again as $N \rightarrow \infty$. If $2 k \geq m(\delta)$ (as defined earlier) then this implies, by (33), that
+
+$$
+|f|^{-2 k} \sum_{r}|\hat{f}(r)|^{2 k} \leq \sqrt{\frac{k}{\pi(1-2 \delta)}}
+$$
+
+for $N$ sufficiently large. Since $\delta$ can be chosen arbitrarily small, the proposition follows. \(\square\)
+
+We turn now to the business of actually using Proposition 18 to get information about $B_{h}$ sets. We shall be extremely brief, as almost all of the relevant ideas have been covered in §4 (which it may help to recall at this point). First of all we require generalisations of Lemmas 2 and 16.
+
+Lemma 20 Let $h=2 k$ be a positive even integer, and let $A \subseteq\{1, \ldots, N\}$ be a $B_{h}$-set. Then, for any $x \in \mathbb{Z}$, we have that
+
+$$
+A^{* 2 k}(x) \leq(k!)^{2}+k^{2}|A| A^{*(2 k-2)}(x) .
+$$
+
+Lemma 21 Let $h=2 k-1$ be a positive odd integer, and let $A \subseteq\{1, \ldots, N\}$ be a $B_{h}$-set. Then, for any $x \in \mathbb{Z}$, we have that
+
+$$
+A^{* 2 k}(x) \leq|A|\left(k!(k-1)!+k(k-1) A^{*(2 k-2)}(x)\right) .
+$$
+
+Regard $A$ as a subset of $\mathbb{Z}_{k N+v}$, and let $I$ be the characteristic function of $\{1, \ldots, u\}$ where $u \ll v \ll N$. In the case $h=2 k$, an appropriate generalisation of (13) (which may be proved in exactly the same way) is
+
+$$
+k(k!)^{2} N u^{2}+(2 k+4)!\left(N^{2-1 / 2 k} u+u^{2} v\right) \geq \sum_{r}|\hat{A}(r)|^{2 k}|\hat{I}(r)|^{2} .
+$$
+
+Applying Proposition 18 and Lemma 14 quickly gives
+
+$$
+\begin{aligned}
+k(k!)^{2} N+( & 2 k+4)!\left(\frac{N^{2-1 / 2 k}}{u}+v\right) \\
+& \geq \frac{1}{\sqrt{\pi}} k^{1 / 2}(1-\varepsilon(k))|A|^{2 k}\left(1-\frac{\pi k u}{N}\right)^{2}
+\end{aligned}
+$$
+
+where here (and in the following) $\varepsilon(k) \rightarrow 0$ as $k \rightarrow \infty$. Taking $u=N^{1-1 / 3 k}$ and $v=N^{1-1 / 4 k}$ gives the following improvement of (7).
+
+Theorem 22
+
+$$
+\alpha(2 k) \leq\left(\pi^{1 / 2} k^{1 / 2}(k!)^{2}(1+\varepsilon(k))\right)^{1 / 2 k} .
+$$
+
+The case $h=2 k-1$ may be treated similarly and one winds up with\\
+Theorem 23
+
+$$
+\alpha(2 k-1) \leq\left(\pi^{1 / 2} k^{-1 / 2}(k!)^{2}(1+\varepsilon(k))\right)^{1 /(2 k-1)} .
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{7}
+  \item New bounds for $B_{2}[g]$-sets part I. In this section we apply the results of §5 to the problem of bounding $\alpha(2, g)$ above. We show that our ideas lead to a non-trivial bound which is stronger than that of [3] for $g \leq 68$. Let $A \subseteq\{1, \ldots, N\}$ be a $B_{2}[g]$-set. Let $0<v \leq N$ be an integer to be chosen later, and regard $A$ as a subset of $\mathbb{Z}_{2 N+v}$ in the obvious way. Then we have
+\end{enumerate}
+
+
+\begin{equation*}
+M(A)=\sum_{x}\left(A * A^{\circ}\right)(x)^{2} \leq 2 g \sum_{x}\left(A * A^{\circ}\right)(x)=2 g|A|^{2} . \tag{35}
+\end{equation*}
+
+
+On the other hand, using the hat symbol to denote Fourier transforms in $\mathbb{Z}_{2 N+v}$, we have
+
+
+\begin{equation*}
+(2 N+v) M(A)=\sum_{r}|\hat{A}(r)|^{4} . \tag{36}
+\end{equation*}
+
+
+Now let $X$ be another positive integer to be chosen later, and split the sum in (36) into the two parts
+
+$$
+\Sigma_{1}=\sum_{|r| \leq X}|\hat{A}(r)|^{4}
+$$
+
+and
+
+$$
+\Sigma_{2}=\sum_{X<|r| \leq N+\frac{v}{2}}|\hat{A}(r)|^{4} .
+$$
+
+Applying Proposition 12 with $f(x)=N A(x) /|A|$ gives
+
+
+\begin{equation*}
+\Sigma_{1} \geq \frac{8}{7}|A|^{4}\left(1-\frac{C}{N}\left(v+\frac{N^{3}}{v^{2} X}+X^{2}\right)\right) . \tag{37}
+\end{equation*}
+
+
+Furthermore by the Cauchy-Schwarz inequality, Parseval's identity and the trivial bound $|A| \leq(4 g)^{1 / 2} N^{1 / 2}$ we have
+
+
+\begin{align*}
+\Sigma_{2} & \geq \frac{1}{2 N+v}\left(\sum_{X<|r| \leq N+\frac{v}{2}}|\hat{A}(r)|^{2}\right)^{2} \\
+& \geq \frac{1}{2 N+v}\left((2 N+v)|A|-2 X|A|^{2}\right)^{2} \\
+& \geq(2 N+v)(|A|-12 g X)^{2} . \tag{38}
+\end{align*}
+
+
+Taking $X=N^{3 / 7}, v=N^{6 / 7}$ in the above and doing a little calculation with (35), (36), (37) and (38) gives the following result.
+
+Theorem 24 We have
+
+$$
+\alpha(2, g) \leq \sqrt{\frac{7}{2} g-\frac{7}{4}} .
+$$
+
+This improves on the bound of [3] for $g \leq 68$, and in particular
+
+$$
+\alpha(2,2) \leq \frac{1}{2} \sqrt{21} .
+$$
+
+\begin{enumerate}
+  \setcounter{enumi}{8}
+  \item New Bounds for $B_{2}[g]$-sets part II. In this section we discuss the paper [3]. We begin by translating the techniques of that paper into the language we have been using here, a relatively easy task. We then show that our methods complement those of [3], in the sense that we can get an improved bound on $A(2, g, N)$. We shall in fact prove the following result.
+\end{enumerate}
+
+Theorem 25
+
+$$
+A(2, g, N) \leq\left(\frac{17}{5}\right)^{1 / 2} g^{1 / 2} N^{1 / 2}(1+o(1)) .
+$$
+
+Observe that $(17 / 5)^{1 / 2}=1.84391$.. (in fact our method gives the slightly better constant 1.84385). This is weaker than the bound of Theorem 24 for $g \leq 18$, but stronger than the bound of [3] for all $g$. We give this bound more as an illustration of the sort of techniques that might be useful in this problem rather than for the constant 17/5 itself.
+
+We now translate the technique used in [3] to obtain the bound (4) into the language of our paper. Let $A \subseteq\{1, \ldots, N\}$ be a $B_{2}[g]$ set, and regard $A$ as a subset of $\mathbb{Z}_{2 N}$. Define $f(x)=2 g-\left(A * A^{\circ}\right)(x)$, so that $0 \leq f(x) \leq 2 g$ for all $x \in \mathbb{Z}_{2 N}$. For any $r \neq 0$ the Fourier transform $\hat{f}(r)$ is simply $-\hat{A}(r)^{2}$. Hence we have, if $\omega=e^{2 \pi i / 2 N}$,
+
+
+\begin{align*}
+|\hat{A}(r)|^{2} & =\left|\sum_{x}\left(2 g-\left(A * A^{\circ}\right)(x)\right) \omega^{r x}\right| \\
+& \leq \sum_{x}\left|2 g-\left(A * A^{\circ}\right)(x)\right| \\
+& =4 N g-|A|^{2} . \tag{39}
+\end{align*}
+
+
+Noting that $A \subseteq\{1, \ldots, N\}$, Cilleruelo, Ruzsa and Trujillo show that $A$ must have a large non-zero Fourier coefficient $\hat{A}(r)$. The technique used to do this bears some resemblance to the techniques we used earlier to show that, under the same hypotheses, $\sum_{r \neq 0}|\hat{A}(r)|^{4}$ cannot be too small. One finds a non-negative function $f$, supported on $\{1, \ldots, N\}$, for which $\sum_{r \neq 0}|\hat{f}(r)|$ is large compared to $|f|$. Observing that
+
+$$
+\sum_{x} A(x) f(x+N)=0,
+$$
+
+one uses Parseval's identity to conclude that
+
+$$
+\sum_{r \neq 0}|\hat{A}(r) \| \hat{f}(r)| \geq|A||f|,
+$$
+
+from which it follows that
+
+$$
+\sup _{r \neq 0}|\hat{A}(r)| \cdot \sum_{r \neq 0}|\hat{f}(r)| \geq|A||f| .
+$$
+
+We suppress a more detailed discussion, referring the interested reader to [3].
+
+For the rest of the paper define
+
+$$
+N_{\infty}(A)=\frac{1}{|A|} \sup _{r \neq 0}|\hat{A}(r)|
+$$
+
+and
+
+$$
+N_{4}(A)=\frac{1}{|A|^{4}} \sum_{r \neq 0}|\hat{A}(r)|^{4} .
+$$
+
+The situation may be summarised by saying that [3] obtains information from $N_{\infty}(A)$, whereas we profited from consideration of $N_{4}(A)$. Since these are rather different objects, it is not altogether surprising that a stronger bound can be achieved by playing the two approaches off against one another. The remainder of the paper, which aims to show that this is indeed so, consists of three parts. In Step 1 we show that a lower bound on $N_{\infty}(A)$ can be used slightly more effectively than was done in (39). In Step 2 we show how a lower bound on $N_{4}(A)$ gives information in a rather simpler (but slightly weaker) way than in §8. This keeps the whole argument manageable. Finally, in Step 3, we show that considering $N_{\infty}(A)$ and $N_{4}(A)$ together gives stronger information, for large $g$, than separate consideration of either $N_{\infty}(A)$ (cf. [3]) or $N_{4}(A)$ (cf. §8).
+
+Step 1. Let us reconsider the derivation (39). There was only one inequality, but it was rather crude. Our task here is to improve it.
+
+Lemma 26 Let $L, M, R$ be integers with $L+1 \leq M / R$. Let $\mathcal{C}(M, R)$ be the set of all functions $f: \mathbb{Z}_{L} \rightarrow\{0,1,2, \ldots\}$ with $|f|=M$ and $f(x) \leq R$ for all $x$. Then, for all $f \in \mathcal{C}(M, R)$,
+
+$$
+|\hat{f}(1)| \leq R\left|\frac{\sin \frac{\pi}{L}\left(\frac{M}{R}+1\right)}{\sin \frac{\pi}{L}}\right| .
+$$
+
+P r o o f. The result clearly generalises to $|\hat{f}(r)|$ with $r \neq 0$. It is saying nothing more than that $|\hat{f}(1)|$ is maximised, among all functions in $\mathcal{C}(M, R)$, when $f$ is as concentrated as possible. We prove this using a sort of compression argument. Let $f$ be a member of $\mathcal{C}(M, R)$ with $|\hat{f}(1)|$ maximal. Let $u, v \in \mathbb{Z}_{L}$ be such that $f(u)>0$ and $f(v)<M$, and define a new function $g_{u, v} \in \mathcal{C}(M, R)$ by
+
+$$
+\begin{aligned}
+& g(x)=f(x) \quad(x \neq u, v) \\
+& g(u)=f(u)-1 \\
+& g(v)=f(v)+1 .
+\end{aligned}
+$$
+
+Let $\omega=e^{2 \pi i / L}$ and suppose that $a \in[0, L)$ is such that $\hat{f}(1)=|\hat{f}(1)| \omega^{r a}$ ( $a$ need not be an integer). Then one can check that
+
+$$
+\begin{aligned}
+|\hat{g}(1)| & =| | \hat{f}(1)\left|+\omega^{v-a}-\omega^{u-a}\right| \\
+& \geq|\hat{f}(1)|+\cos \left(\frac{2 \pi(v-a)}{L}\right)-\cos \left(\frac{2 \pi(u-a)}{L}\right) .
+\end{aligned}
+$$
+
+In words, $|\hat{g}(1)|$ is greater than $|\hat{f}(1)|$ if $|v-a|<|u-a|$, where distance is measured on the torus $[0, L)$ which contains $\mathbb{Z}_{L}$ as a subgroup. By the extremal property of $f$, this means that we cannot select $u$ and $v$ with $|v-a|<|u-a|, f(u)>0$ and $f(v)<M$. In other words $f$ is as concentrated about $a$ as possible. \(\square\)
+
+We can now use this lemma in place of the inequality (39), with $f(x)=$ $2 g-\left(A * A^{\circ}\right)(x), L=2 N$ and $M=2 g$. One gets for any $r \neq 0$ that
+
+$$
+|\hat{A}(r)|^{2} \leq 2 g\left|\frac{\sin \frac{\pi}{2 N}\left(\frac{4 N g-|A|^{2}}{2 g}+1\right)}{\sin \pi / 2 N}\right| .
+$$
+
+Writing (here and for the rest of the paper)
+
+$$
+Q=\frac{|A|^{2}}{4 N g},
+$$
+
+this simplifies to
+
+$$
+|\hat{A}(r)|^{2} \leq 2 g\left|\frac{\sin \left(\pi Q-\frac{\pi}{2 N}\right)}{\sin (\pi / 2 N)}\right| .
+$$
+
+Recalling that $Q<1$ uniformly in $N$ (a consequence of Theorem 24) this reduces yet further to give
+
+$$
+|\hat{A}(r)|^{2} \leq \frac{4 g N \sin \pi Q}{\pi}(1+o(1)) .
+$$
+
+Finally this implies our strengthened version of (39), namely
+
+
+\begin{equation*}
+\frac{\sin \pi Q}{\pi Q} \geq N_{\infty}(A)^{2}(1+o(1)) . \tag{40}
+\end{equation*}
+
+
+Step 2. In this brief section we show that upper bounds for $B_{2}[g]$ sets are related to lower bounds for $N_{4}(A)=\sum_{r \neq 0}|\hat{A}(r)|^{4} /|A|^{4}$ in a very simple way (which is a little weaker than the approach taken in §8). Let $A \subseteq\{1, \ldots, N\}$ be a $B_{2}[g]$ set and regard $A$ as a subset of $\mathbb{Z}_{2 N}$. Then
+
+$$
+\begin{aligned}
+|A|^{4}\left(1+N_{4}(A)\right) & =\sum_{r}|\hat{A}(r)|^{4} \\
+& =2 N \sum_{x}\left(A * A^{\circ}\right)(x)^{2} \\
+& \leq 4 N g \sum_{x}\left(A * A^{\circ}\right)(x) \\
+& =\frac{|A|^{4}}{Q} .
+\end{aligned}
+$$
+
+Hence
+
+
+\begin{equation*}
+Q \leq \frac{1}{1+N_{4}(A)} . \tag{41}
+\end{equation*}
+
+
+Step 3. Unfortunately this section is a touch computational. We trust the reader will accept our apologies for this. At this point we take the opportunity to recall equation (24), from which we deduced Theorem 6 by a simple application of Hölder's Inequality. Let $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be a function with $|f|=N$, and regard $f$ as a function on $\mathbb{Z}_{2 N+v}$. Let $p:[0,1] \rightarrow \mathbb{R}$ be a continuously differentiable function with $\int_{0}^{1} p(x) d x=2$. Then, using the hat and tilde symbols to denote Fourier transforms on $\mathbb{Z}_{2 N+v}$ and $\mathbb{R}$ respectively, we had
+
+
+\begin{equation*}
+\sum_{1 \leq r \leq X}|\hat{f}(r)||\tilde{p}(\pi r)| \geq N\left(1-C\left(\frac{v}{N}+\frac{N^{2}}{v^{2} X}+\frac{X^{2}}{N}\right)\right) . \tag{42}
+\end{equation*}
+
+
+Take $f(x)=N A(x) /|A|$ and $p(x)=\frac{5}{2}-40\left(x-\frac{1}{2}\right)^{4}$ (as we did in proving Theorem 6). With $X=N^{3 / 7}$ and $v=N^{6 / 7}$, (42) gives
+
+
+\begin{equation*}
+\sum_{1 \leq r<N}|\hat{A}(r) \| \tilde{p}(\pi r)| \geq|A|(1+o(1)) . \tag{43}
+\end{equation*}
+
+
+Suppose that $|\hat{A}(1)|=\alpha|A|$. Then, recalling (26), we get that
+
+
+\begin{equation*}
+\sum_{2 \leq r<N}|\hat{A}(r)||\tilde{p}(\pi r)| \geq|A|\left(1-\alpha\left(\frac{240}{\pi^{3}}-\frac{1920}{\pi^{5}}\right)\right)(1+o(1)) . \tag{44}
+\end{equation*}
+
+
+Suppose that $\alpha<\frac{7}{10}$, so that
+
+$$
+1-\alpha\left(\frac{240}{\pi^{3}}-\frac{1920}{\pi^{5}}\right) \geq 0 .
+$$
+
+Then we may apply Hölder's Inequality to (44) to obtain, after a few calculations, that
+
+
+\begin{align*}
+N_{4}(A) & \geq\left(2 \alpha^{4}+\frac{2\left(\frac{\pi^{3}}{240}\right)^{4}\left(1-\alpha\left(\frac{240}{\pi^{3}}-\frac{1920}{\pi^{5}}\right)\right)^{4}}{\left(\left(\frac{\pi}{6}\right)^{4 / 3} S_{1}+S_{2}-\left(1-\frac{8}{\pi^{2}}\right)^{4 / 3}\right)^{3}}\right)(1+o(1))  \tag{45}\\
+& \approx\left(2 \alpha^{4}+4.8607836(1-1.4662621 \alpha)^{4}\right)(1+o(1)), \tag{46}
+\end{align*}
+
+
+where $S_{1}$ and $S_{2}$ are the sums appearing in (28) and (29). Call the polynomial appearing in (46) $p(\alpha)$. Then one can check that $p^{\prime}(\alpha)<0$ for $\alpha \in[0,0.47]$. Hence, putting $\alpha=0.4124078$ in (46), we get that either
+
+
+\begin{equation*}
+N_{\infty}(A) \geq \frac{|\hat{A}(1)|}{|A|} \geq 0.4124078 \tag{47}
+\end{equation*}
+
+
+or else
+
+
+\begin{equation*}
+N_{4}(A) \geq 0.1765468(1+o(1)) . \tag{48}
+\end{equation*}
+
+
+If (48) holds then, by (41), we have
+
+$$
+Q \leq 0.8499448(1+o(1)) .
+$$
+
+If (47) holds then, by (40) and a little easy computation we have again that
+
+$$
+Q \leq 0.8499448(1+o(1)) .
+$$
+
+Either way, it is easy to see (recalling that $Q=|A|^{2} / 4 N g$ ) that Theorem 25 is true. \(\square\)\\
+10. Concluding remarks on $B_{h}[g]$ sets. In this paper we have been concerned only with the problem of finding upper bounds for $B_{h}[g]$-subsets of $\{1, \ldots, N\}$. However the notion of $B_{h}[g]$-set makes sense on any subset\\
+of an abelian group and perhaps the most natural questions concern $B_{h}[g]$ -subsets of $\mathbb{Z}_{N}$. Indeed one feels that in passing from $\mathbb{Z}_{N}$ to $\{1, \ldots, N\}$ one has somehow only introduced "boundary effects" that should have little bearing on the apparently deeper underlying arithmetic questions. Our work in this paper has been concerned with improving the estimates for these boundary effects, and unfortunately our methods are unable to give any new information about $B_{h}[g]$-subsets of $\mathbb{Z}_{N}$. Let $M(h, g, N)$ denote the size of the largest $B_{h}[g]$-subset of $\mathbb{Z}_{N}$. Clearly then $M(h, g, N) \leq A(h, g, N)$. So far as I am aware, the best known upper bounds on $M(h, N)=M(h, 1, N)$ come from simple applications of Lemmas 20 and 21 (which, as one can easily check, hold equally well in the modular case). That is to say, one has
+
+$$
+M(2 k, N) \leq(k!)^{1 / k} N^{1 / 2 k}(1+o(1))
+$$
+
+and
+
+$$
+M(2 k-1, N) \leq(k!(k-1)!)^{1 /(2 k-1)} N^{1 /(2 k-1)}(1+o(1)) .
+$$
+
+In my opinion any significant lowering of these bounds would require a substantial advance in our understanding of these additive representation questions.
+
+For higher values of $g$ it seems that essentially no non-trivial upper bounds are known in the modular case. For $B_{2}[g]$ sets one could adapt the argument of §8 to get the bound
+
+$$
+M(2, g, N) \leq(2 g-1)^{1 / 2} N^{1 / 2}(1+o(1)),
+$$
+
+a slight improvement on the trivial bound. Non-trivial lower bounds can be obtained, but it should be noted that the results in [3] do not apply to the modular case. All these questions are very interesting.\\
+11. Further remarks on functions with minimal $M(f)$. In this section, which is really an appendix, we offer a miscellany of further results concerning Problem 3. Although these results are not necessary for an understanding of the rest of the paper they do throw a little light on some of the methods we have been using.
+
+We start by showing that the upper bound of Lemma 5 is not tight, even if we restrict attention to functions taking only two values.
+
+Lemma 27 There is an $f:\{1, \ldots, N\} \rightarrow\{0,1\}$ with $|f|=N$ and $M(f) \leq$ $0.64074 N^{3}+O\left(N^{2}\right)$.
+
+Proof. Let $A_{\alpha}$ be the set obtained by removing an interval of length $\alpha N$ from the middle of $\{1, \ldots, N\}$. Let $f_{\alpha}$ be the characteristic function of $A_{\alpha}$, weighted by a factor $(1-\alpha)^{-1}$ so that $\left|f_{\alpha}\right|=N$. A slightly tedious computation enables one to show that for $\alpha<1 / 3$ we have
+
+$$
+M\left(f_{\alpha}\right)=\frac{\frac{2}{3}-3 \alpha+6 \alpha^{2}-5 \alpha^{3}}{(1-\alpha)^{4}} N^{3}+O\left(N^{2}\right) .
+$$
+
+It is straightforward to check that the minimum in [0, 1/3] occurs at $\alpha \approx$ 0.13257. \(\square\)
+
+We now turn to a study of the extremal functions in Problem 3. Letting $\mathcal{S}$ denote the set of all $f:\{1, \ldots, N\} \rightarrow \mathbb{R}$ with $|f|=N$, an easy compactness argument shows that there is a function $F \in \mathcal{S}$ such that $M(f) \geq M(F)$ for all $f \in \mathcal{S}$. We write $M(F)=M_{0}$.
+
+Lemma $28 F * F * F$ is equal to $M_{0} / N$ on $\{1, \ldots, N\}$.\\
+P r o o f. Let $g:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be any function with $\sum_{x} g(x)=0$. Then for any $\epsilon$ we must have $M(F+\epsilon g) \geq M_{0}$. A small computation gives that
+
+$$
+\begin{aligned}
+\left.\frac{d}{d \epsilon} \sum_{x}((F+\epsilon g) *(F+\epsilon g)(x))^{2}\right|_{\epsilon=0} & =4 \sum_{x}(F * F)(x)(F * g)(x) \\
+& =4 \sum_{x}(F * F * F)(x) g(x) .
+\end{aligned}
+$$
+
+This expression must equal 0, and simple linear algebra tells us that this is the case precisely when $F * F * F$ equal to some constant $c(F)$ on $\{1, \ldots, N\}$. It is easy to compute the value of $c(F)$ in terms of $M_{0}$. Indeed
+
+
+\begin{equation*}
+M_{0}=\sum_{x}(F * F)(x)^{2}=\sum_{x}(F * F * F)(x) F(x)=c(F) N . \tag{49}
+\end{equation*}
+
+
+Lemma 29 There is a unique extremal function in Problem 3.\\
+Proof. For the proof of this lemma we let the hat symbol $\left({ }^{\wedge}\right)$ denote the Fourier transform on $\mathbb{Z}$. Thus for $\theta \in \mathbb{T}=[0,1]$ we set
+
+$$
+\hat{f}(\theta)=\sum_{x} f(x) e(x \theta),
+$$
+
+where $e(t)=e^{2 \pi i t}$. With this notation it follows, using standard facts about Fourier transforms, that
+
+$$
+M(f)=\int_{0}^{1}|\hat{f}(\theta)|^{4} d \theta
+$$
+
+Let $f, g:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be two functions with $|f|=|g|=N$. We use the inequality
+
+$$
+\left|\frac{a+b}{2}\right|^{4}+\left|\frac{a-b}{2}\right|^{4} \leq \frac{|a|^{4}+|b|^{4}}{2},
+$$
+
+which is valid for all $a, b \in \mathbb{C}$ and follows immediately from the identity
+
+$$
+|a+b|^{4}+|a-b|^{4}+6\left(|a|^{2}-|b|^{2}\right)^{2}+2\left(|a b|^{2}-\Re a^{2} \bar{b}^{2}\right)=8\left(|a|^{4}+|b|^{4}\right) .
+$$
+
+Setting $a=\hat{f}(\theta), b=\hat{g}(\theta)$ and integrating over $\theta \in[0,1]$ we get that
+
+
+\begin{equation*}
+M\left(\frac{f+g}{2}\right) \leq \frac{M(f)+M(g)}{2}, \tag{50}
+\end{equation*}
+
+
+with strict inequality unless $\|\hat{f}-\hat{g}\|_{4}=0$. Since $\hat{f}$ and $\hat{g}$ are both continuous this implies that $\hat{f}=\hat{g}$, which in turn forces $f=g$ identically. Suppose now that $M(f)=M(g)=M_{0}$. Then, as $|(f+g) / 2|=N$, we must have equality in (50). This proves the lemma. \(\square\)
+
+For the remainder of this section we will work in $\mathbb{Z}_{2 N}$. As usual we shall regard functions
+
+$$
+f:\{1, \ldots, N\} \rightarrow \mathbb{R}
+$$
+
+as functions on $\mathbb{Z}_{2 N}$, and the hat symbol will once again refer to the Fourier transform on $\mathbb{Z}_{2 N}$.
+
+Lemma 30 Let $G:\{1, \ldots, N\} \rightarrow \mathbb{R}$ be a function with $|G|=N$. Let $\mathcal{H}_{2 N}$ denote the set of all functions $H: \mathbb{Z}_{2 N} \rightarrow \mathbb{R}$ with $|H|=0$ and $H(x)=1$ for $x=1, \ldots, N$ (compare §5). Then we have
+
+
+\begin{equation*}
+\left(\sum_{r \neq 0}|\hat{G}(r)|^{4}\right)\left(\sum_{r \neq 0}|\hat{H}(r)|^{4 / 3}\right)^{3} \geq 16 N^{8} \tag{51}
+\end{equation*}
+
+
+for all $H \in \mathcal{H}_{2 N}$. Suppose that in addition $G * G * G$ is constant on $\{1, \ldots, N\}$. Then equality can occur in (51).
+
+SketchProof. The first part of the lemma (that is to say the inequality (51)) can be derived in much the same way that we proved Theorem 6 in §5. In fact, the argument is a great deal simpler because we have not introduced any smoothing device here. For the second statement, we simply observe that one can take
+
+$$
+H(x)=\frac{2 N G * G * G(x)-N^{3}}{2 M(G)-N^{3}} .
+$$
+
+The convolutions are taken in $\mathbb{Z}_{2 N}$, but one can check that the modular convolution $G * G * G$ is also constant on $\{1, \ldots, N\}$. This concludes the proof of the lemma. \(\square\)
+
+This lemma has a number of consequences. First of all it provides justification for the approach we used in §5 to obtain a lower bound for $M(f)$. Secondly it allows us to prove
+
+Corollary 31 Suppose $G:\{1, \ldots, N\} \rightarrow \mathbb{R}$ is a function with $|G|=N$ for which $G * G * G$ is constant on $\{1, \ldots, N\}$. Then $G=F$.
+
+Proof. It follows easily from Lemma 30 that $G$ is extremal for Problem 3, the problem of minimising $M(G)$. Hence, by Lemma 29, $G=F$. \(\square\)
+
+To conclude we should like to remark that Problem 3 is closely related to the problem of finding the best possible constants in what are known as Inequalities of Nikol'skǐi Type.
+
+Acknowledgements. The author would like to thank Alex Barnard, for plotting our extremal function $F$ numerically and for advice concerning computations; Tim Gowers, for helpful advice; and Imre Ruzsa for making the preprint [3] available. Finally I would like to thank the referee for a couple of helpful suggestions.
+
+\section*{References}
+\begin{itemize}
+  \item[] [1] S. C h e n, On the Size of Finite Sidon Sequences, Proc. Amer. Math. Soc. 121 (1994) 353-356.
+  \item[] [2] J. Cilleruelo, An Upper Bound for $B_{2}$ [2] Sequences, Journal of Combinatorial Theory, Series A 89 (2000) 141-144.
+  \item[] [3] J. Cilleruelo, I. Z. Ruzsa and C. Trujillo, Upper and Lower Bounds for Finite $B_{h}[g]$ Sequences, $g>1$, to appear in Journal of Number Theory.
+  \item[] [4] P. Erdős and P. Turán, On a Problem of Sidon in Additive Number Theory and On Some Related Problems, Journal of the London Mathematical Society 16 (1941) 212-215.
+  \item[] [5] W. T. Gowers, A New Proof of Szemerédi's Theorem for Progressions of Length Four, Geom. Funct. Anal. 8 (1998) 529-551.
+\end{itemize}
+
+\begin{itemize}
+  \item[] [6] S. W. G r a h a m, $B_{h}$ Sequences, in Analyic Number Theory Vol 1 (Allerton Park, IL, 1995) 431-449, Progress in Mathematics 138, Birkhäuser, Boston MA 1996.
+  \item[] [7] G. R. Grimmett and D. R. Stirzaker, Probability and Random Processes, Clarendon Press, Oxford 1992.
+  \item[] [8] R. K. G u y, Unsolved Problems in Number Theory Second Edition, Springer 1994.
+  \item[] [9] H. H a l b e r s t a m and K. F. R o t h, Sequences Second Edition, Springer 1983.
+  \item[] [10] X. Jia, On $B_{2 k}$ Sequences, Journal of Number Theory 48 (1994) 183-196.
+  \item[] [11] M. N. Kolountzakis, The Density of $B_{h}[g]$ Sequences and the Minimum of Dense Cosine Sums, Journal of Number Theory 56 (1996) 4-11.
+  \item[] [12] B.Lindström, A Remark on $B_{4}$-Sequences, Journal of Combinatorial Theory 7 (1969) 276-277.
+  \item[] [13] H. L. Montgomery, Topics in Multiplicative Number Theory, Springer 1971.
+  \item[] [14] A. Sár k ő z y and V. T. S ó s, On Additive Representation Functions, in The Mathematics of Paul Erdős, Vol. 1, Springer 1997.
+\end{itemize}
+
+DEPARTMENT OF PURE MATHEMATICS AND MATHEMATICAL STATISTICS\\
+UNIVERSITY OF CAMBRIDGE\\
+WILBERFORCE ROAD\\
+CAMBRIDGE CB3 0wb, ENGLAND
+
+
+\end{document}
